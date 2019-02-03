@@ -3,7 +3,21 @@
 
 [btio离线下载](https://bitport.io)
 
+## 磁力搜索
 
+[btdiggs](https://btdiggs.cc/)
+
+
+[btsoso](https://btsow.pw/search/)
+
+[飞客](http://feikebt.pw/)
+
+
+[torrentkitty](https://www.torrentkitty.tv/search/)
+
+[cnbtkitty](https://cnbtkitty.ws)
+
+[rarbg](https://rarbgprx.org/torrents.php?search)
 
 
 You can use the [editor on GitHub](https://github.com/zip11/webpage/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
