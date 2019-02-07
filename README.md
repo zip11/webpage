@@ -19,9 +19,18 @@
 
 ### english web
 
-[rarbg](https://rarbgprx.org/torrents.php?search)
+[rarbg bt搜索](https://rarbgprx.org/torrents.php?search)
 
-[clihub](https://clihub.com/)
+[clihub 磁力搜索](https://clihub.com/)
+
+
+[pastebin 文本剪贴板](https://pastebin.com/)
+
+
+[mega 网盘](https://mega.nz/)
+
+
+[reddit 帖子社区](https://www.reddit.com)
 
 
 You can use the [editor on GitHub](https://github.com/zip11/webpage/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
