@@ -62,6 +62,9 @@
 [v2ex技术社区](https://www.v2ex.com)
 
 
+[hostloc vps主机论坛](https://hostloc.com)
+
+
 ### 游戏 game website
 
 
@@ -71,7 +74,6 @@
 
 [a9vg主机游戏论坛](https://bbs.a9vg.com)
 
-[hostloc vps主机论坛](https://hostloc.com)
 
 []()
 
