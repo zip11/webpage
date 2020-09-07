@@ -71,7 +71,7 @@
 
 [a9vg主机游戏论坛](https://bbs.a9vg.com)
 
-[]()
+[hostloc vps主机论坛](https://hostloc.com)
 
 []()
 
