@@ -7,41 +7,6 @@
 [yandex ](https://yandex.com)
 
 
-## 磁力搜索 serach 
-
-[btdiggs](https://btdiggs.cc/)
-
-
-[btsoso](https://btsow.pw/search/)
-
-[飞客](http://feikebt.pw/)
-
-
-[torrentkitty](https://www.torrentkitty.tv/search/)
-
-[cnbtkitty](https://cnbtkitty.ws)
-
-***
-
-### english website
-
-[rarbg bt搜索](https://rarbgprx.org/torrents.php?search)
-
-[clihub 磁力搜索](https://clihub.com/)
-
-
-[pastebin 文本剪贴板](https://pastebin.com/)
-
-
-[mega 网盘](https://mega.nz/)
-
-
-[reddit 帖子社区](https://www.reddit.com)
-
-
-***
-
-
 ### 工具网站 tool website
 
 [10分钟邮箱](https://bccto.cc/)
@@ -73,6 +38,44 @@
 
 
 [a9vg主机游戏论坛](https://bbs.a9vg.com)
+
+### english website
+
+[rarbg bt搜索](https://rarbgprx.org/torrents.php?search)
+
+[clihub 磁力搜索](https://clihub.com/)
+
+
+[pastebin 文本剪贴板](https://pastebin.com/)
+
+
+[mega 网盘](https://mega.nz/)
+
+
+[reddit 帖子社区](https://www.reddit.com)
+
+
+***
+
+
+
+
+
+## 磁力搜索 serach 
+
+[btdiggs](https://btdiggs.cc/)
+
+
+[btsoso](https://btsow.pw/search/)
+
+[飞客](http://feikebt.pw/)
+
+
+[torrentkitty](https://www.torrentkitty.tv/search/)
+
+[cnbtkitty](https://cnbtkitty.ws)
+
+***
 
 
 []()
