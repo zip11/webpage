@@ -39,6 +39,8 @@
 
 [a9vg主机游戏论坛](https://bbs.a9vg.com)
 
+***
+
 ### english website
 
 [rarbg bt搜索](https://rarbgprx.org/torrents.php?search)
@@ -54,6 +56,7 @@
 
 [reddit 帖子社区](https://www.reddit.com)
 
+[AI虚拟人脸](https://thispersondoesnotexist.com)
 
 ***
 
