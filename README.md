@@ -21,6 +21,8 @@
 
 [apkpure apk下载](https://apkpure.com/cn/)
 
+[Google play apk下载](https://apps.evozi.com/apk-downloader)
+
 [手机乐园](https://soft.shouji.com.cn/)
 
 
