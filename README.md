@@ -19,11 +19,16 @@
 
 [UA游览器查询](https://www.ip138.com/useragent/)
 
+
+
+
+
 [apkpure apk下载](https://apkpure.com/cn/)
 
 [Google play apk下载](https://apps.evozi.com/apk-downloader)
 
 [手机乐园](https://soft.shouji.com.cn/)
+
 
 
 
@@ -52,6 +57,8 @@
 ***
 
 ### english website
+
+[fosshub免费软件下载](https://www.fosshub.com/)
 
 [rarbg bt搜索](https://rarbgprx.org/torrents.php?search)
 
