@@ -13,6 +13,15 @@
 [yandex ](https://yandex.com)
 
 
+
+### 新闻网站 news website
+(抽屉新热榜)[https://dig.chouti.com/]
+(观察者)[https://www.guancha.cn/]
+
+
+
+
+
 ### 工具网站 tool website
 
 [10分钟邮箱](https://bccto.cc/)
