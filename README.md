@@ -21,7 +21,7 @@
 [观察者](https://www.guancha.cn/)
 
 
-
+***
 
 
 ### 工具网站 tool website
@@ -43,6 +43,8 @@
 
 
 [小众软件](https://www.appinn.com/)
+
+[异次元软件](https://www.iplaysoft.com/)
 
 -[ico图标下载](https://www.iconfont.cn)
 
