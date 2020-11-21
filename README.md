@@ -32,7 +32,18 @@
 
 [88完美邮箱](https://www.88.com/)
 
+[小众软件](https://www.appinn.com/)
 
+[异次元软件](https://www.iplaysoft.com/)
+
+-[ico图标下载](https://www.iconfont.cn)
+
+-[ico透明图标生成](http://www.ico51.cn)
+
+
+### 手机软件市场
+
+[apkmirror谷歌框架](https://www.apkmirror.com/)
 
 [apkpure apk下载](https://apkpure.com/cn/)
 
@@ -42,13 +53,6 @@
 
 
 
-[小众软件](https://www.appinn.com/)
-
-[异次元软件](https://www.iplaysoft.com/)
-
--[ico图标下载](https://www.iconfont.cn)
-
--[ico透明图标生成](http://www.ico51.cn)
 
 ***
 
@@ -60,7 +64,7 @@
 
 ### 游戏 game website
 
-
+[字幕库](http://www.zimuku.la/)
 
 [nga游戏论坛](https://bbs.nga.cn)
 
