@@ -1,19 +1,12 @@
 import requests
 import re
+import configparser
  
-def dtxt(lj1):
-    
-    with open(lj1, "r") as f:
-        data = f.readline()
-        print("txt版本号",data)
-        return  data 
 
-def xtxt(lj1,nr1):
-
-    with open(lj1,"w") as f:
-        f.write(nr1)
 
 if __name__ == '__main__':
+
+
     
     #上网代理
     s = requests.session()
@@ -38,10 +31,12 @@ if __name__ == '__main__':
     bb1 = vv.group()
     print("网站版本号",bb1)
     
-    
-    #读取txt版本号
-    bd1 = dtxt("bbh.txt")
-    
+    cfp = configparser.ConfigParser()
+    cfp.read("bbh.ini")
+
+    #读取版本号
+    bd1 = cfp.get("yt", "bbh")
+    print("ini版本号",bb1)
     
     if bd1 == bb1 :
         print("no download")
@@ -49,14 +44,20 @@ if __name__ == '__main__':
         #下载软件 开始
         
         #保存新版本号
-        bb1 = xtxt("bbh.txt",bb1)
+        cfp.set("yt", "bbh", bb1)
         
         print("download start")
         r = s.get(wz1)
     
- 
-        with open(r"K:\youtube-dl.exe", "wb") as f:
+        lj2 = cfp.get("yt", "bclj")
+        print("下载保存路径",lj2)
+        
+        with open(lj2, "wb") as f:
             f.write(r.content)
     
         print("download end")
+        
+        #保存ini
+        with open("bbh.ini", "w+") as f:
+            cfp.write(f)
     
