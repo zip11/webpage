@@ -56,10 +56,29 @@
 
 ***
 
+### 兴趣论坛
+
 [v2ex技术社区](https://www.v2ex.com)
 
 
 [hostloc vps主机论坛](https://hostloc.com)
+
+[安基网](http://www.safebase.cn/)
+
+### 电子设备论坛
+
+
+[家电论坛](https://www.jdbbs.com/)
+
+
+[矿石收音机](http://www.crystalradio.cn/forum.php)
+
+
+
+
+[]()
+
+[]()
 
 
 ### 游戏 game website
