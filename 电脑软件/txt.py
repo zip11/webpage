@@ -11,16 +11,17 @@ def updateFile(file,old_str,new_str):
     :param new_str:新字符串
     :return:
     """
-    file_data = ""
-    with open(file, "r") as f:
-        for line in f:
-            line = line.replace(old_str,new_str)
-            file_data += line
-    with open(file,"w") as f:
-        f.write(file_data)
-        
-        
 
+        
+    f = open(file, "r", encoding="gb2312")
+    f_new = open("hosts1.txt", "w", encoding="gb2312")
+
+    for line in f:
+        if old_str in line:
+            line = line.replace(old_str, new_str,1) + " www.pttime.org"
+        f_new.write(line)
+    f.close()
+    f_new.close()
 
 
 def search(key_word: str):
@@ -67,7 +68,8 @@ def qip(nr1):
     return bb1
 
 if __name__ == '__main__':
-    
+
+    cfip = input("input cf ip:")
     #查找ip所在的行数
     hs1 = search("pttime")
     print("搜索内容在",hs1)
@@ -80,5 +82,5 @@ if __name__ == '__main__':
 
 
         
-#updateFile("hosts.txt","11.22.33.44","104.16.248.71")
+    updateFile("hosts.txt",ip1,cfip)
 
