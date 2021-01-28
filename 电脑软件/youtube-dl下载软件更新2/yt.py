@@ -1,7 +1,7 @@
 import requests
 import re
 import configparser
- 
+import time
 
 
 if __name__ == '__main__':
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     #print("web page",htmls)
     
     #正则提取下载网址
-    regular = 'https://yt-dl.org/downloads/\d{4}\.\d{2}\.\d{2}/youtube-dl.exe'
+    regular = 'https://yt-dl.org/downloads/\d{4}\.\d{2}\.\d{2}\.?\d?/youtube-dl.exe'
     vv = re.search(regular, htmls)
     wz1 = vv.group()
     print("download link",wz1)
@@ -40,6 +40,7 @@ if __name__ == '__main__':
     
     if bd1 == bb1 :
         print("no download")
+        time.sleep(5)
     else:
         #下载软件 开始
         
