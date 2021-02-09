@@ -1,0 +1,3 @@
+set /p aa=«Î ‰»Îapp name:
+legendary launch %aa%
+pause

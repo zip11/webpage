@@ -1,0 +1,2 @@
+Legendary.exe auth
+pause
