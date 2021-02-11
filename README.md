@@ -40,6 +40,7 @@
 
 -[ico透明图标生成](http://www.ico51.cn)
 
+[nima网盘](https://web.pan.nima.ma/home?path=%2F)
 
 ### 手机软件市场
 
