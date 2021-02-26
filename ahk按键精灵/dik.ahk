@@ -26,6 +26,7 @@ XButton1::
 
 ;窗口最小化
 WinMinimize,%bbh%
+return
 
 
 
