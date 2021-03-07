@@ -7,10 +7,15 @@ import time
 if __name__ == '__main__':
 
 
+    cfp = configparser.ConfigParser()
+    cfp.read("bbh.ini")
+
+    dl1 = cfp.get("yt", "daili")
+
     
     #上网代理
     s = requests.session()
-    s.proxies = {'https': 'socks5:192.168.2.7:1200'}
+    s.proxies = {'https': dl1}
     
     #读取网页
     htmls = s.get('https://ytdl-org.github.io/youtube-dl/download.html')
@@ -31,12 +36,11 @@ if __name__ == '__main__':
     bb1 = vv.group()
     print("网站版本号",bb1)
     
-    cfp = configparser.ConfigParser()
-    cfp.read("bbh.ini")
+
 
     #读取版本号
     bd1 = cfp.get("yt", "bbh")
-    print("ini版本号",bb1)
+    print("ini版本号",bd1)
     
     if bd1 == bb1 :
         print("no download")
