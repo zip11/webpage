@@ -1,0 +1,82 @@
+import win.ui;
+import win.clip;
+/*DSG{{*/
+mainForm = win.form(text="剪贴板复制";right=510;bottom=438)
+mainForm.add(
+button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=2};
+button2={cls="button";text="关闭";left=154;top=45;right=246;bottom=108;z=3};
+button3={cls="button";text="清空";left=277;top=45;right=369;bottom=108;z=4};
+button4={cls="button";text="复制";left=400;top=45;right=492;bottom=108;z=5};
+edit={cls="edit";left=67;top=142;right=444;bottom=358;edge=1;multiline=1;z=1}
+)
+/*}}*/
+
+mainForm.button.oncommand = function(id,event){
+	
+	mainForm.edit.bgcolor = 65280
+	//开始定时器
+	tmid = mainForm.setInterval(
+		1000,function(){
+			// 定时执行参数@2指定的回调函数,参数@1指定间隔毫秒数
+			
+	
+			var str = win.clip.read();
+			
+			if(str != null){
+				mainForm.edit.text =  mainForm.edit.text + str + '\r\n' ;
+			
+				win.clip.write("")
+				
+			}
+			
+
+		}
+	);
+}
+
+mainForm.button2.oncommand = function(id,event){
+
+	mainForm.edit.bgcolor = 0x0000FF
+
+	
+	
+	// 清除定时器
+	mainForm.clearInterval(tmid)
+	
+	mainForm.edit.text = mainForm.edit.text +'\r\n'
+
+}
+
+
+
+mainForm.button3.oncommand = function(id,event){
+	
+	mainForm.edit.bgcolor = 0x0000FF
+	//清空编辑框
+	mainForm.edit.text = ""
+
+}
+
+mainForm.button4.oncommand = function(id,event){
+	
+	var qc = ""
+	
+	// 清除定时器
+	mainForm.clearInterval(tmid)
+	
+	
+	
+	qc = string.replace(mainForm.edit.text,"磁力链接 ","")
+	win.clip.write(qc)
+	
+	mainForm.edit.text = ""
+}
+
+
+
+mainForm.show();
+
+
+
+
+return win.loopMessage();
