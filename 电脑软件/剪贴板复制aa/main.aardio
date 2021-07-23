@@ -13,7 +13,11 @@ edit={cls="edit";left=67;top=142;right=444;bottom=358;edge=1;multiline=1;z=1}
 
 mainForm.button.oncommand = function(id,event){
 	
+	//绿色背景
 	mainForm.edit.bgcolor = 65280
+	mainForm.edit.redraw()
+
+	
 	//开始定时器
 	tmid = mainForm.setInterval(
 		1000,function(){
@@ -43,7 +47,7 @@ mainForm.button2.oncommand = function(id,event){
 	// 清除定时器
 	mainForm.clearInterval(tmid)
 	
-	mainForm.edit.text = mainForm.edit.text +'\r\n'
+	mainForm.edit.redraw()
 
 }
 
@@ -65,10 +69,13 @@ mainForm.button4.oncommand = function(id,event){
 	mainForm.clearInterval(tmid)
 	
 	
-	
+	//删除 磁力链接
 	qc = string.replace(mainForm.edit.text,"磁力链接 ","")
+	
+	//编辑框 复制到剪贴板
 	win.clip.write(qc)
 	
+	mainForm.edit.bgcolor = 0xFFFFFF
 	mainForm.edit.text = ""
 }
 
