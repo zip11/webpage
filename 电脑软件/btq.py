@@ -38,8 +38,8 @@ for colour in wz1:
     
     #nwz = nwz + arml + '\"' +colour + '\"' + '\r\n'
     nwz = nwz + colour + '\r\n'
-    print(nwz)
 
 
+print(nwz)
 setText(nwz)
 #必须字符串
