@@ -21,7 +21,7 @@ def setText(aString):#写入剪切板
 
 
 print("edge下载列表，获取bitqiu网址比特球")
-regular = re.compile(r'^https://hz-edge-file.bitqiu.com/file/\w{32}')
+regular = re.compile(r'https://\w{2}-edge-file.bitqiu.com/file/.*sign.[A-Za-z0-9]{32}')
 #[\w]{32}
 F = getText()
 #获取剪贴板
@@ -36,8 +36,8 @@ wz1 = re.findall(regular, a1)
 for colour in wz1:
 
     
-    nwz = nwz + arml + '\"' +colour + '\"' + '\r\n'
-    #nwz = nwz + colour + '\r\n'
+    #nwz = nwz + arml + '\"' +colour + '\"' + '\r\n'
+    nwz = nwz + colour + '\r\n'
     print(nwz)
 
 
