@@ -55,9 +55,14 @@ mainForm.button2.oncommand = function(id,event){
 
 mainForm.button3.oncommand = function(id,event){
 	
-	mainForm.edit.bgcolor = 0x0000FF
+
 	//清空编辑框
 	mainForm.edit.text = ""
+	
+	
+		//绿色背景
+	mainForm.edit.bgcolor = 65280
+	mainForm.edit.redraw()
 
 }
 
