@@ -3,11 +3,13 @@ import win.clip;
 /*DSG{{*/
 mainForm = win.form(text="剪贴板复制";right=510;bottom=438)
 mainForm.add(
-button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=2};
-button2={cls="button";text="关闭";left=154;top=45;right=246;bottom=108;z=3};
-button3={cls="button";text="清空";left=277;top=45;right=369;bottom=108;z=4};
-button4={cls="button";text="复制";left=400;top=45;right=492;bottom=108;z=5};
-edit={cls="edit";left=67;top=142;right=444;bottom=358;edge=1;multiline=1;z=1}
+button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=3};
+button2={cls="button";text="关闭";left=154;top=45;right=246;bottom=108;z=4};
+button3={cls="button";text="清空";left=277;top=45;right=369;bottom=108;z=5};
+button4={cls="button";text="复制";left=400;top=45;right=492;bottom=108;z=6};
+checkbox={cls="checkbox";text="确认清空";left=288;top=16;right=360;bottom=40;z=7};
+edit={cls="edit";left=67;top=142;right=444;bottom=358;edge=1;multiline=1;z=2};
+groupbox={cls="groupbox";text="清空";left=264;top=0;right=376;bottom=120;edge=1;z=1}
 )
 /*}}*/
 
@@ -54,15 +56,25 @@ mainForm.button2.oncommand = function(id,event){
 
 
 mainForm.button3.oncommand = function(id,event){
+    
+	if(mainForm.checkbox.checked = true){
+		
+			//清空编辑框
+		mainForm.edit.text = ""
+		mainForm.checkbox.checked = false
+		
+		
+			//绿色背景
+		mainForm.edit.bgcolor = 65280
+		mainForm.edit.redraw()	
+			
+	}
+	else {
+		
+		mainForm.msgbox("error清空确认框，没有点击")
+	}
 	
 
-	//清空编辑框
-	mainForm.edit.text = ""
-	
-	
-		//绿色背景
-	mainForm.edit.bgcolor = 65280
-	mainForm.edit.redraw()
 
 }
 
