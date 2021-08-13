@@ -4,7 +4,9 @@ import console;
 mainForm = win.form(text="倒计时";right=487;bottom=319)
 mainForm.add(
 button={cls="button";text="开始倒计时";left=280;top=112;right=408;bottom=184;z=2};
-edit={cls="edit";text="0000";left=56;top=104;right=232;bottom=184;edge=1;font=LOGFONT(h=-56;name='微软雅黑');multiline=1;z=1}
+button3={cls="button";text="取消倒计时";left=280;top=208;right=408;bottom=280;z=4};
+edit={cls="edit";left=56;top=104;right=232;bottom=184;edge=1;font=LOGFONT(h=-56;name='微软雅黑');multiline=1;z=1};
+static={cls="static";text="倒计时格式 ：0156，分分秒秒";left=64;top=48;right=280;bottom=80;transparent=1;z=3}
 )
 /*}}*/
 
@@ -44,15 +46,17 @@ mainForm.button.oncommand = function(id,event){
 	
 	secnum = min1 * 60 + sec1
 	
-	console.debug(min1) //min1
-	console.debug(sec1) //sec1
-	console.debug(secnum)
+	//显示 输入 分钟 秒
+	console.debug("显示分钟" ++ min1) //min1
+
+	
+	console.debug("显示 总共秒" ++secnum)
 	
 
 	
 
 	
-	//启动 定时器
+	//启动 定时器，1s
 	tmid = mainForm.setInterval(
 	1000,function(){
 		// 定时执行参数@2指定的回调函数,参数@1指定间隔毫秒数
@@ -72,7 +76,8 @@ mainForm.button.oncommand = function(id,event){
 			
 			//取 秒数
 			minx = math.floor(minx)
-			console.debug(minx)
+			//console.debug(minx)
+			
 			
 			secx = secnum % (minx * 60)
 		
@@ -101,6 +106,25 @@ mainForm.button.oncommand = function(id,event){
 
 }
 
+//edit响应 回车 按键弹起的消息
+mainForm.edit.wndproc = function(hwnd,message,wParam,lParam){
+	
+	
+    if(message == 0x101/*_WM_KEYUP*/ && wParam == 0xD/*_VK_ENTER*/){
+        
+        mainForm.button.oncommand()
+        //win.msgbox("按了回车！");
+    }
+    //无返回值则继续调用默认回调函数
+}
+
+mainForm.button3.oncommand = function(id,event){
+	
+	//取消 定时器
+	mainForm.changeInterval(tmid,-1)
+	mainForm.edit.text = ""
+	
+}
 
 mainForm.show();
 return win.loopMessage();
