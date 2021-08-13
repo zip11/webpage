@@ -1,0 +1,106 @@
+import win.ui;
+import console;
+/*DSG{{*/
+mainForm = win.form(text="倒计时";right=487;bottom=319)
+mainForm.add(
+button={cls="button";text="开始倒计时";left=280;top=112;right=408;bottom=184;z=2};
+edit={cls="edit";text="0000";left=56;top=104;right=232;bottom=184;edge=1;font=LOGFONT(h=-56;name='微软雅黑');multiline=1;z=1}
+)
+/*}}*/
+
+//输入分钟
+min1 = 0
+//输入秒
+sec1 = 0
+
+//秒总数
+secnum = 0
+
+//显示 分钟 秒
+minx = 0
+secx = 0
+//显示分秒 整体
+xianshi = ""
+
+
+
+getLeft = function(str,n){ 
+
+	// 欲取左边的文本, n可为负数
+    	return ..string.left(str,n) 
+}
+
+getRight = function(str,n){ 
+
+	// 欲取右边的文本, n可为负数
+    	return ..string.right(str,n) 
+}
+
+mainForm.button.oncommand = function(id,event){
+	
+	//获取 输入 分钟 秒
+	min1 = getLeft(mainForm.edit.text,2)
+	sec1 = getRight(mainForm.edit.text,2)
+	
+	secnum = min1 * 60 + sec1
+	
+	console.debug(min1) //min1
+	console.debug(sec1) //sec1
+	console.debug(secnum)
+	
+
+	
+
+	
+	//启动 定时器
+	tmid = mainForm.setInterval(
+	1000,function(){
+		// 定时执行参数@2指定的回调函数,参数@1指定间隔毫秒数
+		
+		secnum = secnum - 1
+		
+		minx = secnum / 60
+		
+		if(minx < 1){
+			
+			//分钟小于1
+			minx = 0 
+			secx = secnum
+			
+		}
+		elseif(minx > 1){
+			
+			//取 秒数
+			minx = math.floor(minx)
+			console.debug(minx)
+			
+			secx = secnum % (minx * 60)
+		
+			
+			console.debug(secx)
+			//console.pause(true);
+		}
+		
+		//时间 位数 2位
+		xianshi = getRight( "0" ++ minx,2) ++ ":" ++ getRight( "0" ++ secx,2)
+		
+		mainForm.edit.text = xianshi
+		
+		//倒计时 结束
+		if(secnum == 0){
+			
+			mainForm.changeInterval(tmid,-1)
+			mainForm.msgbox("time end !")
+		}
+		
+	}
+);
+
+	
+		
+
+}
+
+
+mainForm.show();
+return win.loopMessage();
