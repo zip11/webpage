@@ -3,18 +3,18 @@ import console;
 /*DSG{{*/
 mainForm = win.form(text="倒计时";right=463;bottom=359)
 mainForm.add(
-button={cls="button";text="开始倒计时";left=296;top=24;right=424;bottom=96;z=2};
-button3={cls="button";text="取消倒计时";left=296;top=112;right=424;bottom=184;z=4};
-edit={cls="edit";left=56;top=104;right=232;bottom=184;edge=1;font=LOGFONT(h=-56;name='微软雅黑');z=1};
-edit2={cls="edit";left=56;top=256;right=144;bottom=304;edge=1;font=LOGFONT(h=-30;name='微软雅黑');multiline=1;z=5};
-edit3={cls="edit";left=184;top=256;right=272;bottom=304;edge=1;font=LOGFONT(h=-30;name='微软雅黑');multiline=1;z=6};
-edit4={cls="edit";left=312;top=256;right=400;bottom=304;edge=1;font=LOGFONT(h=-30;name='微软雅黑');multiline=1;z=7};
-groupbox={cls="groupbox";text="常用时间";left=32;top=200;right=432;bottom=328;edge=1;z=11};
-groupbox2={cls="groupbox";text="倒计时";left=32;top=16;right=432;bottom=200;edge=1;z=12};
-radiobutton={cls="radiobutton";text="时间1";left=64;top=216;right=136;bottom=240;z=8};
-radiobutton2={cls="radiobutton";text="时间2";left=184;top=216;right=256;bottom=240;z=9};
-radiobutton3={cls="radiobutton";text="时间3";left=312;top=216;right=384;bottom=240;z=10};
-static={cls="static";text="倒计时格式 ：0156，分分秒秒";left=56;top=32;right=272;bottom=64;notify=1;transparent=1;z=3}
+button={cls="button";text="开始倒计时";left=296;top=24;right=424;bottom=96;bgcolor=65280;z=3};
+button3={cls="button";text="停止倒计时";left=296;top=112;right=424;bottom=184;bgcolor=255;z=5};
+edit={cls="edit";left=56;top=104;right=232;bottom=184;edge=1;font=LOGFONT(h=-56;name='微软雅黑');z=2};
+edit2={cls="edit";left=56;top=256;right=144;bottom=304;edge=1;font=LOGFONT(h=-30;name='微软雅黑');multiline=1;z=6};
+edit3={cls="edit";left=184;top=256;right=272;bottom=304;edge=1;font=LOGFONT(h=-30;name='微软雅黑');multiline=1;z=7};
+edit4={cls="edit";left=312;top=256;right=400;bottom=304;edge=1;font=LOGFONT(h=-30;name='微软雅黑');multiline=1;z=8};
+groupbox={cls="groupbox";text="常用时间";left=32;top=200;right=432;bottom=328;edge=1;z=12};
+groupbox2={cls="groupbox";text="倒计时";left=32;top=16;right=432;bottom=200;edge=1;z=1};
+radiobutton={cls="radiobutton";text="时间1";left=64;top=216;right=136;bottom=240;z=9};
+radiobutton2={cls="radiobutton";text="时间2";left=184;top=216;right=256;bottom=240;z=10};
+radiobutton3={cls="radiobutton";text="时间3";left=312;top=216;right=384;bottom=240;z=11};
+static={cls="static";text="倒计时格式 ：0156，分分秒秒";left=56;top=32;right=272;bottom=64;notify=1;transparent=1;z=4}
 )
 /*}}*/
 
@@ -64,6 +64,8 @@ getRight = function(str1,n1){
 mainForm.button.oncommand = function(id,event){
 	
 	
+
+		
 	//开始 倒计时
 	jsk = true;
 	
@@ -74,6 +76,17 @@ mainForm.button.oncommand = function(id,event){
 	
 	//获取 输入 分钟 秒
 	srsj = mainForm.edit.text
+	
+	console.debug(#srsj)
+	
+	//输入时间长度 4,退出
+	if(#srsj != 4){
+		
+		mainForm.msgbox("数字长度不是4")
+		mainForm.edit.text = ""
+		return ; 
+		
+	}
 	
 	min1 = getLeft(srsj,2)
 	sec1 = getRight(srsj,2)
