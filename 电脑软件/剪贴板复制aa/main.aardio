@@ -1,19 +1,25 @@
 import win.ui;
 import win.clip;
+import console;
 /*DSG{{*/
 mainForm = win.form(text="剪贴板复制";right=510;bottom=438)
 mainForm.add(
 button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=3};
 button2={cls="button";text="关闭";left=154;top=45;right=246;bottom=108;z=4};
-button3={cls="button";text="清空";left=277;top=45;right=369;bottom=108;z=5};
+button3={cls="button";text="清空";left=280;top=48;right=372;bottom=111;z=5};
 button4={cls="button";text="复制";left=400;top=45;right=492;bottom=108;z=6};
-checkbox={cls="checkbox";text="确认清空";left=288;top=16;right=360;bottom=40;z=7};
-edit={cls="edit";left=67;top=142;right=444;bottom=358;edge=1;multiline=1;z=2};
-groupbox={cls="groupbox";text="清空";left=264;top=0;right=376;bottom=120;edge=1;z=1}
+checkbox={cls="checkbox";text="确认清空";left=288;top=128;right=360;bottom=152;z=7};
+checkbox2={cls="checkbox";text="仅复制磁力";left=40;top=128;right=120;bottom=152;z=8};
+checkbox3={cls="checkbox";text="仅复制http/s";left=40;top=160;right=136;bottom=184;z=9};
+edit={cls="edit";left=56;top=192;right=433;bottom=408;edge=1;multiline=1;z=2};
+groupbox={cls="groupbox";text="清空";left=264;top=24;right=384;bottom=184;edge=1;z=1};
+groupbox2={cls="groupbox";text="筛选";left=16;top=24;right=144;bottom=184;edge=1;z=10}
 )
 /*}}*/
 
 mainForm.button.oncommand = function(id,event){
+	
+	//开始复制 剪贴板
 	
 	//绿色背景
 	mainForm.edit.bgcolor = 65280
@@ -25,13 +31,59 @@ mainForm.button.oncommand = function(id,event){
 		1000,function(){
 			// 定时执行参数@2指定的回调函数,参数@1指定间隔毫秒数
 			
-	
+			//读取 剪贴板
 			var str = win.clip.read();
 			
-			if(str != null){
+			
+			//检测 磁力链接
+			if(mainForm.checkbox2.checked = true and str != null){
+				
+				res = string.indexOf(str,"magnet")
+			
+				//console.dump("磁力链接检测" ++ res)
+				
+				if(res != null){
+					
+					mainForm.edit.text =  mainForm.edit.text + str + '\r\n' ;
+			
+					//清空 剪贴板
+					win.clip.write("")
+					
+				}
+				
+				
+			}
+			
+			//检测 http 链接
+			if(mainForm.checkbox3.checked = true and str != null){
+				
+				var res=string.indexOf(str,"http");
+			
+				
+				
+				if(res != null){
+					
+					mainForm.edit.text =  mainForm.edit.text + str + '\r\n' ;
+			
+					//清空 剪贴板
+					win.clip.write("")
+					
+				}	
+				
+	
+			}
+			
+			
+			
+			//不筛选内容,添加  剪贴板 到 编辑框
+			if(str != null and mainForm.checkbox3.checked = false and mainForm.checkbox2.checked = false){
+				
 				mainForm.edit.text =  mainForm.edit.text + str + '\r\n' ;
 			
+				//清空 剪贴板
 				win.clip.write("")
+				
+
 				
 			}
 			
@@ -42,13 +94,15 @@ mainForm.button.oncommand = function(id,event){
 
 mainForm.button2.oncommand = function(id,event){
 
-	mainForm.edit.bgcolor = 0x0000FF
+	//停止 定时器
 
-	
 	
 	// 清除定时器
 	mainForm.clearInterval(tmid)
+	//窗口 红色
+	mainForm.edit.bgcolor = 0x0000FF	
 	
+	//窗口刷新
 	mainForm.edit.redraw()
 
 }
@@ -56,6 +110,8 @@ mainForm.button2.oncommand = function(id,event){
 
 
 mainForm.button3.oncommand = function(id,event){
+	
+	//清空剪贴板
     
 	if(mainForm.checkbox.checked = true){
 		
@@ -79,6 +135,9 @@ mainForm.button3.oncommand = function(id,event){
 }
 
 mainForm.button4.oncommand = function(id,event){
+	
+	
+	//复制 剪贴板
 	
 	var qc = ""
 	

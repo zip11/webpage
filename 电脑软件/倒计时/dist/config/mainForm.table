@@ -1,7 +1,7 @@
 ﻿{
-edit4="";
+edit4="2000";
+edit3="0940";
 edit="0200";
-edit3="";
 afterLoad=null;
 beforeSave=null;
 edit2="0230"
