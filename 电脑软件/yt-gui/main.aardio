@@ -8,6 +8,7 @@ P1080={cls="checkbox";text="1080p";left=120;top=288;right=176;bottom=304;z=9};
 P360={cls="checkbox";text="360p";left=272;top=288;right=320;bottom=312;z=13};
 P720={cls="checkbox";text="720p";left=200;top=288;right=248;bottom=312;z=8};
 bili_xz={cls="button";text="bilibili下载";left=440;top=168;right=536;bottom=224;z=12};
+button={cls="button";text="清空网址";left=568;top=168;right=664;bottom=224;z=20};
 ck_fbl={cls="button";text="查看分辨率";left=568;top=80;right=664;bottom=136;z=11};
 groupbox={cls="groupbox";text="yt";left=64;top=272;right=352;bottom=320;edge=1;z=4};
 groupbox2={cls="groupbox";text="ph";left=64;top=336;right=352;bottom=384;edge=1;z=14};
@@ -282,6 +283,13 @@ phxz=function(){
 }
 
 mainForm.sock5_wz.oncommand = function(id,event){
+	
+}
+
+mainForm.button.oncommand = function(id,event){
+	
+	//清空 网址
+	mainForm.wz3.text =  ""
 	
 }
 
