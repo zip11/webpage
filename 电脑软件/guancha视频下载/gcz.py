@@ -1,8 +1,10 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, element
 
 import requests
 
 import time
+
+import os
 
 
 def wybt(wz):
@@ -56,6 +58,7 @@ wz1 = str(wz1)
 
 print("video player link",wz1,type(wz1))
 
+#视频标题
 biaoti1 = wybt(html)
 
 #url = 'https://1251245530.vod2.myqcloud.com/vod-player/1251245530/3701925923760985310/tcplayer/console/vod-player.html?autoplay=false&width=1280&height=720'
@@ -121,13 +124,29 @@ headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 r = requests.get(file_url, stream=True,headers = headers)
 
-#下载文件名  基于时间
-# wjm1 = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
-# wjm1 = wjm1 + ".mp4" 
 
-wjm1 = biaoti1
+#提取标题，或者时间文件名
+
+if(biaoti1!=""):
+
+    wjm1 = biaoti1 + ".mp4"
+
+else:
+
+    wjm1 = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
+    wjm1 = wjm1 + ".mp4" 
+    
+
 
 with open(wjm1, "wb") as mp4:
     for chunk in r.iter_content(chunk_size=1024):
         if chunk:
             mp4.write(chunk)
+
+
+nm= wjm1.replace('mp4','m4a')
+        
+
+os.system("ffmpeg.exe -i " + wjm1 + " -vn -codec copy " + nm)
+
+os.system("pause")
