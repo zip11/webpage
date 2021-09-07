@@ -20,10 +20,10 @@ ph_720p={cls="checkbox";text="720/480P";left=120;top=352;right=192;bottom=368;z=
 ph_xz={cls="button";text="ph下载";left=440;top=248;right=536;bottom=304;z=17};
 plxz={cls="checkbox";text="开启批量下载";left=224;top=176;right=320;bottom=192;z=16};
 plxz_txt={cls="edit";text="ytxz.txt";left=216;top=208;right=336;bottom=248;edge=1;multiline=1;z=18};
-plxz_xr={cls="button";text="写入批量网址";left=342;top=207;right=433;bottom=246;z=21};
+plxz_xr={cls="button";text="写入批量网址";left=343;top=208;right=434;bottom=247;z=21};
 sock5_wz={cls="edit";text="127.0.0.1:1200";left=80;top=208;right=192;bottom=248;edge=1;multiline=1;z=7};
 sock_on={cls="checkbox";text="开启代理";left=96;top=176;right=176;bottom=208;z=10};
-wz3={cls="edit";left=64;top=29;right=430;bottom=144;edge=1;multiline=1;z=5};
+wz3={cls="edit";left=67;top=24;right=433;bottom=139;edge=1;multiline=1;z=5};
 xz3={cls="button";text="下载";left=440;top=80;right=536;bottom=136;z=6}
 )
 /*}}*/
@@ -299,9 +299,9 @@ mainForm.button.oncommand = function(id,event){
 mainForm.plxz_xr.oncommand = function(id,event){
 
   //写入 批量 下载 网址
-  file = io.open("plxz.txt","w+");
+  file = io.open("ytxz.txt","w+");
 
-  file.write(mainForm.edit.text); 
+  file.write(mainForm.wz3.text); 
   
   file.close()
   
