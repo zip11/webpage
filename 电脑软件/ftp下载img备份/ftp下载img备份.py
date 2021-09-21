@@ -50,4 +50,7 @@ wcml = 'ftp.exe -s:\"' + txtlj + '\"'
 
 print(wcml)
 os.system(wcml)
+
+os.system('del3.bat')
+
 os.system("pause")

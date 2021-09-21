@@ -1,0 +1,8 @@
+open 192.168.2.99
+admin
+123456
+lcd S:\pi3\img
+cd  /home/pi/Videos/bf
+get 20210920pi3.img
+close
+bye
