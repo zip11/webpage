@@ -2,7 +2,7 @@ import datetime
 import os
 
 #下载目录设置，txt文件里面
-txtlj = "S:\pi3\pi3.txt"
+txtlj = "pi3.txt"
 
 def xzml():
 #生成昨天的文件名 img
