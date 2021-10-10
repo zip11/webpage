@@ -1,3 +1,39 @@
+<html>
+
+<head>
+<meta charset="UTF-8">
+
+<title>简单时长倒计时</title>
+
+<SCRIPT type="text/javascript">
+            var maxtime = 60 ; //一个小时，按秒计算，自己调整!
+            function CountDown() {
+                if (maxtime >= 0) {
+                    
+                    // minutes = Math.floor(maxtime / 60);
+                    seconds = Math.floor(maxtime);
+                    msg = "距离结束还有" + seconds + "秒";
+                    
+                    document.all["timer"].innerHTML = msg;
+                    
+
+                        --maxtime;
+                } else{
+                    clearInterval(timer);
+                    alert("时间到，结束!");
+                }
+            }
+            timer = setInterval("CountDown()", 1000);
+</SCRIPT>
+
+</head>
+
+<body>
+
+<div id="timer" style="color:red"></div>
+<div id="warring" style="color:red"></div>
+
+
 <?php
 
  #写入 关机 到txt
@@ -25,6 +61,10 @@ if(strncmp("poweroff",$str,8)==0){
 
 
 ?>
+
+</body>
+
+</html>
 
 
 
