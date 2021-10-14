@@ -2,18 +2,21 @@ import win.ui;
 import win.clip;
 import console;
 /*DSG{{*/
-mainForm = win.form(text="剪贴板复制";right=510;bottom=438)
+mainForm = win.form(text="剪贴板复制";right=636;bottom=436)
 mainForm.add(
 button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=3};
 button2={cls="button";text="关闭";left=154;top=45;right=246;bottom=108;z=4};
 button3={cls="button";text="清空";left=280;top=48;right=372;bottom=111;z=5};
 button4={cls="button";text="复制";left=400;top=45;right=492;bottom=108;z=6};
+button5={cls="button";text="读取链接记录";left=523;top=45;right=615;bottom=108;z=11};
+button6={cls="button";text="清空 记录";left=524;top=120;right=616;bottom=183;z=12};
 checkbox={cls="checkbox";text="确认清空";left=288;top=128;right=360;bottom=152;z=7};
 checkbox2={cls="checkbox";text="仅复制磁力";left=40;top=128;right=120;bottom=152;z=8};
 checkbox3={cls="checkbox";text="仅复制http/s";left=40;top=160;right=136;bottom=184;z=9};
-edit={cls="edit";left=56;top=192;right=433;bottom=408;edge=1;multiline=1;z=2};
+edit={cls="edit";left=17;top=202;right=616;bottom=418;edge=1;multiline=1;z=2};
 groupbox={cls="groupbox";text="清空";left=264;top=24;right=384;bottom=184;edge=1;z=1};
-groupbox2={cls="groupbox";text="筛选";left=16;top=24;right=144;bottom=184;edge=1;z=10}
+groupbox2={cls="groupbox";text="筛选";left=16;top=24;right=144;bottom=184;edge=1;z=10};
+groupbox3={cls="groupbox";text="记录";left=509;top=28;right=629;bottom=188;edge=1;z=13}
 )
 /*}}*/
 
@@ -136,6 +139,7 @@ mainForm.button3.oncommand = function(id,event){
 
 mainForm.button4.oncommand = function(id,event){
 	
+	import config
 	
 	//复制 剪贴板
 	
@@ -151,8 +155,57 @@ mainForm.button4.oncommand = function(id,event){
 	//编辑框 复制到剪贴板
 	win.clip.write(qc)
 	
+	//保存 链接 到 硬盘
+	
+	import fsys.config;
+	config  = fsys.config("/config/")
+	
+	tm = time.now(); 
+	
+	tm2 = time(tm,"%Y/%m/%d %H:%M:%S");
+	
+	tm3 = tostring(tm2);
+	
+	if(config.lj.cili != ''){
+		
+		config.lj.cili = config.lj.cili + '\r\n\r\n' + tm3 + '\r\n\r\n' +qc;
+		
+	}else {
+	
+		config.lj.cili = '\r\n\r\n' + tm3 + '\r\n\r\n' +qc;
+
+	
+	}
+	
+	
+		
+	
 	mainForm.edit.bgcolor = 0xFFFFFF
 	mainForm.edit.text = ""
+}
+
+mainForm.button5.oncommand = function(id,event){
+	
+	//读取 链接 记录
+	import config
+	
+	import fsys.config;
+	config  = fsys.config("/config/")
+	
+	mainForm.edit.text = config.lj.cili
+	
+}
+
+mainForm.button6.oncommand = function(id,event){
+	
+	//清空 记录
+	import config
+	
+	import fsys.config;
+	config  = fsys.config("/config/")
+	
+	config.lj.cili = ""
+	
 }
 
 
