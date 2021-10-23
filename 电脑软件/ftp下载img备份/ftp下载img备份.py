@@ -54,11 +54,19 @@ for i in range(0,len(listOfLines)):
     
 f.close()
 
+#ftp txt run
 wcml = 'ftp.exe -s:\"' + txtlj + '\"'
 
 print(wcml)
 os.system(wcml)
 
-os.system('del3.bat')
+#ftp end
+
+#delete img
+
+sclj = wjlj +"\del3.bat"
+os.system(sclj)
+
+#img end
 
 os.system("pause")
