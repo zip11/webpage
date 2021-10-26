@@ -1,0 +1,7 @@
+﻿{
+sock5_wz="127.0.0.1:1200";
+wz3="https://www.bilibili.com/video/BV1ef4y1H7xw";
+afterLoad=null;
+beforeSave=null;
+sock_on=0
+}

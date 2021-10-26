@@ -49,7 +49,7 @@ mainForm.xz3.oncommand = function(id,event){
 	//下载视频
 	
 	 
-	 ytexe = "youtube-dl.exe "
+	 ytexe = "yt-dlp_x86.exe "
 	 
 	 	 
 
@@ -146,7 +146,7 @@ mainForm.ck_fbl.oncommand = function(id,event){
 	
 	 //查看  视频 分辨率
 	 
-	 ytexe = "youtube-dl.exe"
+	 ytexe = "yt-dlp_x86.exe"
 	 dl1 = ''
 	 
 	 //生成 代理 命令
@@ -180,7 +180,7 @@ mainForm.bili_xz.oncommand = function(id,event){
 
 	 //bilibili 下载
 	 
-	 ytexe = "youtube-dl.exe"
+	 ytexe = "yt-dlp_x86.exe"
 	 
 
 	 a2c = ' --external-downloader aria2c --external-downloader-args \"-j 10 -x 2 -s 2 \" '
@@ -210,7 +210,7 @@ mainForm.ph_xz.oncommand = function(id,event){
 	 var ph_wz = ""
 	 
 
-	 ytexe = "youtube-dl.exe "
+	 ytexe = "yt-dlp_x86.exe "
 	 
 	//生成 代理 命令
 	 if(mainForm.sock_on.checked == true){

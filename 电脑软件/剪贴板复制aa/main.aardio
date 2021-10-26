@@ -1,6 +1,7 @@
 import win.ui;
 import win.clip;
 import console;
+
 /*DSG{{*/
 mainForm = win.form(text="剪贴板复制";right=636;bottom=436)
 mainForm.add(
