@@ -24,10 +24,13 @@ plxz_txt={cls="edit";text="ytxz.txt";left=216;top=208;right=336;bottom=248;edge=
 plxz_xr={cls="button";text="写入批量网址";left=343;top=208;right=434;bottom=247;z=21};
 sock5_wz={cls="edit";text="127.0.0.1:1200";left=80;top=208;right=192;bottom=248;edge=1;multiline=1;z=7};
 sock_on={cls="checkbox";text="开启代理";left=96;top=176;right=176;bottom=208;z=10};
+static={cls="static";text="2021.12.6";left=498;top=24;right=625;bottom=47;transparent=1;z=23};
 wz3={cls="edit";left=67;top=24;right=433;bottom=139;edge=1;multiline=1;z=5};
 xz3={cls="button";text="下载";left=440;top=80;right=536;bottom=136;z=6}
 )
 /*}}*/
+
+//2021年12月6日
 
 ytml = "youtube-dl"
 
