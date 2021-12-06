@@ -31,6 +31,7 @@ xz3={cls="button";text="下载";left=440;top=80;right=536;bottom=136;z=6}
 /*}}*/
 
 //2021年12月6日
+//默认 exe 是x64
 
 ytml = "youtube-dl"
 
@@ -53,7 +54,7 @@ mainForm.xz3.oncommand = function(id,event){
 	//下载视频
 	
 	 
-	 ytexe = "yt-dlp_x86.exe "
+	 ytexe = "yt-dlp.exe "
 	 
 	 	 
 
@@ -86,7 +87,10 @@ mainForm.xz3.oncommand = function(id,event){
 	 
 	 
 	 //合成 所有 命令
-	 cmd1 =cmd1 + xzfbl + wz1
+	 
+	 mjm1 = ' -o \"%(title).80s.%(ext)s\"'
+	 
+	 cmd1 =cmd1 + xzfbl + mjm1 + wz1
 	 
 	 mainForm.wz3.text = cmd1
 	 	

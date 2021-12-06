@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>yt-dl下载</title>
   <!--利用cdn添加js和css库  -->
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="resources/themes/bootstrap/js/jquery.min.js"></script>
 
 </head>
   <body>
@@ -15,6 +15,7 @@
 
         <ul>
 
+          <li><input type ="checkbox" name ="category[]" value = 4>txt批量 下载</li>
           <li><input type ="checkbox" name ="category[]" value = 1>中文字幕 下载</li>
           <li><input type ="checkbox" name ="category[]"  value = 2>播放列表 下载</li>
           <li><input type ="checkbox" name ="category[]" value = 3>播放列表 中文字幕 下载</li>
@@ -79,7 +80,7 @@
     $(function () {
         $("#send").click(function () {
 
-            var name = $("#wz2").val();
+            var name = $("#wz4").val();
             var data = "wz4="+name; //如果后台是$_POST方法获取数据，那么一定要索引（例如：索引name）
 
               $.ajax({
