@@ -4,6 +4,8 @@ import configparser
 import time
 
 
+#yt 2021.06 没有更新了
+
 if __name__ == '__main__':
 
 
@@ -15,25 +17,21 @@ if __name__ == '__main__':
     
     #上网代理
     s = requests.session()
-    s.proxies = {'https': dl1}
+  #  s.proxies = {'https': dl1}
     
-    #读取网页
-    htmls = s.get('https://ytdl-org.github.io/youtube-dl/download.html')
-    htmls = htmls.text
-    #print(type(htmls))
-    #print("web page",htmls)
+
     
-    #正则提取下载网址
-    regular = 'https://yt-dl.org/downloads/\d{4}\.\d{2}\.\d{2}\.?\d?/youtube-dl.exe'
-    vv = re.search(regular, htmls)
-    wz1 = vv.group()
+    #下载网址
+
+    wz1 = "https://hub.fastgit.org/github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe"
     print("download link",wz1)
     
     
-    ##正则提取网址版本号
-    regular = '\d{4}\.\d{2}\.\d{2}'
-    vv = re.search(regular, wz1)
-    bb1 = vv.group()
+    ##提取网址版本号
+    response = requests.get("https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest")
+
+    zxbb = response.json()["tag_name"]
+    bb1 = zxbb
     print("网站版本号",bb1)
     
 
