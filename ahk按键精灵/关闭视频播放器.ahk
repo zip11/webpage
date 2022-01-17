@@ -3,7 +3,7 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-Menu, Tray, Icon, 关闭视频播放器.ico,1,1
+Menu, Tray, Icon, ,1,1
 
 
 XButton2:: 
