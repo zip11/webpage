@@ -1,0 +1,7 @@
+pi3b
+
+获取外网ip，存入txt，html，
+
+上传txt到 国内 vps  ftp
+
+定时 bash 复制 ftp内的 html 到caddy 网页目录
