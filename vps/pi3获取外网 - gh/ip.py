@@ -56,16 +56,16 @@ def uploadtxt(ftp, remotepath, localpath):
 
 
 #外网ip 写入 txt
-def txtwr(wz3):
+def txtwr(lj1,wz3):
 
-    file = open("ip.txt", 'w')
+    file = open(lj1, 'w')
     file.write(wz3)
     file.close()
 
 #生成 ip 的html网页
-def htmlwr(wz3):
+def htmlwr(lj2,wz3):
 
-    file = open("ip.html", 'w')
+    file = open(lj2, 'w')
     
     wz3 = "<!DOCtype HTML>\
     \n<head><title>新的网页</title></head>\
@@ -87,6 +87,14 @@ def txtread(path):
 
 if __name__ == "__main__":
 
+    txtlj = "/run/user/1000/ip.txt"
+    htmllj = "/run/user/1000/ip.html"
+    
+    ftpip = ""
+    ftpport =
+    ftpna = "
+    ftpmm = "
+
     http = urllib3.PoolManager()
 
     #发起一个GET请求并且获取请求的响应结果
@@ -102,28 +110,22 @@ if __name__ == "__main__":
     print(ip2)
 
     #保存 外网ip 到txt
-    txtwr(ip2)
+    txtwr(txtlj,ip2)
 
-    wz4 = txtread("ip.txt")
+    wz4 = txtread(txtlj)
     print("txt read ip",wz4)
 
-    htmlwr(ip2)
+    #写出 html ip
+    htmlwr(htmllj,ip2)
 
-    #ftp ip
-    ftpip = "15"
-    #ftp port
-    ftpport = "20"
-    #ftp账户
-    ftpna = "b"
-    #ftp密码
-    ftpmm = "5"
+
 
     #连接 登录 ftp
     ftp = ftpconnect(ftpip,ftpport, ftpna, ftpmm)
     
     #上传公网 ip.txt
-    uploadtxt(ftp,"ip.txt","ip.txt")
+    uploadtxt(ftp,"ip.txt",txtlj)
 
-    uploadtxt(ftp,"ip.html","ip.html")
+    uploadtxt(ftp,"ip.html",htmllj)
 
-    #ftp路径 ， 本地txt
+                    #ftp路径 ， 本地txt
