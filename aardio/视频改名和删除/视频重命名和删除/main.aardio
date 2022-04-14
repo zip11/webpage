@@ -136,7 +136,7 @@ mainForm.edit3.wndproc = function(hwnd,message,wParam,lParam){
                 mainForm.edit3.text = "";
                         
                 //获取 拖放文件 路径
-                mainForm.edit.text =  win.getDropFile(wParam )[1];  
+                mainForm.edit3.text =  win.getDropFile(wParam )[1];  
                 
                 droplj = mainForm.edit3.text
                 
@@ -187,7 +187,7 @@ function rmfile(lj1){
     //io.open()
 }
 
-mainForm.button.oncommand = function(id,event){
+mainForm.button2.oncommand = function(id,event){
 	
 	
 	//创建 video 文件夹
