@@ -71,7 +71,8 @@ function gwjm(path){
     //删除 广告
     path = string.replace(path,adgg,"")
     
-    //替换 文件名  
+    //替换 文件名 
+    
     wjm2 = string.replace(path,".mp4",wjm1) + ".mp4"
    
     // 显示  新 文件名
@@ -119,6 +120,12 @@ mainForm.button.oncommand = function(id,event){
 	lswjm = mainForm.edit.text
 	
 	gwjm(lswjm)
+	
+	// clear edit2 加标签
+	mainForm.edit2.text = ""
+	
+	//clear edit 文件路径
+	mainForm.edit.text = ""
 	
 }
 
