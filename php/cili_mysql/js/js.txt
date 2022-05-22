@@ -1,0 +1,47 @@
+  <input  id="button" type="button" value="点击" >  
+  <script>  
+    var btn = document.getElementById("button");  
+    btn.onclick =function(){  
+        alert("你点击了按钮哦！");  
+    }  
+  </script>  
+  
+  ——————————————————————————————————————————————
+  
+  function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	}
+	return "";
+   }
+   
+   
+   ——————————————————————————————————————————————
+   
+   // 对base64解码
+   var decode = atob(base64)
+   
+    // base64 编码
+    var base64 = btoa(encode);
+    
+    ——————————————————————————————————————————————
+    
+    encodeURI(uri);
+    
+    URI 进行编码
+    https://www.w3school.com.cn/jsref/jsref_encodeuri.asp
+    
+    decodeURI()
+    
+    函数用于解码 URI。
+    https://www.w3school.com.cn/jsref/jsref_decodeURI.asp
+    
+    
+    var test = document.getElementById("wz4");
+    test.value = "你好，中国！"; //方法2
+    test.innerHTML = "你好，地球！"; //方法1
+        test.value = "你好，中国！"; //方法2
+        test.innerText = "绿色地球！"; //方法3

@@ -1,0 +1,5 @@
+保存 magent链接  到mysql
+
+读mysql 的链接，到网页
+
+删除 表 mysql

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>magent mysql save</title>
+
+  <!--利用cdn添加js和css库  -->
+  <script src="jquery.min.js"></script>
+
+</head>
+
+<!-- css -->
+
+<style>
+  body {
+    background-color:#fdfed0;
+  }
+  h1 {
+    color:orange;
+    text-align:center;
+  }
+  p {
+    font-family:"Times New Roman";
+    font-size:20px;
+  }
+
+  button {
+    
+    height:100px;
+    width:100px;
+  }
+</style>
+  <!-- css end-->
+
+
+
+  <body>
+
+
+    <!-- #输入 file name -->
+    <p>File name Enter here:</p>
+
+    <input type="text" id="cl2" name="wjmz"><br>
+
+
+    <!-- #输入 magent  link -->
+    <p> Magent link Enter here:</p>
+
+    <input type="text" id="wz4" name="clmz"><br>
+
+
+    <!-- #输入 sql row 文本框 -->
+    <p>Enter sql row here:</p>
+
+    <input type="text" id="ls1" name="wjmz"><br>
+
+    <!-- end input -------------------------- -->
+
+
+
+    
+
+
+    <div id="result">txt网址 记录:</div>
+
+    <p> mysql: <span id="result1"></span></p>
+
+
+
+  
+
+    <!-- #write 网址 sql -->
+    <button  id="b_write1" type="button"> Write Magent Sql</button>
+
+    <!-- #读取 网址 txt -->
+  <button  id="button1" type="button">读取magent cookie</button>
+
+   <!-- #end 编辑框 复制 剪贴板 -->
+
+       <!-- # 编辑框 复制 剪贴板 -->
+
+  <div class="validate">
+    <button type="button" class="btn" data-clipboard-target="#wz4">复制编辑框 到剪贴板</button>
+  </div>
+
+  <script src="clipboard.min.js"></script>
+        
+  <script type="text/javascript">
+      var Clipboard = new ClipboardJS('.btn');
+  </script>
+
+   <button id="readsql">读 sql ajax</button>
+
+
+  <!--js 读取 cookie magent 按钮 点击-->
+  <script>  
+
+    //sql cookie 设置 编辑框 内容
+    var btn = document.getElementById("button1");  
+    
+    var cili = getCookie("magent");
+    cili = atob(cili);
+
+    btn.onclick =function(){
+      
+      var test = document.getElementById("wz4");
+      test.value = cili; 
+      
+      //弹窗
+      //alert(cili);
+
+    }
+    
+    //读取 cookie
+    function getCookie(cname){
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+      var c = ca[i].trim();
+      if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+    }
+    return "";
+    }
+
+  </script>  
+
+  <!-- end read cookie magent -->
+
+
+
+  <!-- #del sql table -->
+  <button  id="button2" type="button">del sql table</button>
+
+  <script>
+    $(document).ready(function(){
+      $("button2").click(function(){
+        $.get("del.php",function(data,status){
+          alert("数据: " + data + "\n状态: " + status);
+        });
+      });
+    });
+    </script>  
+
+
+    <!-- end del sql -->
+
+
+    <!-- write sql  magent -->
+    <script>
+      $(document).ready(function(){
+
+
+
+      });
+      </script>
+
+      <!-- end write sql -->
+
+  </body>
+
+  <!-- ajax 写入 网址 txt -->
+
+  <script type="text/javascript">
+ 
+    $(function () {
+
+      $("#b_write1").click(function(){
+
+        // magent link
+        var name1 = $("#wz4").val();
+        //file name
+        var url1 = $("#cl2").val();
+
+        $.post("write_li.php",{
+          name:name1,
+          url:url1
+        },
+        function(data,status){
+
+          $("#result1").append(status);
+          $("#wz4").val("");
+          $("#cl2").val("");
+          //alert("数据: \n" + data + "\n状态: " + status);
+        });
+        });
+
+
+        $("#readsql").click(function () {
+
+            var name = $("#wz4").val();
+            var data = "wz4="+name; //如果后台是$_POST方法获取数据，那么一定要索引（例如：索引name）
+
+              $.ajax({
+                type: "POST",
+                url: "read_li.php",  //同目录下的php文件
+                data:"wz4="+name,  // 等号前后不要加空格
+              success: function(msg){  //请求成功后的回调函数
+                
+                  $("#result1").append(msg);
+
+              }
+          });
+
+        })
+
+
+    })
+
+  </script>
+
+</html>
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <form>
+        
+            <textarea id="txtarea" >clipboard.js is awasome</textarea>
+        
+            <div class="validate">
+                <button type="button" class="btn" data-clipboard-target="#txtarea">Copy</button>
+            </div>
+        
+        </form>
+        
+        <button class="btn" data-clipboard-text="clipboard.js is simple">Copy me</button>
+        
+        <script src="clipboard.min.js"></script>
+        
+        <script type="text/javascript">
+            var Clipboard = new ClipboardJS('.btn');
+        </script>
+
+    </body>
+</html>

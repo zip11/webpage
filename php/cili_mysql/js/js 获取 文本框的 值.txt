@@ -1,0 +1,33 @@
+//获取 文本框的值
+
+<script type="text/javascript">
+    /** js获取 */
+    var test = document.getElementById("test");
+    var text1 = test.innerHTML; //方法1
+    var text2 = test.value; //方法2
+    //注，innerText是获取不到值的
+ 
+    /** jq获取 */
+    var text3 = $("#test").val();   //方法1
+    var text4 = $("#test").text();  //方法2
+    var text5 = $("#test").html();  //方法3
+</script>
+
+
+
+//设置 文本框的 值
+
+<script type="text/javascript">
+    function change(){
+        /** js设置 */
+        var test = document.getElementById("test");
+        test.innerHTML = "你好，地球！"; //方法1
+        test.value = "你好，中国！"; //方法2
+        test.innerText = "绿色地球！"; //方法3
+ 
+        /** jq设置 */
+        $("#test").html("你好、我好、大家好！");  //方法1
+        $("#test").val("幸福的日子");  //方法2
+        $("#test").text("html好学");  //方法3
+    }
+</script>
