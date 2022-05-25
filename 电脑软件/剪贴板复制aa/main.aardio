@@ -1,23 +1,26 @@
 import win.ui;
 import win.clip;
 import console;
-
 /*DSG{{*/
 mainForm = win.form(text="剪贴板复制";right=636;bottom=436)
 mainForm.add(
-button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=3};
-button2={cls="button";text="关闭";left=154;top=45;right=246;bottom=108;z=4};
-button3={cls="button";text="清空";left=280;top=48;right=372;bottom=111;z=5};
-button4={cls="button";text="复制";left=400;top=45;right=492;bottom=108;z=6};
-button5={cls="button";text="读取链接记录";left=523;top=45;right=615;bottom=108;z=11};
-button6={cls="button";text="清空 记录";left=524;top=120;right=616;bottom=183;z=12};
-checkbox={cls="checkbox";text="确认清空";left=288;top=128;right=360;bottom=152;z=7};
-checkbox2={cls="checkbox";text="仅复制磁力";left=40;top=128;right=120;bottom=152;z=8};
-checkbox3={cls="checkbox";text="仅复制http/s";left=40;top=160;right=136;bottom=184;z=9};
-edit={cls="edit";left=17;top=202;right=616;bottom=418;edge=1;multiline=1;z=2};
-groupbox={cls="groupbox";text="清空";left=264;top=24;right=384;bottom=184;edge=1;z=1};
-groupbox2={cls="groupbox";text="筛选";left=16;top=24;right=144;bottom=184;edge=1;z=10};
-groupbox3={cls="groupbox";text="记录";left=509;top=28;right=629;bottom=188;edge=1;z=13}
+button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=5};
+button2={cls="button";text="关闭";left=403;top=120;right=495;bottom=183;z=6};
+button3={cls="button";text="清空";left=280;top=48;right=372;bottom=111;z=7};
+button4={cls="button";text="复制";left=400;top=45;right=492;bottom=108;z=8};
+button5={cls="button";text="读取链接记录";left=523;top=45;right=615;bottom=108;z=12};
+button6={cls="button";text="清空 记录";left=524;top=120;right=616;bottom=183;z=13};
+button7={cls="button";text="添加剪贴板的
+文件名";left=166;top=105;right=236;bottom=168;z=16};
+checkbox={cls="checkbox";text="确认清空";left=288;top=128;right=360;bottom=152;z=9};
+checkbox2={cls="checkbox";text="仅复制磁力";left=40;top=128;right=120;bottom=152;z=10};
+checkbox3={cls="checkbox";text="仅复制http/s";left=40;top=160;right=136;bottom=184;z=11};
+edit={cls="edit";left=17;top=202;right=616;bottom=418;edge=1;multiline=1;z=4};
+edit2={cls="edit";left=162;top=48;right=238;bottom=85;edge=1;z=15};
+groupbox={cls="groupbox";text="清空";left=264;top=24;right=384;bottom=184;edge=1;z=3};
+groupbox2={cls="groupbox";text="筛选";left=16;top=24;right=144;bottom=184;edge=1;z=1};
+groupbox3={cls="groupbox";text="记录";left=509;top=28;right=629;bottom=188;edge=1;z=14};
+groupbox5={cls="groupbox";text="文件名dn=";left=154;top=24;right=248;bottom=183;edge=1;z=2}
 )
 /*}}*/
 
@@ -48,15 +51,33 @@ mainForm.button.oncommand = function(id,event){
 				
 				if(res != null){
 					
-					mainForm.edit.text =  mainForm.edit.text + str + '\r\n' ;
-			
-					//清空 剪贴板
-					win.clip.write("")
+					//find 文件名
+					res = string.indexOf(str,"dn=")
 					
+					if(res != null){
+						//链接 有 文件名
+						mainForm.edit.text =  mainForm.edit.text + str + '\r\n' ;
+			
+						//清空 剪贴板
+						win.clip.write("")
+						
+					}
+					else {
+						
+						//+ file name
+						mainForm.edit.text =  mainForm.edit.text + str + "&dn=" + mainForm.edit2.text + '\r\n' ;
+			
+						//清空 剪贴板
+						win.clip.write("")
+						//clear file name
+						mainForm.edit2.text = ""
+					}					
 				}
+
 				
 				
-			}
+				
+        }
 			
 			//检测 http 链接
 			if(mainForm.checkbox3.checked = true and str != null){
@@ -209,7 +230,18 @@ mainForm.button6.oncommand = function(id,event){
 	
 }
 
+mainForm.button7.oncommand = function(id,event){
+	
+	//+ file name
 
+	//读取 剪贴板
+	var str = win.clip.read();
+	mainForm.edit2.text = str
+	
+	//clear clip
+	win.clip.write("")
+
+}
 
 mainForm.show();
 
