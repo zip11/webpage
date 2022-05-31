@@ -1,28 +1,45 @@
 import win.ui;
 import win.clip;
+//命令行
 import console;
+//文件 操作
+import  fsys;
+//配置文件
+import config;
 /*DSG{{*/
-mainForm = win.form(text="剪贴板复制";right=636;bottom=436)
+mainForm = win.form(text="剪贴板复制";right=680;bottom=497)
 mainForm.add(
-button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=5};
-button2={cls="button";text="关闭";left=403;top=120;right=495;bottom=183;z=6};
-button3={cls="button";text="清空";left=280;top=48;right=372;bottom=111;z=7};
-button4={cls="button";text="复制";left=400;top=45;right=492;bottom=108;z=8};
-button5={cls="button";text="读取链接记录";left=523;top=45;right=615;bottom=108;z=12};
-button6={cls="button";text="清空 记录";left=524;top=120;right=616;bottom=183;z=13};
+button={cls="button";text="开始";left=31;top=45;right=123;bottom=108;z=7};
+button2={cls="button";text="关闭";left=405;top=89;right=494;bottom=126;z=8};
+button3={cls="button";text="清空";left=280;top=48;right=372;bottom=111;z=9};
+button4={cls="button";text="复制";left=402;top=30;right=494;bottom=68;z=10};
+button5={cls="button";text="读取链接记录";left=523;top=45;right=615;bottom=108;z=14};
+button6={cls="button";text="清空 记录";left=524;top=120;right=616;bottom=183;z=15};
 button7={cls="button";text="添加剪贴板的
-文件名";left=166;top=105;right=236;bottom=168;z=16};
-checkbox={cls="checkbox";text="确认清空";left=288;top=128;right=360;bottom=152;z=9};
-checkbox2={cls="checkbox";text="仅复制磁力";left=40;top=128;right=120;bottom=152;z=10};
-checkbox3={cls="checkbox";text="仅复制http/s";left=40;top=160;right=136;bottom=184;z=11};
-edit={cls="edit";left=17;top=202;right=616;bottom=418;edge=1;multiline=1;z=4};
-edit2={cls="edit";left=162;top=48;right=238;bottom=85;edge=1;z=15};
-groupbox={cls="groupbox";text="清空";left=264;top=24;right=384;bottom=184;edge=1;z=3};
-groupbox2={cls="groupbox";text="筛选";left=16;top=24;right=144;bottom=184;edge=1;z=1};
-groupbox3={cls="groupbox";text="记录";left=509;top=28;right=629;bottom=188;edge=1;z=14};
-groupbox5={cls="groupbox";text="文件名dn=";left=154;top=24;right=248;bottom=183;edge=1;z=2}
+文件名";left=166;top=105;right=236;bottom=168;z=17};
+button8={cls="button";text="保存txt";left=175;top=208;right=264;bottom=245;z=18};
+checkbox={cls="checkbox";text="确认清空";left=288;top=128;right=360;bottom=152;z=11};
+checkbox2={cls="checkbox";text="仅复制磁力";left=40;top=128;right=120;bottom=152;z=12};
+checkbox3={cls="checkbox";text="仅复制http/s";left=40;top=160;right=136;bottom=184;z=13};
+edit={cls="edit";left=27;top=258;right=626;bottom=474;edge=1;multiline=1;z=6};
+edit2={cls="edit";left=162;top=48;right=238;bottom=85;edge=1;z=16};
+groupbox={cls="groupbox";text="清空";left=264;top=24;right=384;bottom=184;edge=1;z=5};
+groupbox2={cls="groupbox";text="筛选";left=16;top=24;right=144;bottom=184;edge=1;z=3};
+groupbox3={cls="groupbox";text="记录";left=509;top=28;right=629;bottom=188;edge=1;z=1};
+groupbox4={cls="groupbox";text="保存magent cili.txt  的目录";left=166;top=190;right=633;bottom=253;edge=1;z=2};
+groupbox5={cls="groupbox";text="文件名dn=";left=154;top=24;right=248;bottom=183;edge=1;z=4};
+txtlj={cls="edit";left=277;top=208;right=610;bottom=245;edge=1;z=19}
 )
 /*}}*/
+
+mainForm.bindConfig( config.winform,{
+	
+	//save txt file path
+	txtlj = "text";
+
+	
+} );
+
 
 mainForm.button.oncommand = function(id,event){
 	
@@ -161,8 +178,7 @@ mainForm.button3.oncommand = function(id,event){
 
 mainForm.button4.oncommand = function(id,event){
 	
-	import config
-	
+
 	//复制 剪贴板
 	
 	var qc = ""
@@ -182,14 +198,21 @@ mainForm.button4.oncommand = function(id,event){
 	import fsys.config;
 	config  = fsys.config("/config/")
 	
+	//获取 当前 时间
 	tm = time.now(); 
 	
+	//时间 格式
 	tm2 = time(tm,"%Y/%m/%d %H:%M:%S");
 	
+	//转 字符串
 	tm3 = tostring(tm2);
+	
+	// lj =》 table文件名
+	//配置名字 =》 cili
 	
 	if(config.lj.cili != ''){
 		
+		//内容 非空 ，添加 内容， 时间 + 磁力链接
 		config.lj.cili = config.lj.cili + '\r\n\r\n' + tm3 + '\r\n\r\n' +qc;
 		
 	}else {
@@ -209,7 +232,7 @@ mainForm.button4.oncommand = function(id,event){
 mainForm.button5.oncommand = function(id,event){
 	
 	//读取 链接 记录
-	import config
+
 	
 	import fsys.config;
 	config  = fsys.config("/config/")
@@ -241,6 +264,39 @@ mainForm.button7.oncommand = function(id,event){
 	//clear clip
 	win.clip.write("")
 
+}
+
+mainForm.button8.oncommand = function(id,event){
+	
+	//save magent txt
+	
+	//从字符串创建时间值
+	tm = time(time.now(),"%Y-%m-%d");
+		
+	//从时间值创建字符串
+	str = tostring(tm);
+	
+	//  新 txt  文件名
+	str = mainForm.txtlj.text ++ str ++ ".txt"
+	
+	//旧 txt
+	oldn = mainForm.txtlj.text ++ "cili.txt"
+	
+	//备份 旧 txt
+	fsys.rename(oldn,str)
+	
+	//debug
+	//mainForm.edit.text = str
+	
+	//save new txt
+	string.save(oldn,mainForm.edit.text)
+	
+
+
+}
+
+mainForm.groupbox3.oncommand = function(id,event){
+	
 }
 
 mainForm.show();
