@@ -1,0 +1,9 @@
+﻿错误发生在文件---------------:
+D:\app\host\aardio\project\pastbin\main.aardio
+错误信息---------------:
+
+{Error}:
+{Line}:#46
+{File}:D:\app\host\aardio\project\pastbin\main.aardio
+{Error}:<unexpected symbol>
+{Near}:'...'
