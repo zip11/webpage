@@ -6,6 +6,9 @@ import console;
 import  fsys;
 //配置文件
 import config;
+//
+import py3;
+import inet.url;
 /*DSG{{*/
 mainForm = win.form(text="剪贴板复制";right=680;bottom=497)
 mainForm.add(
@@ -18,6 +21,7 @@ button6={cls="button";text="清空 记录";left=524;top=120;right=616;bottom=183
 button7={cls="button";text="添加剪贴板的
 文件名";left=166;top=105;right=236;bottom=168;z=17};
 button8={cls="button";text="保存txt";left=175;top=208;right=264;bottom=245;z=18};
+button9={cls="button";text="备份pastebin";left=408;top=142;right=497;bottom=179;z=20};
 checkbox={cls="checkbox";text="确认清空";left=288;top=128;right=360;bottom=152;z=11};
 checkbox2={cls="checkbox";text="仅复制磁力";left=40;top=128;right=120;bottom=152;z=12};
 checkbox3={cls="checkbox";text="仅复制http/s";left=40;top=160;right=136;bottom=184;z=13};
@@ -295,8 +299,46 @@ mainForm.button8.oncommand = function(id,event){
 
 }
 
+
+function pastebin (nr1){
+	
+	//发布 新帖子
+	
+	
+	
+	var api_dev = "";
+	
+	var api_user = "";
+	
+	//从字符串创建时间值
+	tm = time(time.now(),"%Y-%m-%d");
+		
+	//从时间值创建字符串
+	str = tostring(tm) ++ "bt jp video";
+	
+
+	//帖子 标题，内容 ，untf-8编码
+	var ptitle = inet.url.encode(str);
+	
+	var pnr = inet.url.encode(nr1);
+	
+	//调用函数，在main中调用函数()
+    var result = py3.main.newpaste(ptitle,pnr,api_dev,api_user);
+
+	//显示 结果 状态
+    mainForm.edit2.text = result;
+	
+}
+
+
 mainForm.groupbox3.oncommand = function(id,event){
 	
+}
+
+mainForm.button9.oncommand = function(id,event){
+	
+	//备份 链接 pastebin
+	pastebin(mainForm.edit.text)
 }
 
 mainForm.show();
