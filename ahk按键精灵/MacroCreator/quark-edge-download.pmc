@@ -1,0 +1,11 @@
+﻿[PMC Globals]|None||
+[PMC Code v5.4.1]|F3||1|Window,2,Fast,0,1,Input,-1,-1,1|1|Macro1
+Context=None|
+Groups=Start:1
+1|[Expression]|InputBox, UserInput,  Number, Please enter file download number 8., , 640, 480`nif ErrorLevel`n    MsgBox, CANCEL was pressed.`nelse`n    MsgBox, You entered "%UserInput%"`n|1|0|Expression|||输入 下载文件 数量||1|
+2|[Assign Variable]|yzb := 397|1|0|Variable|Expression||y坐标 开始点||7|
+3|[LoopStart]|LoopStart|%UserInput%|0|Loop|||||8|
+4|Left Move & Click|1083, %yzb% Left, 1|1|4000|Click|||点击 下载 文件||10|
+5|[Expression]|yzb := yzb + 68|1|0|Expression|||y 坐标 向下走 1行 ||12|
+6|[LoopEnd]|LoopEnd|1|0|Loop|||||13|
+
