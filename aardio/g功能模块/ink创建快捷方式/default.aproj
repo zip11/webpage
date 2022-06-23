@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project ver="10" name="ink创建快捷方式" libEmbed="true" icon="..." ui="win" output="ink创建快捷方式.exe" CompanyName="单位名称" FileDescription="ink创建快捷方式" LegalCopyright="Copyright (C) 作者 2022" ProductName="ink创建快捷方式" InternalName="ink创建快捷方式" FileVersion="0.0.0.1" ProductVersion="0.0.0.1" publishDir="/dist/" dstrip="false">
+	<file name="main.aardio" path="main.aardio" comment="main.aardio"/>
+	<folder name="资源文件" path="res" embed="true"/>
+	<folder name="窗体文件" path="dlg" comment="目录" embed="true"/>
+</project>
