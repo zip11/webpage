@@ -1,5 +1,8 @@
 import win.ui;
+
 import  console;
+
+import config
 /*DSG{{*/
 mainForm = win.form(text="视频硬链接";right=586;bottom=498;acceptfiles=1)
 mainForm.add(
@@ -11,12 +14,20 @@ edit2={cls="edit";left=104;top=244;right=357;bottom=301;acceptfiles=1;edge=1;mul
 edit3={cls="edit";left=106;top=373;right=359;bottom=430;acceptfiles=1;edge=1;multiline=1;z=7};
 groupbox={cls="groupbox";text="拖放源文件路径";left=66;top=63;right=402;bottom=177;edge=1;z=2};
 groupbox2={cls="groupbox";text="文件名";left=66;top=215;right=404;bottom=325;edge=1;z=1};
-groupbox3={cls="groupbox";text="新文件目录";left=68;top=344;right=406;bottom=454;edge=1;z=6}
+groupbox3={cls="groupbox";text="新文件目录";left=68;top=344;right=406;bottom=454;edge=1;z=6};
+static={cls="static";text="新文件路径";left=83;top=468;right=413;bottom=487;transparent=1;z=10}
 )
 /*}}*/
 
 //删除广告 文件名
 adgg = "hhd800.com@"
+
+mainForm.bindConfig( config.winform,{
+
+	//保存 目录 文件夹
+	edit3 = "text";
+	
+} );
 
 mainForm.wndproc = function(hwnd,message,wParam,lParam){
 
@@ -86,7 +97,7 @@ function gwjm(path,nwjm,nml){
 	//console.debug(type(nwjm),nwjm)
 	
 	//新文件名  非全路径
-	nwjm1 = qwjm + nwjm + hwjm
+	nwjm1 = qwjm + nwjm + 'hl' + hwjm
 	
 	//console.debug(nwjm1)
 	
@@ -97,7 +108,7 @@ function gwjm(path,nwjm,nml){
 	
 	nml1 = mainForm.edit3.text + '\\' + nwjm1
 	
-	mainForm.edit3.text = nml1
+	mainForm.static.text = nml1
 	
 	//硬链接 
 	fsys.hardlink.create(nml1,path)
@@ -115,6 +126,9 @@ function gwjm(path,nwjm,nml){
 	
 	//清空 新文件 添加内容
 	mainForm.edit2.text = ""
+	
+	//清空 新路径
+	//mainForm.edit3.text = ""
     
     return ; 
     //形参可以在函数体内部作为局部变量使用 
@@ -139,6 +153,8 @@ mainForm.button.oncommand = function(id,event){
 	
 	
 	gwjm(lswjm,xwjm)
+	
+	
 	
 }
 
