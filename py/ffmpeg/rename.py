@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
-#flv to aac ,ffmpeg ,linux
+# aac to m4a ,rename
 
 import os
 from os import path
@@ -9,8 +9,8 @@ from os import path
 # aac file list
 aaclist = []
 
-print('flv to aac,ffmpeg')
-os.system('pause')
+print('rename  aac to m4a')
+#os.system('pause')
 
 
 
@@ -27,8 +27,8 @@ videoList = os.listdir(source)
 for Sname in videoList:
 
     #判断字符串是否以指定后缀结尾
-    print('flv:',Sname.endswith("flv"))
-    if  Sname.endswith("flv"):
+    print('aac:',Sname.endswith("aac"))
+    if  Sname.endswith("aac"):
 
 
         aaclist.append(Sname)
@@ -37,26 +37,23 @@ print('aaclist:',aaclist)
 
 # 执行ffmpeg命令
 for i in aaclist:
+
+    # aac 绝对路径
+    ljaac = os.path.join(lj1,i)
     
     #文件名 不含 后缀
-    output = i[0:-4]
+    ljm4a = i[0:-4]
+    # 合成 m4a
+    ljm4a = ljm4a + ".m4a"
 
-    #flv to flv 命令
-    cmd = 'ffmpeg -i "%s/%s"  -c:a copy "%s/%s.aac"' %(lj1,i,lj1,output)
+    #m4a绝对路径
+    ljm4a = os.path.join(lj1,ljm4a)
 
-    print('cmd :',cmd)
-    os.system(cmd)
-    
-    #os.system('pause')
+    #重命名 为 m4a
+    os.rename(ljaac,ljm4a)
 
-    os.system("rename 's/\.aac/\.m4a/'  *")
 
-    #delete flv
 
-    #flv绝对路径
-    i = os.path.join(lj1,i)
-    os.remove(i)
-    
-    print("delete flv ok")
+    print("aac to m4a")
 
 print("\n<<< end >>>")
