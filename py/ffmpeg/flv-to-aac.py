@@ -9,13 +9,44 @@ from os import path
 # aac file list
 aaclist = []
 
+import platform
+ 
+def checklinux():
+ 
+        sys = platform.system()
+ 
+        if sys == "Windows":
+ 
+            print("OS is Windows!!!")
+            return False
+ 
+        elif sys == "Linux":
+ 
+            print("OS is Linux!!!")
+            return True
+ 
+        else:
+            pass
+
 print('flv to aac,ffmpeg')
+
+
+
+
+if checklinux():
+    
+    # 获取py文件， 所在 文件夹 路径
+    lj1 = os.path.dirname(os.path.abspath(__file__))
+
+else:
+    
+    # exe获取 目录
+    lj1 = os.getcwd()
+
+
+print("py file:",lj1)
+
 os.system('pause')
-
-
-
-# 获取py文件， 所在 文件夹 路径
-lj1 = os.path.dirname(os.path.abspath(__file__))
 
 #格式化路径的格式
 source = path.normpath(lj1)
@@ -49,14 +80,14 @@ for i in aaclist:
     
     #os.system('pause')
 
-    os.system("rename 's/\.aac/\.m4a/'  *")
+    #os.system("rename 's/\.aac/\.m4a/'  *")
 
     #delete flv
 
     #flv绝对路径
-    i = os.path.join(lj1,i)
-    os.remove(i)
+    # i = os.path.join(lj1,i)
+    # os.remove(i)
     
-    print("delete flv ok")
+    # print("delete flv ok")
 
 print("\n<<< end >>>")
