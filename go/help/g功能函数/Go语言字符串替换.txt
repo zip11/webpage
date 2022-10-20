@@ -1,0 +1,23 @@
+strings.Replace()函数
+语法
+
+func Replace(s, old, new string, n int) string
+
+参数
+参数 	描述
+s 	要替换的整个字符串。
+old 	要替换的字符串。
+new 	替换成什么字符串。
+n 	要替换的次数，-1，那么就会将字符串 s 中的所有的 old 替换成 new。
+
+package main
+import (
+	"fmt"
+	"strings"
+)
+func main() {
+	fmt.Println("(www.coder.net)")
+	//使用 strings.Replace() 函数，替换字符串
+	strcoder := "codercoder"
+	fmt.Println("StrReplace =", strings.Replace(strcoder, "coder", "coder", 1))
+}

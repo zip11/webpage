@@ -1,0 +1,30 @@
+//golang 正则表达式去除字符串空格
+
+package main
+
+import (
+	"fmt"
+	"regexp"
+	"strings"
+)
+
+func compressStr(str string) string {
+	if str == "" {
+		return ""
+	}
+	//匹配一个或多个空白符的正则表达式
+	reg := regexp.MustCompile("\\s+")
+	return reg.ReplaceAllString(str, "")
+}
+
+func main() {
+	str := "		8debdcc4362972bcb0872aec7493712c7b2bf95087436a0a90bbcbf3cd15c8ff"
+	//str := "    8debdcc4362972bcb0872aec7493712c7b2bf95087436a0a90bbcbf3cd15c8ff"
+	fmt.Printf("%s\n", str)
+
+	str_s := strings.Replace(str, " ", "", -1)
+	fmt.Printf("%s\n", str_s)
+
+	// 利用正则表达式去除空白符
+	str_z := compressStr(str)
+	fmt.Printf("%s\n", str_z)

@@ -1,0 +1,9 @@
+go判断文件夹或者目录
+
+func IsFile(f string) bool {
+	fi, e := os.Stat(f)
+	if e != nil {
+		return false
+	}
+	return !fi.IsDir()
+}

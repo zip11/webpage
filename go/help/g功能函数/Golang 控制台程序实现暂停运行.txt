@@ -1,0 +1,21 @@
+Golang 控制台程序实现暂停运行
+
+
+通过信号量来监听Ctrl+c退出信号来卡住命令行不退出
+
+    func main{    
+
+        fmt.Println("system(pause)")    
+
+        quit := make(chan os.Signal)    
+
+        signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)    
+
+        sig := <-quit    
+
+        for  { if sig.String() == "interrupt"{   break  }}    
+
+        return
+
+    }
+
