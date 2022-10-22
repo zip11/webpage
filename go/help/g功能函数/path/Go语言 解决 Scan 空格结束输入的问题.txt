@@ -1,0 +1,16 @@
+Go语言的输入Scan，无论是Scanf，还是Scanln还是其他，都是以空格结束输入的。
+
+//bufio的标准输入输出格式，可以用空格输入
+
+var msg string
+
+reader := bufio.NewReader(os.Stdin) 
+// 标准输入输出
+
+msg,_ = reader.ReadString('\n')  
+// 回车结束
+
+msg = strings.TrimSpace(msg)    
+// 去除最后一个空格
+
+fmt.Printf(msg)
