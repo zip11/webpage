@@ -9,7 +9,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 bbh = ahk_class MozillaWindowClass
 
 
-Sleep, 2000
+;Sleep, 2000
 
 ;  获取窗口位置
 WinGetPos, X, Y, , , %bbh%  
@@ -26,10 +26,11 @@ if (X = 2090)
     WinActivate, %bbh%
     Sleep, 1000
 
-    WinMove, %bbh%, , -10, -10  ;
+    WinMove, %bbh%, , 10, 0  ;
     Sleep, 1000
 
-    WinMaximize, %bbh%
+    Send, {LWin}{Up}
+    ;WinMaximize, %bbh%
     Sleep, 1000
 
     return
