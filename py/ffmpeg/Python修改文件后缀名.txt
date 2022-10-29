@@ -1,0 +1,19 @@
+# 列出当前目录下所有的文件
+files = os.listdir('.')  # 如果path为None，则使用path = '.' 
+
+for filename in files:
+    portion = os.path.splitext(filename)  # 分离文件名与扩展名
+    # 如果后缀是jpg
+    if portion[1] == '.jpg':
+        # 重新组合文件名和后缀名
+        newname = portion[0] + '.gif'
+        os.rename(filename, newname)
+        
+os 模块提供了非常丰富的方法用来处理文件和目录，常用的方法如下：
+
+Python3 OS 文件/目录方法
+
+os.listdir()返回包含目录中文件名称的列表。path可以指定为str或bytes。 如果path是byte，返回的文件名也将是字节; 在所有其他情况，返回的文件名将是str，如果path为None，则使用path =’.’。
+
+os.path.splitext(“文件路径”) 分离文件名与扩展名；默认返回(fname,fextension)元组，可做分片操作
+元组用法与列表一致

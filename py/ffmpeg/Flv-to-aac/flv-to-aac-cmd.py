@@ -7,6 +7,28 @@ import os
 from os import path
 import sys
 
+# *.aac rename *.m4a
+def gname(wlj):
+
+    # 列出当前目录下所有的文件
+    files = os.listdir(wlj)  
+    
+    # 如果path为None，则使用path = '.' 
+
+    for filename in files:
+
+        portion = os.path.splitext(filename)  
+        # 分离文件名与扩展名
+        
+        # 如果后缀是jpg
+        if portion[1] == '.aac':
+
+            # 重新组合文件名和后缀名
+            newname = portion[0] + '.m4a'
+            os.chdir(wlj)
+            os.rename(filename, newname)
+
+
 
 # aac file list
 aaclist = []
@@ -58,14 +80,24 @@ for i in aaclist:
     
     #os.system('pause')
 
-    os.system("rename 's/\.aac/\.m4a/'  *")
+
+    #os.system("rename 's/\.aac/\.m4a/'  *")
+
+
 
     #delete flv
 
     #flv绝对路径
     i = os.path.join(lj1,i)
+    # del flv
     os.remove(i)
     
     print("delete flv ok")
+
+
+# *.aac  rename *.m4a
+
+gname(lj1)
+print("aac rename m4a ok")
 
 print("\n<<< end >>>")
