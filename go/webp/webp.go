@@ -15,12 +15,16 @@ import (
 	"unsafe"
 )
 
+// webp number
+var webpnum int
+
 func main() {
 
 	// ~~~ jpg List ~~~
 
 	fmt.Println(" jpg , png to webp ,ffmpeg,分辨率/2,压缩质量 95，golang win")
 
+	// jpg path save
 	var files []string
 
 	// ~~~ 遍历 jpg png 图片 ~~~ start
@@ -69,6 +73,9 @@ func inputjpglj() string {
 
 	//jpglj = `D:\go\src\Okita Rinka-2021.11Patreon-Tier1~7\`
 
+	// trim \" path
+	jpglj = strings.Trim(jpglj, "\"")
+
 	// replace \ to \\
 	jpglj = strings.Replace(jpglj, "\\", "\\\\", 1)
 
@@ -108,6 +115,10 @@ func jpgfileall(files []string) {
 	}
 
 	// jpg to webp
+
+	//pic number
+	totalnum := len(wj)
+
 	for _, value := range wj {
 
 		fmt.Println("\n jpg wj[]:", value, '\n')
@@ -123,6 +134,11 @@ func jpgfileall(files []string) {
 		// delete jpg file 1-pic
 		delfile(otp)
 
+		webpnum = webpnum + 1
+		fmt.Println("\r webp/jpg number:", webpnum, "/", totalnum)
+
+		// clear scren
+		fmt.Print("\033[H\033[2J")
 	}
 }
 

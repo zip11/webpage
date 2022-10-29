@@ -1,0 +1,31 @@
+，需要去获取python命令行的参数，因此这里记录下如何获取命令行参数的方法。
+
+一、sys 模块
+
+在 Python 中，sys 模块是一个非常常用且十分重要的模块，通过模块中的 sys.argv 就可以访问到所有的命令行参数，它的返回值是包含所有命令行参数的列表(list)，
+
+    参数个数： len(sys.argv)
+    脚本名： sys.argv[0]
+    参数1： sys.argv[1]
+    参数2： sys.argv[2]
+    
+    
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import sys
+
+
+def main():
+    """
+     通过sys模块来识别参数
+    """
+    print('参数个数为:', len(sys.argv), '个参数。')
+    print('参数列表:', str(sys.argv))
+    print('脚本名为：', sys.argv[0])
+    for i in range(1, len(sys.argv)):
+        print('参数 %s 为：%s' % (i, sys.argv[i]))
+
+
+if __name__ == "__main__":
+    main()
