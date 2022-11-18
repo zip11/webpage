@@ -1,0 +1,22 @@
+GetBaseName、GetFileName及GetExtensionName的使用
+
+方法名：GetBaseName(filespec)
+说明：返回字符串，文件 (不带扩展名), 或者提供的路径说明中的文件夹。
+方法名：GetExtensionName(filespec)
+说明：返回字符串，该字符串包含路径最后一个组成部分的扩展名。
+方法名：GetFileName(pathspec)
+说明：返回指定路径（不是指定驱动器路径部分）的最后一个文件或文件夹。
+示例：
+
+Dim sourcepath
+sourcepath = "C:/testing/test.txt"
+Call FolderAttributes(sourcepath)
+ 
+Sub FolderAttributes(sourcepath)
+   Dim fso
+       Set fso = CreateObject("Scripting.FileSystemObject")
+       '返回文件名test, 扩展名 txt, 文件名+扩展名 test.txt
+         Msgbox (fso.GetBaseName(sourcepath))
+         Msgbox (fso. GetExtensionName(sourcepath))
+       Msgbox (fso.GetFileName(sourcepath))
+End Sub
