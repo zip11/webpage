@@ -46,4 +46,4 @@ import glob
 
 path = 'D:\Workspace\folder\*'
 for file_abs in glob.glob(path):
-    print(file_abs)
+print(file_abs)
