@@ -59,6 +59,8 @@ Successfully installed xlwt-1.3.0
 
 #  xlutils  修改原有xls #​
 
+[https://www.cnblogs.com/machangwei-8/p/10739115.html](https://www.cnblogs.com/machangwei-8/p/10739115.html)
+
 安装
 pip install xlutils
 
