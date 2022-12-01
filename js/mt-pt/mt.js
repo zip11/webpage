@@ -80,7 +80,9 @@
 
             console.log(wztt.title);
 
+            // a > title 
             let  tmz1 = wztt.title 
+            // titele  abc-123
             tmz1 =  tmz1.replace(/[^a-zA-Z0-9-]/g,'')
             
             
