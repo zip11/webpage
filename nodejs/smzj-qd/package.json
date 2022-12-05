@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  },
+  "name": "smzj-qd",
+  "version": "1.0.0",
+  "description": "smzj-discuz-sign",
+  "main": "smzj.js",
+  "type":"module",
+  "scripts": {
+    "test": "node fet.js"
+  },
+  "keywords": [
+    "sign"
+  ],
+  "author": "22-12-4",
+  "license": "ISC"
+}

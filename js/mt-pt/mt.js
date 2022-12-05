@@ -1,14 +1,12 @@
 
 
-
-
 (function() {
 
     'use strict';
 
     //   @require     file://D:\github\webpage\js\mt-pt\mt.js
 
-    // download torrent
+    // download torrent ~ start ~~~~~~~~~~~~~~~~~~~~~
     var button3 = document.createElement("button");
 
     //按钮 属性
@@ -34,7 +32,7 @@
         //输入-开始 download pic-link
 
         let ks1 = prompt("输入-开始收藏-pic-link");
-        let bknum = ckimg(ks1)
+        let bknum = ckimg(ks1);
 
         console.log("bknum-st:"+bknum);
 
@@ -42,12 +40,15 @@
 
         let js1 = prompt("输入-结束pic-link");
         console.log(js1);
-        let bknum_ed = ckimg(js1)
+        let bknum_ed = ckimg(js1);
 
         console.log("bknum-ed:"+bknum_ed);
 
         // download
-        down_torrent(bknum,bknum_ed)
+        down_torrent(bknum,bknum_ed);
+
+        //del bookmark
+        delbm(bknum,bknum_ed);
     }
 
     function down_torrent(qdnum,bmnum){
@@ -74,21 +75,21 @@
 
             // torrent name -------
             // title    parent > previous
-            let wztt =  xy1.parentNode.previousElementSibling;
+            let wztt = xy1.parentNode.previousElementSibling;
             // firstChild dom
             wztt = wztt.firstChild;
 
             console.log(wztt.title);
 
-            // a > title 
-            let  tmz1 = wztt.title 
+            // a > title
+            let tmz1 = wztt.title
             // titele  abc-123
-            tmz1 =  tmz1.replace(/[^a-zA-Z0-9-]/g,'')
-            
-            
-            tmz1 = "[M-TEAM]" + tmz1  + ".torrent";
+            tmz1 = tmz1.replace(/[^a-zA-Z0-9-]/g,'')
+
+
+            tmz1 = "[M-TEAM]" + tmz1 + ".torrent";
             // torrent name  end ------
-            
+
             //点击 下载 收藏
 
             // download  .torrent
@@ -98,7 +99,7 @@
         }
     }
 
-    //~~~~~~button3~~~~~~end
+    // ~~~~~~button3~~~~~~ end
 
 
 
@@ -184,9 +185,11 @@
         }
     }
 
-    // ~~~~~~~~
+    // ~~~~~~~~end button2 ~~~~~~~~~~~~
 
-    // ~~~ Button ~~~~ delete bookmark
+
+
+    // ~~~ Button ~~~~ delete bookmark---- start
 
     var button = document.createElement("button");
 
@@ -214,16 +217,25 @@
 
     button.onclick = function (){
 
-        //输入-开始删除收藏-序号
-        var ks1 = prompt("输入-开始删除收藏-序号bookmark*");
-        console.log(ks1);
 
-        //输入-结束删除收藏-序号
-        var js1 = prompt("输入-结束删除收藏-序号");
+        //输入-开始 del download pic-link
+
+        let ks1 = prompt("输入-开始收藏-pic-link");
+        let bknum = ckimg(ks1)
+
+        console.log("bknum-st:"+bknum);
+
+        // 输入-结束 del download pic-link
+
+        let js1 = prompt("输入-结束pic-link");
         console.log(js1);
+        let bknum_ed = ckimg(js1)
+
+        console.log("bknum-ed:"+bknum_ed);
 
         // delete bookmark
-        delbm(ks1,js1)
+
+        delbm(bknum,bknum_ed)
 
     }
 
@@ -258,9 +270,10 @@
             // 收藏网址
 
             xy1.click();
-            
+
             //点击 删除 收藏
         }
     }
 
 })();
+
