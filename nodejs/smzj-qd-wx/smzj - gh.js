@@ -5,7 +5,7 @@ const fetch = require('node-fetch')
 const request = require('request');
 // request  no esm;
 
-fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash=123aaa&format=empty&inajax=1&ajaxtarget=", {
+fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash=&format=empty&inajax=1&ajaxtarget=", {
   "headers": {
     "accept": "*/*",
     "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
@@ -16,7 +16,7 @@ fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&form
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-origin",
     "x-requested-with": "XMLHttpRequest",
-    "cookie": "123aaa",
+    "cookie": "",
     "Referer": "https://www.mydigit.cn/k_misign-sign.html",
     "Referrer-Policy": "strict-origin-when-cross-origin"
   },
@@ -30,6 +30,10 @@ fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&form
         if(res.indexOf("CDATA[]]") != -1){
     
           console.log("smzj sign ok");
+
+          // day-7 wx-msg-send
+          retd();
+
           
         } else if(res.indexOf("今日已签") != -1){
             
@@ -66,7 +70,7 @@ fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&form
     function requestfun() {
           // url 为企业机器人的webhook
          request({
-            url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=bed8bea8-7aaf-4352-a9cb-acc36aaaa13a",
+            url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=",
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -77,6 +81,23 @@ fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&form
         });
     }
 
+function retd() {
+  
+  // send wx msg ,sign ok ,day-7
+
+    // day is ?
+    var date=new Date(); 
+    var day=date.getDay();
+
+    if(day==0){
+
+      resData.text.content="smzj-sign-ok-day7";
+      requestfun();
+    }
+    return day
+
+
+}
 
 
 
