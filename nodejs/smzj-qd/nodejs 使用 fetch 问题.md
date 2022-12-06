@@ -1,6 +1,9 @@
-安装 node-fetch:
+### es model,new version: ###
+     npm install node-fetc
 
-    npm install node-fetch
+### 安装 node-fetch , cjm old version: ###
+
+    npm install node-fetch@2.6.2
 
 使用 fetch 之前先加载：
 
@@ -17,6 +20,7 @@
 
 原文链接：https://blog.csdn.net/henryhu712/article/details/87775497
 
+## nodejs 设置es model ##
 
 Cannot use import statement outside a module
 

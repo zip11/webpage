@@ -30,6 +30,9 @@ v10.24.0
 
 ##  手动安装 lts 18.12.1 指定版本 ##
 
+### english install help ###
+[https://github.com/nodejs/help/wiki/Installation](https://github.com/nodejs/help/wiki/Installation)
+
 官网下载
 
 [https://nodejs.org/zh-cn/download/](https://nodejs.org/zh-cn/download/)
