@@ -1,11 +1,20 @@
-//cjm old version ,npm install node-fetch@2.6.2 -save
+//  cjm old version ,npm install node-fetch@2.6.2 -save
 const fetch = require('node-fetch')
-//import fetch from "node-fetch";
+//  import fetch from "node-fetch";
 
-const request = require('request');
 // request  no esm;
+const request = require('request');
 
-fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash=&format=empty&inajax=1&ajaxtarget=", {
+
+var mhh,cookie1,wh;
+
+mhh="";
+cookie1="";
+wh="";
+
+  
+
+fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash="+mhh+"&format=empty&inajax=1&ajaxtarget=", {
   "headers": {
     "accept": "*/*",
     "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
@@ -16,7 +25,7 @@ fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&form
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-origin",
     "x-requested-with": "XMLHttpRequest",
-    "cookie": "",
+    "cookie": cookie1,
     "Referer": "https://www.mydigit.cn/k_misign-sign.html",
     "Referrer-Policy": "strict-origin-when-cross-origin"
   },
@@ -70,7 +79,7 @@ fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&form
     function requestfun() {
           // url 为企业机器人的webhook
          request({
-            url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=",
+            url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key="+wh,
             method: "POST",
             headers: {
                 "content-type": "application/json",
