@@ -1,0 +1,53 @@
+1. 未关机或重启解决方法
+首先按徽标键+R 打开运行，输入 regedit 打开注册表
+在目录 HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control\Session Manager\Environment （可直接复制）下，右边找到path，复制path的值
+
+
+2.已关机或重启
+在注册表中已经找不到缓存
+可以尝试自己新建，以下为我当前所用的各系统变量(斟酌使用)
+
+用户变量
+
+OneDrive	C:\Users\86150\OneDrive
+OneDriveConsumer	C:\Users\86150\OneDrive
+path	E:\anaconda3
+path	E:\anaconda3\Scripts
+path	E:\anaconda3\Library\bin
+path	C:\Users\86150\AppData\Local\Programs\Python\Python37\Scripts\
+path	C:\Users\86150\AppData\Local\Programs\Python\Python37\
+path	%USERPROFILE%\AppData\Local\Microsoft\WindowsApps
+TEMP	%USERPROFILE%\AppData\Local\Temp
+TMP	%USERPROFILE%\AppData\Local\Temp
+
+
+
+系统变量
+
+ComSpec	%SystemRoot%\system32\cmd.exe
+DriverData	C:\Windows\System32\Drivers\DriverData
+JAVA_HOME	C:\Program Files\Java\jdk1.8.0_281
+NUMBER_OF_PROCESSORS	8
+OS	Windows_NT
+path	C:\Program Files (x86)\Common Files\Oracle\Java\javapath
+path	%SystemRoot%\system32
+path	%SystemRoot%
+path	%SystemRoot%\System32\Wbem
+path	%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\
+path	%JAVA_HOME%\bin
+path	%JAVA_HOME%\jre\bin
+PATHEXT	.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PROCESSOR_ARCHITECTURE	AMD64
+PROCESSOR_IDENTIFIER	Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+PROCESSOR_LEVEL	6
+PROCESSOR_REVISION	9e0a
+PSModulePath	%ProgramFiles%\WindowsPowerShell\Modules
+PSModulePath	%SystemRoot%\system32\WindowsPowerShell\v1.0\Modules
+TEMP	%SystemRoot%\TEMP
+TMP	%SystemRoot%\TEMP
+USERNAME	SYSTEM
+windir	%SystemRoot%
+ZES_ENABLE_SYSMAN	1
+————————————————
+版权声明：本文为CSDN博主「莫诺蒙」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/Monuomeng/article/details/114142919

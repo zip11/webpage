@@ -1,0 +1,22 @@
+The compiled classes are not compatible with the runtime JDK. To mitigate the issue, please refer to Learn More.
+
+1.卸载jdk8
+
+2.安装jdk17
+
+3.更新插件最新版
+Language Support for Java(TM) by Red Hat
+
+
+4.vscode,按f1键，输入设置
+Java: Clean the java language server workspace
+
+Java: Force Java Compilation
+
+
+错误，解决
+
+
+jdk8 安装包
+
+https://www.oracle.com/java/technologies/downloads/#java8-windows
