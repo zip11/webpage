@@ -1,6 +1,0 @@
-# vscode error #
-
-java is a non-project file, only syntax errors are reported 
-
-
-最好是 打开直接父文件夹

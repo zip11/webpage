@@ -1,0 +1,38 @@
+原因：
+
+Windows CMD和Power Shell的默认编码格式是GBK（汉字内码扩展规范 即 国标），而VScode、Notepad++甚至是记事本等编辑器的默认编码格式是UTF-8。
+
+解决方法：
+
+方法一：更改系统默认编码格式为UTF-8
+
+设置->时间和语言->语言和区域
+
+
+
+点击管理语言设置
+
+
+
+
+
+方法二：将编辑器的编码格式改为GBK
+
+这里以VScode和Notepad++为例
+
+VScode：点击右下角的UTF-8->通过编码重新打开
+
+
+
+搜索GBK并点击即可
+
+
+
+Notepad++：编码改为ANSI即可
+
+
+
+方法三：javac -encoding UTF-8 编译
+————————————————
+版权声明：本文为CSDN博主「Mason_Swift」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/Moum_j/article/details/123251621

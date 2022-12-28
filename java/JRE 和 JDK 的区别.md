@@ -20,5 +20,9 @@ JVM就是我们常说的java虚拟机，它是整个java实现跨平台的最核
 可以理解为是一个虚拟出来的计算机，具备着计算机的基本运算方式，它主要负责将java程序生成的字节码文件解释成具体系统平台上的机器指令。让具体平台如window运行这些Java程序。 
 
 
+![](http://https://img-blog.csdn.net/20160614105103329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+
+
 
 
