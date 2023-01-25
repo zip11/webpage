@@ -11,6 +11,18 @@ refresh_token（刷新令盘）：如何获取参考这个issue 通过手机端�
 点击查看最新日期的log日志文件，如果你手机内有代码编辑器最好了，没有的话，随便用什么文档查看，然后在里面查找 refreshToken
 
 
+### 手机版 网页 登录 获取 token ###
+[https://media.cooluc.com/decode_token/](https://media.cooluc.com/decode_token/)
+
+### 电脑获取token ###
+
+准备事项
+一、首先要有一个属于自己的阿里云盘账号（一般为手机号）；
+
+二、在电脑上打开浏览器，进入阿里云盘的官网地址，输入阿里云盘账号和密码登陆；
+
+三、在浏览器上按一次 F12 键，进入开发者工具模式，在顶上菜单栏点 Application ，然后在左边菜单找到 Local storage 下面的 https://www.aliyundrive.com 这个域名，点到这个域名会看到有一个 token 选项，再点 token ，就找到 refresh_token 了，如下图所示
+
 ----------
 
 ### 文件夹id ###
