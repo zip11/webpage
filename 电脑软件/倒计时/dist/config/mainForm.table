@@ -1,7 +1,6 @@
 ﻿{
-edit4="";
+edit4="0720";
 edit3='0300\r\n';
 afterLoad=null;
-beforeSave=null;
 edit2="0500"
 }

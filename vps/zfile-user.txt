@@ -1,0 +1,12 @@
+### 首先创建用户组 ###
+
+    sudo addgroup --system zfile
+
+
+### 查看 刚创建的用户组 ###
+
+    cat /etc/group
+
+### 创建 用户 ###
+
+    adduser --system --ingroup zfile--no-create-home --disabled-password zfile

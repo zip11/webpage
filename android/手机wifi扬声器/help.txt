@@ -1,0 +1,65 @@
+https://wifiaudio.boards.net/thread/2/wifiaudio-support-links-download-application
+
+如何使用
+How to use
+
+有了这个Android应用程序，你可以把你的Android设备用作无线扬声器。
+With this Android application you can use your Android device as a wireless speaker.
+
+Opera移动商店
+Opera Mobile Store
+
+新增功能
+New Features in
+
+Windows Server:-
+Windows Server :-
+
+1)开机自动启动
+1) Auto start at bootup
+
+2)自动发现移动设备(Windows防火墙中32000端口需要防火墙例外)
+2) Auto discover mobile device (Needs firewall exception for port 32000 in Windows Firewall)
+
+3)记住上次使用的IP地址，如果存储IP地址，自动开始音频传输。
+3) Remember last used IP address and auto start audio transmission if IP address is stored.
+
+Linux服务器:—
+Linux Server :-
+
+1)自动发现移动设备
+1) Auto discover mobile device
+
+2)低延迟音频的电影模式。
+2) Movie mode for very low latency audio.
+
+工作原理:
+How it works:
+
+根据您的操作系统，在您的机器上下载Windows或Linux可执行文件
+Download Windows or Linux executable on your machine depending on the OS
+
+a)运行WiFi音频Android App，按开始键，下方会显示移动设备IP地址
+a) Run WiFi Audio Android App and Press start, you will see IP address of mobile device in the bottom
+
+然后运行Windows/Linux应用程序，在IP地址字段中输入移动设备的IP地址，然后在PC应用程序上按启动键。
+after that run Windows/Linux application and put mobile device's IP address in the IP address field and then press start on PC application.
+
+现在所有来自PC的音频都将被发送到移动设备，你将在移动设备上听到音频。
+Now all audio coming out from PC will be send to mobile device and you will hear audio on mobile device.
+
+b)本版本还支持自动发现功能，在以下情况下工作
+b) This version also supports auto-discover function it will work in following conditions
+
+1)用户必须允许来自PC端32000端口的数据包传入，对于Windows用户必须为可执行应用程序或32000端口添加例外。
+1) Users has to allow incoming packets from port 32000 on the PC, For Windows user has to add exception for either application executable or for the port 32000.
+
+在Linux上，以下命令将为端口32000添加例外
+On Linux following command will add exception for port 32000
+
+iptables -I INPUT -p udp——dport 32000 -j ACCEPT或者用户可以使用防火墙永久添加异常。
+iptables -I INPUT -p udp --dport 32000 -j ACCEPT or users can use firewalld to add exception permanently.
+
+(注意:在Linux下执行iptables命令需要root权限)
+(Note: to run iptables command root permission is required on Linux)
+
