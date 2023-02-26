@@ -9,7 +9,8 @@ import os
 
 import requests
 
-
+# api user hash
+userhash1 = ""
 
 # 上传 图片
 def uploadjpg():
@@ -32,8 +33,8 @@ def uploadjpg():
 	# 上传参数
 	files = {
 		'reqtype': (None, 'fileupload'),
-		# api
-		'userhash': (None, '123456'),
+		# api ,'123456'
+		'userhash': (None,userhash1 ),
 		# jpg file name , jpg binary
 		'fileToUpload':(jpgwjm,jpgnr),
 	}
@@ -82,6 +83,7 @@ while True:
 		f=open("ptt-cat.txt","w")
 		f.writelines(jpgl)
 		f.close()
+
 		print('Exit , jpg bbcode save Txt')
 
 		break
