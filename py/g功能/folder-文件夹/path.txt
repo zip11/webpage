@@ -1,0 +1,5 @@
+os.path.join()函数用于路径拼接文件路径。
+
+函数中可以传入多个路径：
+
+print("2:",os.path.join('/aaaa','/bbbb','/ccccc.txt'))
