@@ -1,0 +1,9 @@
+#python读取、写入txt文本内容
+
+
+https://blog.csdn.net/qq_37828488/article/details/100024924
+
+
+#详细
+
+https://blog.csdn.net/qq_40692109/article/details/105373372
