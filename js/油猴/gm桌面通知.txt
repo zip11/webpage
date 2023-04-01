@@ -1,0 +1,5 @@
+        //信息框
+    GM_notification({
+        text:"text",
+        timeout: 2000
+    });

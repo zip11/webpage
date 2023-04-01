@@ -1,0 +1,17 @@
+?: 运算符
+
+可以用作 if...else 语句的快捷方式
+
+var now = new Date();
+var greeting = "Good" + ((now.getHours() > 17) ? " evening." : " day.");
+
+与下面的功能相同
+
+var now = new Date();
+
+var greeting = "Good";
+
+if (now.getHours() > 17)
+   greeting += " evening.";
+else
+   greeting += " day.";

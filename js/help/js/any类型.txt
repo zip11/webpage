@@ -1,0 +1,30 @@
+any 类型
+在一些情况下，如果我们无法确定变量的类型时（或者无需确认类型时），我们可以将其指定为 any 类型。
+function isNumber(value: any) {
+    return typeof value === 'number';
+}
+
+允许赋值为任意类型
+let value: any = 'seven';
+value = 7;
+
+
+可以访问任意属性和方法
+let value: any = 'hello';
+
+// 可以访问任意属性
+console.log(value.name);
+console.log(value.name.firstName);
+
+// 可以调用任意方法
+value.setName('Jerry');
+value.setName('Jerry').sayHello();
+value.name.setFirstName('Cat');
+复制代码要注意的一点是，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。
+所以当你一旦使用了一个 any 类型后，很可能意味着打开了潘多拉魔盒，会让某一块的代码变得难以维护。而就算使用了断言，也丧失了在静态类型检查阶段发现错误的可能性。
+
+作者：帅全
+链接：https://juejin.cn/post/6844904126019534861
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
