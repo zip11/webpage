@@ -1,0 +1,24 @@
+fetch("https://www.mydigit.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash=xxxxxx&format=empty&inajax=1&ajaxtarget=", {
+  "headers": {
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://www.mydigit.cn/k_misign-sign.html",
+  "referrerPolicy": "no-referrer-when-downgrade",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "omit"
+});
+
+
+fetch("https://www.mydigit.cn/k_misign-sign.html", {
+  "headers": {
+    "upgrade-insecure-requests": "1"
+  },
+  "referrer": "https://www.mydigit.cn/",
+  "referrerPolicy": "no-referrer-when-downgrade",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "omit"
+});
