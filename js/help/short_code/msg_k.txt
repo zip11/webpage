@@ -1,0 +1,8 @@
+    // msgbox 2s
+    function msgk(wb1) {
+
+        GM_notification({
+            text:wb1,
+            timeout: 2000
+        });       
+    }

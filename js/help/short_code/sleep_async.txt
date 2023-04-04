@@ -1,0 +1,17 @@
+    // 异步 延时 秒
+    function sleep1(time) {
+
+        time*=1000
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+            }, time);
+        });
+    }
+
+
+    async function sleepwait() {
+		// 异步延时-sleep
+		await sleep1(3);	
+	
+	}
