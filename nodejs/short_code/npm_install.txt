@@ -1,0 +1,26 @@
+
+-i
+实际使用的区别点主要如下(windows下)：
+1. 用npm i安装的模块无法用npm uninstall删除，用npm uninstall i才卸载掉
+2. npm i会帮助检测与当前node版本最匹配的npm包版本号，并匹配出来相互依赖的npm包应该提升的版本号
+3. 部分npm包在当前node版本下无法使用，必须使用建议版本
+4. 安装报错时intall肯定会出现npm-debug.log 文件，npm i不一定
+————————————————
+版权声明：本文为CSDN博主「风翻火焰」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/chern1992/article/details/79193211
+
+-g
+全局安装
+
+-S就是--save的简写
+-D就是--save-dev 这样安装的包的名称及版本号就会存在package.json的devDependencies这个里面，而--save会将包的名称及版本号放在dependencies里面
+
+--save-dev
+
+--save
+
+在 package.json 文件里面提现出来的区别就是，使用 --save-dev 安装的 插件，被写入到 devDependencies 对象里面去，而使用 --save 安装的插件，责被写入到 dependencies 对象里面去。
+
+那 package.json 文件里面的 devDependencies  和 dependencies 对象有什么区别呢？
+
+devDependencies  里面的插件只用于开发环境，不用于生产环境，而 dependencies  是需要发布到生产环境的。

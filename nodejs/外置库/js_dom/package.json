@@ -1,8 +1,8 @@
 {
-  "name": "smzj_sign",
+  "name": "js_dom",
   "version": "1.0.0",
   "description": "html_dom,domparse",
-  "main": "smzj.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

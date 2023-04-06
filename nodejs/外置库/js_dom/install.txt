@@ -1,0 +1,9 @@
+npm i jsdom -s
+npm i jquery -s
+// 本地安装 保存 库信息到json
+
+
+npm i -g jsdom -s
+npm i -g jquery -s
+
+//全局安装
