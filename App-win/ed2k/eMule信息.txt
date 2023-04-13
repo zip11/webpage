@@ -1,0 +1,16 @@
+eMule官网，下载最新版客户端
+https://www.emule-project.net/home/perl/general.cgi?l=42
+eMule服务器网站，这里可以添加服务器server.met、ip过滤ipfilter.zip、kad节点nodes.dat
+https://www.emule-security.org/
+设置路由器和系统防火墙软件使用upnp或者nat端口映射能获得HighID，连接kad网络是重点
+eMule中文站
+https://www.emulefans.com/
+本论坛关于emule旧版mod的设置介绍
+https://bbs.kafan.cn/thread-2105786-1-1.html
+https://bbs.kafan.cn/thread-2106096-1-1.html
+经过设置后我的emule下载速度仍然不快，而且有的ed2k链接仍然下载不了。
+或者用迅雷绿色版下载，绿色版支持用迅雷云盘离线下载（需要迅雷帐号），但是有的资源失效或被屏蔽不能下载。
+https://www.423down.com/10289.html
+
+补充：https://ed2k.shortypower.org/
+查询ed2k链接的文件在edonkey服务器上可用源情况的网站，结果可能有偏差，仅供参考。
