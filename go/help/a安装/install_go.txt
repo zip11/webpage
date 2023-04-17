@@ -1,0 +1,63 @@
+
+---
+
+Ubuntu 官方 apt 存储库包含旧版本的 Golang 包
+
+sudo apt update
+
+ sudo apt install golang
+ 
+ 下载go软件
+ https://go.dev/dl/
+ 
+ 查看linux系统是否64位
+ uname -a
+ 
+ ---
+ 
+ 删除go程序
+ 
+ rm -rf /usr/local/go
+ 
+ ---
+ 
+ 下载 Go 二进制存档
+
+ wget https://go.dev/dl/go1.20.3.linux-amd64.tar.gz
+ 
+ wget https://go.dev/dl/go1.20.3.linux-amd64.tar.gz
+ 
+ 解压缩 /usr/local 目录中的 tar：
+ 
+ tar -xzf go1.*.linux-amd64.tar.gz -C /usr/local/
+ 
+ 将 Go 目录路径添加到环境变量中，以便系统可以轻松了解在哪里搜索 Go 可执行二进制文件
+ 
+ sudo nano /etc/profile
+ 
+ 文件末尾添加以下路径。
+export PATH=$PATH:/usr/local/go/bin
+ 
+ 激活环境变量
+  source /etc/profile
+  
+  查看go版本
+ go version
+ 
+ 
+ 
+##go install 
+
+只是将编译的中间文件放在 GOPATH 的 pkg 目录下，以及固定地将编译结果放在 GOPATH 的 bin 目录下。
+
+这个命令在内部实际上分成了两步操作：第一步是生成结果文件（可执行文件或者 .a 包），
+
+第二步会把编译好的结果移到 $GOPATH/pkg 或者 $GOPATH/bin。
+
+go install 是建立在 GOPATH 上的，无法在独立的目录里使用 go install。
+
+GOPATH 下的 bin 目录放置的是使用 go install 生成的可执行文件，可执行文件的名称来自于编译时的包名。
+
+go install 输出目录始终为 GOPATH 下的 bin 目录，无法使用-o附加参数进行自定义。
+
+GOPATH 下的 pkg 目录放置的是编译期间的中间文件。

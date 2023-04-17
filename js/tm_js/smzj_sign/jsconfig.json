@@ -2,7 +2,7 @@
   //See httpsgo.microsoft.comfwlinkLinkId=759670
   //for the documentation about the jsconfig.json format
   compilerOptions {
-  target es5,
+  target "ES6",
   module commonjs,
   allowSyntheticDefaultImports true
   },

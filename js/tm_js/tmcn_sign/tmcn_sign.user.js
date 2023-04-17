@@ -15,6 +15,8 @@
 
 'use strict';
 
+
+
 function hash(wz1) {
 
     // bbs 获取 mhash
@@ -141,17 +143,49 @@ function tmcn_sign(hash1) {
 
 }
 
+// 异步 延时 秒
+function sleep1(time) {
 
+    time*=1000
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve();
+        }, time);
+    });
+}
+
+//  随机数
+function sj_num() {
+
+    //Math.random() 产生 0-1
+    // floor 取整数 向下
+
+    let sjs = Math.floor(Math.random() * (6-2) );
+    
+    sjs = sjs + 2
+    
+    // 可均衡获取 2 到 6 的随机整数。
+    
+    return sjs;
+
+}
+
+// 开始 签到bbs
 async function run1() {
 
     const hh = await hash("https://bbs.tampermonkey.net.cn/thread-184-1-1.html");
     //GM_notification(hh);
     // mhash 获取
 
+
+    let sjnum = sj_num();
+    //随机 延时 2-6 min
+    await sleep1(sjnum*60);
+
     const sign_msg = await tmcn_sign(hh);
     GM_notification(sign_msg);
 
-    if(sign_msg!=="油猴中文网定时签到成功") {
+    if(sign_msg!=="油猴中文网bbs定时签到成功") {
 
         // 错误-日志保存
         //GM_log(sign_msg,"error");
@@ -175,7 +209,7 @@ return new Promise(async (resolve, reject) => {
 
         let jg8 = await run1();
 
-        if (jg8 == "油猴中文网定时签到成功") {
+        if (jg8 == "油猴中文网bbs定时签到成功") {
         
             resolve("ok"+jg8);// 执行成功
         
