@@ -1,0 +1,19 @@
+
+##模块列表##
+
+https://caddyserver.com/docs/modules/
+
+
+##dns.providers.cloudflare##
+
+https://caddyserver.com/docs/modules/dns.providers.cloudflare
+
+xcaddy build --with github.com/caddy-dns/cloudflare
+
+https://github.com/caddy-dns/cloudflare
+
+
+##caddy-exec##
+
+https://github.com/abiosoft/caddy-exec
+

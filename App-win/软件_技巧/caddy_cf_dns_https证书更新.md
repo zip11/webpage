@@ -94,10 +94,14 @@ https://caddy2.dengxiaolong.com/docs/build
     cflj=/etc/caddy/Caddyfile
     echo $cflj
     
+
+	#验证 配置文件
     ./caddy adapt --config $cflj --validate
     
     ./caddy adapt --config Caddyfile --validate
 
+
+	#运行程序-读配置文件
     ./caddy adapt --config Caddyfile
 
     ./caddy run adapt --config Caddyfile
@@ -120,17 +124,17 @@ https://caddy2.dengxiaolong.com/docs/build
     ls -l
 
 ---
-配置文件-格式化
+## 配置文件-格式化 ##
 
 fmt
 
 [https://caddyserver.com/docs/command-line#caddy-fmt](https://caddyserver.com/docs/command-line#caddy-fmt)
 
-./caddy fmt ./Caddyfile
-
-./caddy help fmt
-
-caddy fmt [--overwrite] [--diff] [<path>]
+    ./caddy fmt ./Caddyfile
+    
+    ./caddy help fmt
+    
+    caddy fmt [--overwrite] [--diff] [<path>]
 
 
 
@@ -149,6 +153,9 @@ caddy fmt [--overwrite] [--diff] [<path>]
 
 [https://caddy2.dengxiaolong.com/docs/caddyfile-tutorial](https://caddy2.dengxiaolong.com/docs/caddyfile-tutorial)
 
+常见Caddyfile模式
+
+[https://caddy2.dengxiaolong.com/docs/caddyfile/patterns](https://caddy2.dengxiaolong.com/docs/caddyfile/patterns)
 
 - caddy 命令行
 
@@ -158,6 +165,11 @@ caddy fmt [--overwrite] [--diff] [<path>]
 - cf-dns-caddy
 
 [https://cutenico.best/posts/blogs/caddy2-compile-cloudflare-dns/](https://cutenico.best/posts/blogs/caddy2-compile-cloudflare-dns/)
+
+
+- php-caddy
+
+[https://caddy2.dengxiaolong.com/docs/caddyfile/directives/php_fastcgi#expanded-form](https://caddy2.dengxiaolong.com/docs/caddyfile/directives/php_fastcgi#expanded-form)
 
 ----------
 

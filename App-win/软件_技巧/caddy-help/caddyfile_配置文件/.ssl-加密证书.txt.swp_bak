@@ -1,0 +1,14 @@
+值得一提的就是此处的Cloudflare与v1不相同的是它需要的是API Token而非Global API Key，
+
+需要到域名下面新建一个。Permission部分第一部分选Zone-Zone-Read，然后新建一个Zone-DNS-Edit，
+
+在下面的Zone Resources选择Include All zones（其实好像是单域就可以，懒得试了），TTL可以适当的延长一些（就是Token有效期）。至于在官方文档里面写的
+
+
+tls 你的Cloudflare账号 {
+  dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+}
+
+环境变量，也可以输出到Systemd中，添加一行
+
+Environment="CLOUDFLARE_API_TOKEN=你的Token"

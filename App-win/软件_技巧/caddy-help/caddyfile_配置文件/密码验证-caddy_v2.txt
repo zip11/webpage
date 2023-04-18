@@ -1,0 +1,19 @@
+https://caddy2.dengxiaolong.com/docs/v2-upgrade#basicauth
+
+sudo service caddy stop
+
+#查看密文帮助
+./caddy help hash-password
+
+#手动输入密码
+./caddy  hash-password 
+
+#明文密码 生成密文
+./caddy  hash-password --plaintext 123456
+
+
+v2
+
+basicauth /secret/* {
+	Bob JDJhJDEwJEVCNmdaNEg2Ti5iejRMYkF3MFZhZ3VtV3E1SzBWZEZ5Q3VWc0tzOEJwZE9TaFlZdEVkZDhX
+}

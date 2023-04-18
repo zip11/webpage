@@ -1,0 +1,31 @@
+配置文件
+https://caddyserver.com/docs/caddyfile
+
+sudo groupadd --system caddy
+
+
+caddy创建一个以可写主目录命名的用户：
+
+sudo useradd --system \
+    --gid caddy \
+    --create-home \
+    --home-dir /var/lib/caddy \
+    --shell /usr/sbin/nologin \
+    --comment "Caddy web server" \
+    caddy
+	
+
+journalctl -u caddy --no-pager | less +G
+
+您可以将静态站点文件放在/var/www/html或/srv. 确保caddy用户有权读取文件。
+
+
+如果使用配置文件，您可以在进行任何更改后优雅地重新加载 Caddy：
+
+sudo systemctl reload caddy
+
+
+Caddy 进程将以caddy用户身份运行，其$HOME设置为/var/lib/caddy. 这意味着：
+
+默认数据存储位置（用于证书和其他状态信息）将位于/var/lib/caddy/.local/share/caddy.
+默认配置存储位置（用于自动保存的 JSON 配置，主要用于caddy-api服务）将在/var/lib/caddy/.config/caddy.

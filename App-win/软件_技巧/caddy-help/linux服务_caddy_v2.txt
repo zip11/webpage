@@ -1,0 +1,88 @@
+-服务文件 帮助网站
+https://caddyserver.com/docs/running#linux-service
+
+#编辑 配置文件
+nano Caddyfile
+
+#复制 配置
+cp ./Caddyfile /etc/caddy/Caddyfile
+
+#复制程序
+cp ./caddy /usr/bin/caddy
+
+#编辑服务
+nano /etc/systemd/system/caddy.service
+
+
+#启动程序
+
+sudo systemctl daemon-reload
+
+sudo systemctl restart caddy.service
+
+systemctl status caddy.service
+
+#停止程序
+sudo systemctl stop caddy.service
+
+
+##
+
+例如，如果您需要定义在您的配置中使用的环境变量，您可以这样做：
+
+[Service]
+Environment="CF_API_TOKEN=super-secret-cloudflare-tokenvalue"
+
+sudo systemctl edit caddy
+
+
+##
+
+或者，例如，如果 caddy 意外崩溃，您希望它在 5 秒后自行重启：
+
+[Service]
+# Automatically restart caddy if it crashes except if the exit code was 1
+RestartPreventExitStatus=1
+Restart=on-failure
+RestartSec=5s
+
+
+#Caddy v2 服务文件
+
+
+# caddy.service
+#
+# For using Caddy with a config file.
+#
+# Make sure the ExecStart and ExecReload commands are correct
+# for your installation.
+#
+# See https://caddyserver.com/docs/install for instructions.
+#
+# WARNING: This service does not use the --resume flag, so if you
+# use the API to make changes, they will be overwritten by the
+# Caddyfile next time the service is restarted. If you intend to
+# use Caddy's API to configure it, add the --resume flag to the
+# `caddy run` command or use the caddy-api.service file instead.
+
+[Unit]
+Description=Caddy
+Documentation=https://caddyserver.com/docs/
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=notify
+User=caddy
+Group=caddy
+ExecStart=/usr/bin/caddy run --environ adapt --config /etc/caddy/Caddyfile
+ExecReload=/usr/bin/caddy reload adapt --config /etc/caddy/Caddyfile --force
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
