@@ -1,0 +1,24 @@
+可以判断一个文件或目录（文件夹）是否存在
+
+import os.path
+os.path.exists(path);
+判断一个文件是否存在
+
+import os.path
+os.path.isfile(path);
+判断一个目录（文件夹）是否存在
+
+import os.path
+os.path.isdir(path);
+判断一个路径是文件还是目录（文件夹）
+
+方法一
+
+import os.path
+os.path.isdir(path);
+    # 返回 True 表示是目录（文件夹）
+方法二
+
+    import os.path
+    os.path.isfile(path);
+    # 返回 True 表示是文件
