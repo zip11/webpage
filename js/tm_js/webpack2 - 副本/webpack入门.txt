@@ -1,0 +1,74 @@
+##初始化
+我们新建一个空白文件夹
+
+npm init -y
+默认初始化一个项目
+
+
+然后输入
+npm install webpack webpack-cli --save-dev
+
+---
+
+同时安装webpack webpack-cli两个依赖
+webpack-cli是为了让我们使用命令行来调用相关的webpack代码
+
+一般是必须安装的(否则无法使用命令行编译)
+当然你也可以写自己的程序来调用webpack进行编译代码
+
+
+##创建文件
+
+我们创建一个index.js文件
+在内部随便输入一些代码，
+console.log("test webpack")
+
+(目前你的文件夹是没有dist的，因为还没有编译)
+
+---
+
+然后我们需要调用webpack命令行
+输入
+
+.\node_modules\.bin\webpack ./index.js
+
+其中.\node_modules.bin\webpack 是找到对应的命令文件 然后传入对应参数
+可以看到
+
+
+
+同时有了dist文件夹
+里面的内容还没有任何改变
+不要担心，这是正常情况，我们会在后续逐步了解
+
+------
+
+
+但是还有一个问题
+.\node_modules.bin\webpack太长了
+有没有什么好办法
+我们可以输入
+
+npx webpack ./index.js
+
+
+npx就会自动搜寻项目下的对应webpack命令
+当项目内不存在webpack
+npx命令调用模块也会自动下载到一个临时目录并进行调用
+但是在油猴开发中我们并不常见该方法
+
+##npx命令帮助
+https://www.ruanyifeng.com/blog/2019/02/npx.html
+
+
+##第二种调用方法--npm脚本
+
+我们在package.json中的scripts属性
+直接以键值方式输入对应的命令即可
+其中键是我们自定义的
+
+
+然后我们可以输入npm run build(build是我们自定义的)来调用编译
+
+VSCODE中的调用npm脚本方法
+左下角自带npm脚本调用，特别方便

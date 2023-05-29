@@ -1,0 +1,13 @@
+import pyperclip
+
+pyperclip.copy(123)
+
+pyperclip.copy('添加到剪切板')
+# 将传入的参数添加到剪切板，参数可以是数字或字符串
+
+
+# 输出剪切板的内容
+
+text = pyperclip.paste()
+
+print(text)	

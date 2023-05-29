@@ -1,0 +1,1 @@
+(()=>{"use strict";new function(){consloe.log("hd")},console.log("Hello,World!")})();

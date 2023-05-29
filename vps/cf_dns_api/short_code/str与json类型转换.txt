@@ -1,0 +1,38 @@
+一、str转json
+
+str转为json格式，一定需要保证这个str的格式是json string
+
+1.1 使用json.loads
+
+字符串str转json对象，需要使用json模块的loads函数
+
+import json
+str1 = '{"accessToken": "521de21161b23988173e6f7f48f9ee96e28", "User-Agent": "Apache-HttpClient/4.5.2 (Java/1.8.0_131)"}'
+
+json1 = json.loads(str1)
+
+print(json1)
+print(type(json1))
+
+# 输出
+{'accessToken': '521de21161b23988173e6f7f48f9ee96e28', 'User-Agent': 'Apache-HttpClient/4.5.2 (Java/1.8.0_131)'}
+<class 'dict'>
+
+二、json转str
+
+2.1 使用json.dumps
+
+import json
+json1 = {"accessToken": "521de21161b23988173e6f7f48f9ee96e28", "User-Agent": "Apache-HttpClient/4.5.2 (Java/1.8.0_131)"}
+
+str1 = json.dumps(json1)
+
+print(str1)
+print(type(str1))
+
+# 输出
+{"accessToken": "521de21161b23988173e6f7f48f9ee96e28", "User-Agent": "Apache-HttpClient/4.5.2 (Java/1.8.0_131)"}
+<class 'str'>
+
+参数补充
+json.dumps提供了一些参数，可以对转换的字符串进行特殊的处理
