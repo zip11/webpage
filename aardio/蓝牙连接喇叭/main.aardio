@@ -1,0 +1,170 @@
+import win.ui;
+/*DSG{{*/
+mainForm = win.form(text="蓝牙连接喇叭";right=630;bottom=428)
+mainForm.add(
+button={cls="button";text="Button";left=60;top=45;right=137;bottom=103;z=2};
+button2={cls="button";text="Button";left=190;top=47;right=267;bottom=105;z=3};
+button3={cls="button";text="Button";left=60;top=164;right=137;bottom=222;z=5};
+button4={cls="button";text="Button";left=188;top=164;right=265;bottom=222;z=6};
+groupbox={cls="groupbox";text="K9";left=32;top=19;right=293;bottom=126;edge=1;z=1};
+groupbox3={cls="groupbox";text="p6";left=36;top=144;right=297;bottom=251;edge=1;z=4};
+static={cls="static";text="Static";left=101;top=106;right=207;bottom=123;transparent=1;z=7};
+static2={cls="static";text="Static";left=102;top=227;right=208;bottom=244;transparent=1;z=8}
+)
+/*}}*/
+
+import  console
+import process
+import config
+
+if(_ARGV.opt){
+	mainForm.edit.print(_ARGV.opt,_ARGV[#_ARGV]);
+}
+
+
+var p6mac = "";
+var k9mac="";
+
+/*
+
+
+
+*/
+
+if( ! config.default.mac_record ){
+
+	// 写入 mac 到 配置文件
+    config.default.mac_record = "record";
+    config.default.p6 = p6mac ;
+    config.default.k9 = k9mac ;
+}
+else {
+	
+    // 读取 配置文件mac 信息
+    p6mac = config.default.p6 ;
+    k9mac = config.default.k9 ;
+	
+}
+
+mainForm.button.oncommand = function(id,event){
+
+	/*
+	
+    var blcmd = "btcom -b " + blmac + " -r -s111E"
+
+	f = io.popen(blcmd )
+	str = f.read( -1 );
+	f.close();
+	
+	io.open(); //打开控制台
+	io.print(str); //输出
+	console.log(str)
+	*/
+	
+	// k9 蓝牙 删除
+
+	blwork(k9mac,"r","stereo");
+
+}
+
+mainForm.button2.oncommand = function(id,event){
+	
+	// k9 蓝牙连接 
+
+	blwork(k9mac,"c","stereo");
+	
+}
+
+function blwork (blmac2,onoff,mode_phone){
+	
+	var bl_mode = "";
+	
+	if (mode_phone == "freehand") {
+		
+		// 单声道 免提
+		bl_mode = "111E";
+	}
+	else {
+		
+		// 立体声 扬声器
+		bl_mode = "110b";
+	}
+	
+	// 蓝牙 命令
+
+	var blcmd = ""	
+	
+	if (onoff == "c") {
+		
+			
+		
+		// 蓝牙 删除
+		var blcmd0 = "btcom -b " + blmac2 + " -" + "r" +" -s" + bl_mode ;
+
+		// 蓝牙 连接
+    	blcmd = blcmd0 + " && " + "btcom -b " + blmac2 + " -" + onoff +" -s" + bl_mode ;
+	
+	}
+	else {
+		
+		// 蓝牙 删除 命令 合成
+    	blcmd = "btcom -b " + blmac2 + " -" + onoff +" -s" + bl_mode ;
+	
+	}
+	
+	
+	
+	// 执行 cmd 命令
+	process.execute( "cmd.exe","/k " + blcmd );
+	
+}
+
+mainForm.button3.oncommand = function(id,event){
+	
+	// p6 蓝牙连接 删除
+	blwork(p6mac,"r","stereo");
+}
+
+mainForm.button4.oncommand = function(id,event){
+	
+	// p6 蓝牙连接
+	blwork(p6mac,"c","stereo");
+
+}
+
+mainForm.show();
+
+var blspk1 = "k9";
+var blspk2 = "p6";
+
+var run1 = " 连接"
+var stop1 = " 断开"  
+
+// k9 扬声器 --------
+
+
+// 按钮1 文本
+mainForm.button.text = blspk1 + stop1
+
+// 按钮2 文本
+mainForm.button2.text = blspk1 + run1
+// mac
+mainForm.static.text = k9mac
+
+// end ----------
+
+
+// p6 扬声器 start --------
+
+
+
+mainForm.static2.text = p6mac
+
+// 按钮 3 停止
+mainForm.button3.text = blspk2 + stop1
+// 按钮 4 运行
+mainForm.button4.text = blspk2 + run1
+
+// end -------
+
+return win.loopMessage();
