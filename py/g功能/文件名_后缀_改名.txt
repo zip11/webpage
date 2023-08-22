@@ -1,0 +1,7 @@
+def renaming(file):
+    """修改后缀"""
+    ext = os.path.splitext(file)    # 将文件名路径与后缀名分开
+
+    if ext[1] == '.txt':                    # 文件名：ext[0]
+        new_name = ext[0] + '.html'         # 文件后缀：ext[1]
+        os.rename(file, new_name)           # tree()已切换工作地址，直接替换后缀

@@ -1,0 +1,15 @@
+io.open() //打开控制台
+
+var a=1
+
+if(b==1){
+    if(a==1) begin
+        io.print("if")
+    end
+}
+elseif(a==11){
+    io.print("elseif")
+}
+else{
+    io.print("else")
+}

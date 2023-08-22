@@ -1,0 +1,24 @@
+下载aardio
+2、点击aardio左上角主菜单, 点"新建工程", 创建一个控制台应用程序。
+3、在main.aardio中输入下面的代码
+import config;
+import console;
+
+//下面的default就是配置文件名,
+//aardio就会自动创建一个 "/res/配置文件名字.table" 的文件来保存你使用的成员变量到硬盘.
+if( ! config.default.启动次数 ){
+    config.default.启动次数 = 1;
+}
+else {
+    config.default.启动次数++;
+}
+
+console.log("本程序运行次数",config.default.启动次数)
+
+console.pause(true);
+console.close();
+
+//程序退出时会自动保存所有配置文件
+4、按F5运行上面的程序，按任意键退出。
+反复启动程序, 可以看到每运行一次  config.default.启动次数 的值会加一。
+也就是说，他的值被自动保存到硬盘文件了.
