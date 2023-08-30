@@ -1,0 +1,53 @@
+让Aria2无缝接管下载，加速下载体验，内置Aria2前端，任务管理更方便。
+Aria2-Explorer 能够自动拦截浏览器下载任务并通过JSON-RPC接口导出到Aria2进行高速下载并内置AriaNG作为管理前端。
+
+Aria2是一个轻量级的多协议多源命令行下载工具。它支持HTTP/HTTPS、FTP、SFTP、BitTorrent和Magnet link。
+
+使用步骤：
+1.下载 Aria2 主程序：https://github.com/aria2/aria2/releases/latest
+2. 打开 cmd（或 Terminal）输入 aria2c --enable-rpc
+3. 安装浏览器扩展
+4. 在扩展选项中打开 自动拦截下载，并根据需求配置其他选项
+
+Motrix用户：请设置 http://localhost:16800/jsonrpc 作为RPC URL 
+
+完成以上步骤，即可在Chrome中享受多线程、BT下载体验。对于Windows用户，关于如何在后台运行Aria2，请参考扩展 “Alex 推荐” 频道内文章。
+
+警告：当使用其他扩展下载网络资源时，请关闭 “自动拦截” 功能。否则，可能会引起冲突和不可预知的结果。
+
+功能特性：[ 用户数据和隐私零收集 ]
+1. 自动拦截浏览器下载任务
+    - 拦截通知
+    - 支持磁力链接
+    - 快捷键开关自动拦截 (默认：Alt+A)
+    -下载前手动设置各种详细参数
+    - 通过域名、扩展名或文件大小过滤下载任务
+      过滤优先级：网站 > 扩展名 > 文件大小，优先处理白名单
+
+2. 根据预设URL规则自动选择不同的 Aria2 RPC 服务端
+
+3. 内置 Aria2 前端：AriaNG，多种呈现方式：弹窗，新标签，新窗口
+
+4. 所有配置云端同步
+
+5. 中英双语支持
+
+6. Aria2下载状态监测
+
+7. 上下文菜单导出下载任务
+
+8. 接受来自其他扩展的下载请求
+
+9. 选项配置页面快捷键（保存：Alt+S 重置：Alt+R 下载：Alt+J 上传：Alt+U）
+
+10. 只需一次配置，自动导出所有 RPC 设置到 AriaNG
+
+
+更新日志：
+ 
+https://github.com/alexhua/Aria2-Explorer/releases
+
+
+最后，欢迎有想法的你提交优质的PR，让这个扩展更好用。
+
+Github: https://github.com/alexhua/Aria2-Explorer

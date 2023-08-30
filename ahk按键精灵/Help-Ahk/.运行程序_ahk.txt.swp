@@ -1,0 +1,23 @@
+用 Win + n 启动记事本：
+
+#n::
+    Run, notepad
+return
+
+
+Run, Target [, WorkingDir, Max|Min|Hide|UseErrorLevel, OutputVarPID]
+
+Target 可以是可执行文件的文件名，如上边的 notepad，可以加参数，也可以是一些其他东西，后文会具体讲到。
+
+WorkingDir 用来指定工作目录，比如我想在 C 盘根目录运行记事本并打开 test.txt，就可以这样：
+
+
+
+Run, notepad test.txt, C:\
+第三个参数 Max|Min|Hide|UseErrorLevel 是选项，可以让运行的软件最大化（Max），最小化（Min），隐藏（Hide），UseErrorLevel 用于获取进程退出的返回码，暂时用不到，以后再讲。
+
+第四个参数 OutputVarPID 用来获取进程的 PID，暂时也用不到。
+
+需要注意的一点，用 Run 启动其他软件后，AHK 代码会继续执行，而不会等软件退出。如果需要等软件退出再继续运行，需要用 RunWait 命令，这个后续我也会提到
+
+

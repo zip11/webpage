@@ -1,15 +1,19 @@
 import win.ui;
 /*DSG{{*/
-mainForm = win.form(text="蓝牙连接喇叭";right=630;bottom=428)
+mainForm = win.form(text="蓝牙连接喇叭";right=324;bottom=428)
 mainForm.add(
-button={cls="button";text="Button";left=60;top=45;right=137;bottom=103;z=2};
-button2={cls="button";text="Button";left=190;top=47;right=267;bottom=105;z=3};
-button3={cls="button";text="Button";left=60;top=164;right=137;bottom=222;z=5};
-button4={cls="button";text="Button";left=188;top=164;right=265;bottom=222;z=6};
-groupbox={cls="groupbox";text="K9";left=32;top=19;right=293;bottom=126;edge=1;z=1};
-groupbox3={cls="groupbox";text="p6";left=36;top=144;right=297;bottom=251;edge=1;z=4};
-static={cls="static";text="Static";left=101;top=106;right=207;bottom=123;transparent=1;z=7};
-static2={cls="static";text="Static";left=102;top=227;right=208;bottom=244;transparent=1;z=8}
+button={cls="button";text="Button";left=60;top=45;right=137;bottom=103;z=3};
+button2={cls="button";text="Button";left=190;top=47;right=267;bottom=105;z=4};
+button3={cls="button";text="Button";left=60;top=164;right=137;bottom=222;z=6};
+button4={cls="button";text="Button";left=188;top=164;right=265;bottom=222;z=7};
+button5={cls="button";text="Button";left=60;top=289;right=137;bottom=347;z=10};
+button6={cls="button";text="Button";left=184;top=289;right=261;bottom=347;z=11};
+groupbox={cls="groupbox";text="K9";left=32;top=19;right=293;bottom=126;edge=1;z=2};
+groupbox2={cls="groupbox";text="MI-03";left=32;top=264;right=293;bottom=371;edge=1;z=1};
+groupbox3={cls="groupbox";text="p6";left=32;top=144;right=293;bottom=251;edge=1;z=5};
+static={cls="static";text="Static";left=101;top=106;right=207;bottom=123;transparent=1;z=8};
+static2={cls="static";text="Static";left=102;top=227;right=208;bottom=244;transparent=1;z=9};
+static3={cls="static";text="Static";left=112;top=348;right=218;bottom=365;transparent=1;z=12}
 )
 /*}}*/
 
@@ -21,9 +25,10 @@ if(_ARGV.opt){
 	mainForm.edit.print(_ARGV.opt,_ARGV[#_ARGV]);
 }
 
+var p6mac = "" ;
+var k9mac = "" ;
+var mimac = "" ;
 
-var p6mac = "";
-var k9mac="";
 
 /*
 
@@ -31,18 +36,24 @@ var k9mac="";
 
 */
 
-if( ! config.default.mac_record ){
+
+// 读取 记录
+var jl1= config.default.mac_record
+
+if( jl1 != "record"){
 
 	// 写入 mac 到 配置文件
     config.default.mac_record = "record";
     config.default.p6 = p6mac ;
     config.default.k9 = k9mac ;
+    config.default.mi = mimac ;
 }
 else {
 	
     // 读取 配置文件mac 信息
     p6mac = config.default.p6 ;
     k9mac = config.default.k9 ;
+    mimac = config.default.mi ;
 	
 }
 
@@ -63,7 +74,7 @@ mainForm.button.oncommand = function(id,event){
 	
 	// k9 蓝牙 删除
 
-	blwork(k9mac,"r","stereo");
+	blwork(k9mac,"r","freehand");
 
 }
 
@@ -71,7 +82,7 @@ mainForm.button2.oncommand = function(id,event){
 	
 	// k9 蓝牙连接 
 
-	blwork(k9mac,"c","stereo");
+	blwork(k9mac,"c","freehand");
 	
 }
 
@@ -132,10 +143,24 @@ mainForm.button4.oncommand = function(id,event){
 
 }
 
+mainForm.button6.oncommand = function(id,event){
+	
+	//mi
+	//  蓝牙连接
+	blwork(mimac,"c","stereo");
+}
+
+mainForm.button5.oncommand = function(id,event){
+	
+	// mi 蓝牙 删除
+	blwork(mimac,"r","stereo");
+}
+
 mainForm.show();
 
 var blspk1 = "k9";
 var blspk2 = "p6";
+var blspk3 = "MI";
 
 var run1 = " 连接"
 var stop1 = " 断开"  
@@ -166,5 +191,17 @@ mainForm.button3.text = blspk2 + stop1
 mainForm.button4.text = blspk2 + run1
 
 // end -------
+
+
+// mi ------------
+
+mainForm.static3.text = mimac
+
+// 按钮 5 停止
+mainForm.button5.text = blspk3 + stop1
+// 按钮 6 运行
+mainForm.button6.text = blspk3 + run1
+
+// end -------------
 
 return win.loopMessage();
