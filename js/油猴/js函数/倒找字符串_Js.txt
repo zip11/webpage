@@ -1,0 +1,19 @@
+##倒找字符串
+
+
+定义和用法
+lastIndexOf() 方法返回字符串中指定值最后一次出现的索引（下标）。
+
+lastIndexOf() 方法从尾到头搜索字符串。
+
+lastIndexOf() 方法从开头（位置 0）返回索引。
+
+如果未找到该值，则 lastIndexOf() 方法返回 -1。
+
+lastIndexOf() 方法区分大小写
+
+
+搜索最后一次出现的 "planet"：
+
+let text = "Hello planet earth, you are a great planet.";
+let result = text.lastIndexOf("planet");

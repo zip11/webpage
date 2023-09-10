@@ -1,0 +1,42 @@
+下载 SteamCMD
+Windows
+1. 创建一个为 SteamCMD 准备的文件夹。
+
+例如
+
+C:\steamcmd
+2. 下载适用于 Windows 系统的 SteamCMD：https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip
+
+~~~~~~
+
+
+Windows
+打开一个命令行窗口并启动 SteamCMD。
+
+cd C:\steamcmd
+steamcmd
+
+~~~~~~
+
+匿名登录
+下载大多数游戏服务端，你可以选择匿名登录。
+
+login anonymous
+
+~~~~~~~~~
+
+下载一个应用
+1. 打开 SteamCMD 并登录它。
+
+2. 设置你的应用安装目录（注意：在 Linux/macOS 下使用正斜杠/，在Windows 下使用反斜杠\）。
+
+force_install_dir <路径>
+
+force_install_dir J:\appj\game
+
+3. 安装或更新应用使用app_update命令（在这里提供Steam 应用 ID）。 要同时校验应用的话，需添加validate到命令里。要下载测试分支的话，使用-beta <测试名称>选项 – 例如，半条命专用服务器的测试分支名为beta以及起源专用服务器的测试分支名为prerelease。一些测试分支设置了密码；如果要从它那里下载，需同时添加-betapassword <密码>选项。
+
+app_update <应用ID> [-beta <测试名称>] [-betapassword <密码>] [validate]
+
+
+app_update 2121360

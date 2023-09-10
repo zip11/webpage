@@ -1,0 +1,8 @@
+js怎样获得数组元素的个数
+
+数组元素,其数值总是大于数组最大索引。
+
+const clothing = ['shoes', 'shirts', 'socks', 'sweaters'];
+
+console.log(clothing.length);
+// Expected output: 4

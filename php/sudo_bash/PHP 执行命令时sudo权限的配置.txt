@@ -1,0 +1,26 @@
+PHP 执行命令时sudo权限的配置
+
+
+1、先写一个PHP文件
+
+<?php
+system('whoami');
+?>
+
+2、配置超级用户
+
+执行命令
+sudo visudo
+
+#添加命令 到 配置文件
+www-data ALL=(ALL:ALL)  ALL 
+
+%www-data  ALL=(ALL:ALL)  NOPASSWD:ALL
+   
+%”，用来表示用户组。
+而后面的"NOPASSWD:"即表示不需要输入密码就可以执行命令
+
+
+3.重启apache2
+sudo service apache2 restart
+

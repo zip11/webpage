@@ -1,0 +1,27 @@
+body添加 浮动按钮 -js
+
+    //~~~~~~~~~~Add  button3 ~~~~~~~~~~~
+
+
+    let mybtn = document.createElement('button');
+	
+	// 添加 body 按钮，浮动
+    document.body.appendChild(mybtn);
+
+    mybtn.id = 'my-btn';
+    mybtn.innerHTML = `下载
+<style>
+#my-btn {
+    /* position设置为fixed，固定位置，即使窗口滚动位置不变 */
+    position: fixed;
+    top: 100px;
+    left: 30px;
+    width: 150px;
+}
+</style>`
+
+
+    mybtn.onclick = function () {
+	
+	// 按钮点击
+	}

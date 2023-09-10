@@ -1,0 +1,63 @@
+JS获取当前时间的方法
+
+1.获取时间戳
+
+第一种
+var timestamp = Date.parse(new Date());
+输出：16405 69738 000
+
+第二种
+var timestamp=new Date().getTime()；
+输出：1640569787716
+
+第三种
+var timestamp=new Date().getTime()；(和二重复了)
+var timestamp = (new Date()).valueOf() 
+输出：1640569936666
+
+第一种：获取的时间戳是把毫秒改成000显示，因为这种方式只精确到秒
+
+第二种和第三种是获取了当前毫秒的时间戳。
+
+
+2.获取时间
+
+var myDate = new Date();
+
+myDate.getYear();  //获取当前年份(2位)
+myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+
+myDate.getMonth();  //获取当前月份(0-11,0代表1月)
+myDate.getDate();  //获取当前日(1-31)
+myDate.getDay();   //获取当前星期X(0-6,0代表星期天)
+
+myDate.getTime();  //获取当前时间(从1970.1.1开始的毫秒数)
+
+myDate.getHours();  //获取当前小时数(0-23)
+myDate.getMinutes();  //获取当前分钟数(0-59)
+myDate.getSeconds();  //获取当前秒数(0-59)
+myDate.getMilliseconds(); //获取当前毫秒数(0-999)
+
+myDate.toLocaleDateString();  //获取当前日期
+var mytime=myDate.toLocaleTimeString();  //获取当前时间
+myDate.toLocaleString( );  //获取日期与时间
+
+function timestampToTime(timestamp) {
+
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1):date.getMonth()+1) + '-';
+        var D = (date.getDate()< 10 ? '0'+date.getDate():date.getDate())+ ' ';
+
+        var h = (date.getHours() < 10 ? '0'+date.getHours():date.getHours())+ ':';
+        var m = (date.getMinutes() < 10 ? '0'+date.getMinutes():date.getMinutes()) + ':';
+        var s = date.getSeconds() < 10 ? '0'+date.getSeconds():date.getSeconds();
+
+        return Y+M+D+h+m+s;
+    }
+ 
+ timestampToTime(1403058804);
+ 
+ console.log(timestampToTime(1403058804));//2020-06-18 10:33:24
+ 
