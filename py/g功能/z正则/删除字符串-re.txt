@@ -1,0 +1,19 @@
+import re
+
+t_file = "123[456]"
+
+# 删除 [] 内容
+t_file = re.sub(r'\[.*\]',"",t_file)
+
+#123
+print(t_file)
+
+https://blog.csdn.net/weixin_44799217/article/details/115100715
+
+从源码中看出re.sub()函数共有5个参数：
+
+pattern：表示正则中的模式字符串；
+repl：表示要替换的字符串（即匹配到pattern后替换为repl），也可以是个函数；
+string：表示要被处理（查找替换）的原始字符串；
+count：可选参数，表示要替换的最大次数，而且必须是非负整数，该参数默认为0，即所有的匹配都会替换；
+flags：可选参数，表示编译时用的匹配模式（如忽略大小写、多行模式等），数字形式，默认为0。

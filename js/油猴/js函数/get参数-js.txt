@@ -1,0 +1,7 @@
+js中get方式传送多个值
+
+1.我们知道在访问url时一般传值采用‘？+名称=参数’，如何在url中传送多个值呢，我们可以采用
+
+“?param1=value&param2=value&param3=value”
+
+的形式传送多个值。

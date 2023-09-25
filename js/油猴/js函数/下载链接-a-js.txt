@@ -1,0 +1,12 @@
+window.location.href 
+是一个用于获取当前页面 URL 或让浏览器跳转到新 URL 的重要方法，是 window.location 对象的属性。它返回一个字符串，表示当前页面的 URL；同时，当通过将 URL 指定给 window.location.href 时，可以让浏览器跳转到新的 URL。
+
+二、常见用例
+self.location.href="/url" 当前页面打开URL页面
+location.href="/url ：当前页面打开URL页面
+window.location.href="/url" ：当前页面打开URL页面，前面三个用法相同。
+this.location.href="/url" ：当前页面打开URL页面
+parent.location.href="/url" ：在父页面打开新页面
+top.location.href="/url" ：在顶层页面打开新页面
+如果页面中自定义了 frame，那么可将parent self top换为自定义frame的名称,效果是在frame窗口打开url地址
+window.location.href=window.location.href;和window.location.Reload() ： 刷新当前页面。

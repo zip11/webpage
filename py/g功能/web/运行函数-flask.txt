@@ -1,0 +1,31 @@
+对于一个请求，我需要在将响应发送到客户端之后执行一个函数。因为该函数很耗时，最终导致连接超时Socket error: [Errno 32] Broken pipe
+
+在Flask中有没有办法在返回请求后执行函数
+
+您可以使用线程在返回函数中由flask路由调用的内容后计算任何内容。
+
+https://cloud.tencent.com/developer/ask/sof/112614
+
+import time
+from threading import Thread
+from flask import request, Flask
+app = Flask(__name__)
+
+
+class Compute(Thread):
+    def __init__(self, request):
+        Thread.__init__(self)
+        self.request = request
+
+    def run(self):
+        print("start")
+        time.sleep(5)
+        print(self.request)
+        print("done")
+
+
+@app.route('/myfunc', methods=["GET", "POST"])
+def myfunc():
+        thread_a = Compute(request.__copy__())
+        thread_a.start()
+        return "Processing in background", 200
