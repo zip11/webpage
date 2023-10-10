@@ -1,0 +1,4 @@
+io/ioutil" has been deprecated since Go 1.16:
+
+从 Go 1.16 开始会废弃 io/ioutil 包，相关的功能会挪到 io 包或 os 包。
+os.ReadFile(filename)

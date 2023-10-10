@@ -1,0 +1,48 @@
+Tampermonkey中文文档
+
+https://bbs.tampermonkey.net.cn/thread-1909-1-1.html
+
+用户脚本标头(部分)
+
+名称	描述	参数
+
+name	‎脚本名称	-
+namespace	‎‎脚本命名空间	-
+version	‎‎‎脚本版本	语义化版本规则
+author	‎‎‎脚本作者	-
+description	‎‎‎脚本描述	-
+include	‎‎‎脚本匹配地址	允许正则匹配
+match	‎‎‎脚本匹配地址	使用*表示通配，使用更严格
+exclude	排除脚本匹配地址	-
+require	引入外部JS文件	指向脚本开始运行之前加载并执行的 JavaScript 文件
+resource	预加载资源	预加载的资源由GM_getResourceURL/Text访问
+connect	获取网站访问权限	允许由GM_xmlhttpRequest检索的子域
+run-at	脚本的运行时机	document-start/body/end/idle/menu 详细
+grant	申请API权限	none表示页面环境 unsafeWindow表示沙盒环境
+noframes	脚本标记	标记使脚本在主页上运行，但不在 iframe 上运行
+‎
+API 说明
+
+名称	描述
+
+GM_addStyle	‎将给定样式添加到文档中并返回注入的样式元素
+GM_addElement	‎创建指定的 HTML 元素，应用所有给定的"属性"并返回注入的 HTML 元素，此功能是实验性的，API 可能会更改
+GM_setValue	‎将"名称"的值设置为存储
+GM_getValue	‎‎从 GM_setValue 存储的"名称"中获取值
+GM_deleteValue	‎‎将 GM_setValue 存储的"名称"删除
+GM_listValues	‎‎列出GM_setValue 存储的所有"名称"
+GM_addValueChangeListener	‎‎侦听 GM_setValue 储存"名称"的值的更改并返回更改前和后的值
+GM_removeValueChangeListener	‎‎删除由 GM_addValueChangeListener 添加的侦听器
+GM_log	‎‎‎向控制台记录消息‎
+GM_getResourceText	‎‎‎获取由‎ resource 预加载的资源
+GM_getResourceURL	获取由‎ resource 预加载的 base64 编码 URI‎
+GM_registerMenuCommand	注册一个菜单，在运行此脚本的页面的中显示‎
+GM_registerMenuCommand	‎取消由 GM_registerMenuCommand 注册的菜单‎
+GM_openInTab	‎通过给定的 URL 打开一个新标签页‎
+GM_xmlhttpRequest	‎通过脚本发送的XHR请求‎
+GM_download	‎通过给定的 URL 下载文件到本地‎
+GM_saveTab	保存选项卡对象，生命周期为选项卡的打开->关闭
+GM_getTab	‎获取选项卡对象，生命周期为选项卡的打开->关闭
+GM_getTabs	‎获取所有选项卡对象，生命周期为选项卡的打开->关闭
+GM_notification	‎显示 HTML5 桌面通知
+GM_setClipboard	将数据复制到剪贴板

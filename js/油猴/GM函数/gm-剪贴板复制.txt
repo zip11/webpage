@@ -1,0 +1,1 @@
+GM_setClipboard	将数据复制到剪贴板

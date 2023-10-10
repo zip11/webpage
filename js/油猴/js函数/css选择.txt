@@ -9,3 +9,4 @@ let proxy_url =  proxy_web  + wztor.value
 
 console.log(proxy_url);
 
+window.location.href = proxy_url
