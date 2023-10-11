@@ -1,0 +1,23 @@
+用Node.js获取文件名（带或不带扩展名）的实例指南
+
+获取带有扩展名的文件名
+你可以使用Node.js的path 模块从一个给定的路径中检索文件名。path 模块是Node.js运行时附带的。
+使用Path.basename 方法检索文件名。该方法从文件路径中返回尾部的名称组件，包括文件扩展名。例如，它从路径/home/user/avatar.png ，返回avatar.png：
+js复制代码import Path from 'path'
+
+const filename = Path.basename('/home/user/avatar.png')  
+// 'avatar.png'
+
+
+
+获取无扩展名的文件名
+有时你想检索没有扩展名的文件名。你可以使用内置的Node.jspath 模块来做这个。你可以使用Path.parse 方法将一个给定的文件路径解析为各个部分。然后，检索出不含扩展名的文件name：
+js复制代码import Path from 'path'
+
+const filename = Path.parse('/home/user/avatar.png').name  
+// 'avatar'
+
+作者：前端小工
+链接：https://juejin.cn/post/7132094925646069796
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
