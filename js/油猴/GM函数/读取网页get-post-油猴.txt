@@ -1,0 +1,58 @@
+油猴JS读取另一个网址网页GET POST
+
+GM_xmlhttpRequest()函数，程序GET POST例子
+
+// ==UserScript==
+// @name         read-page-get
+// @namespace    read-page-get2
+// @version      0.1
+// @description  读取网页 get
+// @author       10142023
+// @match        https://bbs.tampermonkey.net.cn/
+// @grant        GM_xmlhttpRequest
+// @connect      127.0.0.1:5000
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+            GM_xmlhttpRequest ( {
+                method:     "GET",
+                url:        'http://127.0.0.1:5000/api/read',
+
+                onload:     function (response) {
+                    console.log('已连接,读取文本：'+response.responseText);
+                }
+            });
+
+
+})();
+
+// ==UserScript==
+// @name         油猴中文网-自动关注up主
+// @namespace    https://bbs.tampermonkey.net.cn/
+// @version      0.1
+// @description  油猴中文网-自动关注up主
+// @author       Wyz
+// @match        https://bbs.tampermonkey.net.cn/
+// @grant        GM_xmlhttpRequest
+// @connect      api.bilibili.com
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    GM_xmlhttpRequest({
+        url:"https://api.bilibili.com/x/relation/modify",
+        method :"POST",
+        data:"fid=1037793830&amp;act=1&amp;re_src=11&amp;jsonp=jsonp&amp;csrf=e37f1881fd98f16756d16ab71109d37a",
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+        },
+        onload:function(xhr){
+            console.log(xhr.responseText);
+        }
+    });
+})();
+
+

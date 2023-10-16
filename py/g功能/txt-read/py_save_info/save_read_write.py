@@ -31,7 +31,7 @@ class save_read_write:
         return data
 
     # 写入 配置文件
-    def write_save(self):
+    def write_save(self,nr1):
 
         
         # Some Python object

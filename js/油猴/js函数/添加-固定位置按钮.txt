@@ -1,0 +1,29 @@
+    //~~~~~~~~~~Add  button3 ~~~~~~~~~~~
+
+
+    let mybtn2 = document.createElement('button');
+	
+	// 添加 标题 按钮，
+    let tt1 = document.getElementById("top")
+
+    tt1.appendChild(mybtn2);
+
+    mybtn2.id = 'my-btn2';
+    mybtn2.innerHTML = `复制标题到剪贴板
+<style>
+#my-btn {
+    /* position设置为fixed，固定位置，即使窗口滚动位置不变 */
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    width: 150px;
+}
+</style>`
+
+
+        // 按钮点击
+        mybtn2.onclick = function () {
+            
+            //
+        
+        }
