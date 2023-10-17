@@ -1,0 +1,6 @@
+console.log(typeof "HELLO WORLD");//string
+console.log(typeof null);//object
+
+console.log(typeof undefined);//undefined
+console.log(typeof true);//Boolean
+console.log(typeof false);//Boolean

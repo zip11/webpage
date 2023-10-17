@@ -1,0 +1,12 @@
+var wztor = document.querySelector("#download_url");
+
+
+console.log(wztor.value);
+
+let proxy_web = "http://127.0.0.1:5000/api/get?name=";
+
+let proxy_url =  proxy_web  + wztor.value
+
+console.log(proxy_url);
+
+window.location.href = proxy_url
