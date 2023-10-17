@@ -1,0 +1,23 @@
+# 遍历 文件夹 下 文件和文件夹
+
+def search_folder():
+
+    import os
+    
+    # 获取 py文件的 文件夹 路径
+    current_address = os.path.dirname(os.path.abspath(__file__))
+    
+    # 获取 文件夹下 所有 文件
+    for parent, dirnames, filenames in os.walk(current_address):
+    
+        # Case1: traversal the directories
+        # 获取目录
+        for dirname in dirnames:
+            print("Parent folder:", parent)
+            print("Dirname:", dirname)
+    
+        # Case2: traversal the files
+        # 获取目录
+        for filename in filenames:
+            print("Parent folder:", parent)
+            print("Filename:", filename)
