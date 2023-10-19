@@ -1,0 +1,33 @@
+fsys.joinpath(parentDir,string.concat("新建",name[#name]))
+// 拼接路径
+
+io.splitpath
+1、函数原型：
+tpath = io.splitpath( 文件路径 )
+
+2、函数说明：
+
+该函数拆分一个文件路径为多个部分,并返回一个table对象tpath.有以下成员:
+
+tpath.dir 表示文件路径所在的目录路径，以斜杠结束
+tpath.name 表示文件名(无后缀)
+tpath.ext 表示文件后缀名(包含圆点)
+tpath.file 包含后缀名的完整文件名
+tpath.drive 所在的分区号,以冒号结束。
+
+tpath.dir ++ tpath.file等于完整的文件路径。
+3、调用示例：
+
+
+//新建一个控制台程序，main.aardio代码如下
+
+//将参数去掉引号
+path = string.trim( _CMDLINE ,'"');
+
+//拆分为目录名,文件名,后缀名,分区号
+var tpath = io.splitpath(path)
+
+//重命名
+io.rename( path,tpath.dir ++ tpath.ext )
+
+//发布该程序为exe文件,将需要去掉文件名字的文件 - 往该exe上一拖即可.

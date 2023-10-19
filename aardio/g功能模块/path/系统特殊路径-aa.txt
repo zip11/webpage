@@ -1,0 +1,22 @@
+
+import fsys
+fsys.getWinDir() //windows 或winnt
+fsys.getTempDir() //临时文件目录
+fsys.getSysDir()//system32
+fsys.getSpecial() //桌面
+
+
+程序路径
+
+//路径以斜杠开头表示应用程序根目录,开发时是工程目录,发布后就是EXE目录
+path = io.fullpath("/data/")
+
+io.open()
+io.print( path )
+
+//也可以这样获取EXE目录
+io.print( io._exedir )
+
+//生成exe相对路径
+import fsys;
+io.print( fsys.joinpath(io._exedir,"/data/") )

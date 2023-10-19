@@ -1,0 +1,18 @@
+
+table.push(tab ,value[, value , ... ] )
+
+tab是数组
+
+在数组尾部添加一个或多个值。table.push返回新数组的长度（最后一个元素所在的索引)
+
+
+//遍历 -显示数组
+//#file_array，数组的数量
+
+for(i=1;#file_array;1){
+     //console.dump(i,file_array[ i ]);
+     io.print(i,file_array[i]);
+ }
+ 
+//序列化为字符串（aardio代码）
+io.print(table.tostring(tab));

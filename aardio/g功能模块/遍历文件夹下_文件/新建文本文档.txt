@@ -1,0 +1,27 @@
+aardio_取文件列表
+
+遍历文件夹下_文件
+aardio
+取文件列表
+
+fsys.enum（）
+
+控制台程序代码
+
+console.log("遍历-系统临时文件夹下 的 tmp文件");
+
+import fsys
+
+fsys.enum( fsys.getTempDir(), "*.tmp",
+
+	function(dir,filename,fullpath,findData){ 
+		
+		if(filename){
+			
+	        console.log(fullpath, filename)
+	    }
+	},
+	false
+);
+ 
+console.pause();

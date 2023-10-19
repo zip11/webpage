@@ -1,0 +1,6 @@
+
+# 获取py 文件路径
+os.path.abspath(__file__)
+
+# py打包的exe 所在的 目录
+os.getcwd()

@@ -1,0 +1,6 @@
+fsys.isDir(file) 
+//判断 是否 为 目录
+
+
+fsys.joinpath(parentDir,string.concat("新建",name[#name]))
+// 拼接路径

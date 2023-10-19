@@ -1,0 +1,7 @@
+import os
+
+filepath1="D:/data/outputs/河北省.geojson"
+
+a = os.path.basename(filepath1)
+
+#带后缀的文件名

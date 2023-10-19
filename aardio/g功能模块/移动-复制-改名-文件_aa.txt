@@ -1,0 +1,27 @@
+import fsys
+import win
+
+//创建当前目录下的新目录，清空目录重建,返回目录路径
+$path = fsys.createDir(fsys.getCurDir() "\新目录\",true)
+
+if fsys.isDir($path) win.msgbox("是目录")
+/*语句块内对文件或目录都有效{{*/
+
+//移动
+fsys.move($path,"e:\")
+
+//复制
+fsys.copy("e:\新目录",$path)
+
+//改名
+fsys.rename("e:\新目录","e:\目录")
+
+//删除目录，支持非空目录,可以使用数组删除多个目录
+fsys.delete({"e:\目录";$path})
+/*}}*/ 
+
+//搜索路径，返回目录下文件,目录数组
+$list,$path = fsys.list("E:\aardio")
+
+win.msgbox($list) 
+win.msgbox($path)

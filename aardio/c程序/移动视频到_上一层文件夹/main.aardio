@@ -1,0 +1,225 @@
+import console;
+console.setTitle("子文件夹移动文件_到上一层文件夹");
+
+/*
+启动参数键值对前导字符可以为 / 或 - ，前导字符可重复多次。
+键值对可以空格分开，也可用等号分开，例如： "/opt test" "-opt test" "--opt test" 或 "/opt=test"
+*/
+if(_ARGV.opt == "test"){
+	console.dump(_ARGV.opt,_ARGV[#_ARGV]) //_ARGV 既包含命名参数组成的键值对，也包含按参数顺序组成的数组
+	/*
+	生成 EXE 以后，按 Ctrl + L 切换到地址栏，输入 cmd 回车 —— 在发布目录打开 cmd.exe，
+	然后输入 exe 文件名（按 tab 键可自动完成文件名）+ 参数后回车执行，例如 "?.exe /opt test c:\xxx.text"。
+	
+	除了传参数，也可以用 string.getenv() 获取父进程设置的环境变量，
+	或者在父进程创建管道(参考标准库 process.popen )读写标准输入输出，子进程用 io.stdin.read() 读标准输入, io.stdout.write() 写标准输出。
+	如果父进程、子进程都是 aardio 编写的，也可以用 process.command 交互更方便。
+	*/
+}
+
+//var str = console.getText("请输入一行文本,然后回车:");
+//console.log("您输入的是" ,str );
+
+console.log("子文件夹移动文件，到上一层文件夹");
+
+
+// 获取 文件夹下 文件 ①
+function scanfile (file_sc,ext_name){
+	
+	//文件夹路径，扩展文件名
+	
+	//io.print("scan folder >> file:"+file_sc)
+	
+	import fsys
+	
+	// 文件 数组
+	//var file_list = {} ; 
+	
+	// 文件 路径 字符串
+	var file_path = ""; 
+	
+	// 遍历 后缀 文件
+	fsys.enum( file_sc , ext_name ,
+
+		function(dir,filename,fullpath,findData){ 
+			
+			if(filename){
+				
+	        	//console.log("scan_file_path",fullpath)
+	        	
+	        	// 文件名 ，非全路径
+	        	//io.print(filename)
+	        		        	
+	        	// 数组 添加 元素
+	    		//table.push(file_list,fullpath);
+	    		
+	    		file_path = fullpath;
+	    	}
+		},
+		false
+	);	
+	
+	//返回 全路径 文件
+	//return file_list;
+	
+	//返回 全路径-文件-字符串
+	return file_path;  	
+
+}
+
+// 获取 文件夹下 子文件夹 ②
+function scan_folder (folder_sc){
+	
+	//扫描-根目录
+
+	import fsys
+	
+	// 文件夹 数组
+	var folder_list = {};
+	
+	fsys.enum( folder_sc , "*.*",
+	//fsys.getTempDir()
+		function(dir,filename,fullpath,findData){ 
+			
+			if(dir){
+				
+	        	
+	    		//io.print("dir:" + dir)
+	    		
+	    		// 判断 是 目录
+	    		if(fsys.isDir(fullpath)) {
+	    		    
+	    		    //console.log("scan_folder_path:",fullpath)
+	    			//数组 添加
+	    			table.push(folder_list,fullpath)
+	    		}
+	    	}
+		},
+		false
+	);
+	
+	//子文件夹 数组
+	return folder_list ; 		
+}
+
+
+
+//移动 全部 文件 ④
+function move_all (root_path,file_array){
+		
+	// 移动根目录，特定扩展名-数组，
+	
+	// 遍历 移动文件 数组
+	for(i=1;#file_array;1){	
+		
+		io.print("move_file ###:  " + file_array[i]);
+		//移动文件 ，单个元素
+		
+		
+		if(file_array[i]!=""){
+			move_file(root_path,file_array[i]);
+		}
+		
+	
+	}
+}
+
+// 移动 单个文件 ③
+function move_file (root_folder,file_path){
+	
+	// 新根目录，旧文件-全路径
+	
+	import fsys
+	
+	//全路径 ，分割 文件名
+	tpath = io.splitpath( file_path );
+	var extfile = tpath.file
+	
+	// 拼接 新位置 路径
+	extfile = fsys.joinpath(root_folder,extfile)
+	
+	//移动 文件 到新位置
+	
+	io.print("mv-file: (",file_path,") ---- ",extfile)
+	fsys.move(file_path,extfile)
+	
+}
+
+
+// 遍历文件夹 ，搜索 特定文件 ⑤
+function folder_read_all(file_array){
+
+	// 文件夹-数组
+	
+	// 2-scan file -----start---
+	var file_ext = ""; 
+	
+	// 保存 全部 ext-文件 列表
+	var file_ext_all = {};
+	
+	//遍历 -显示 子文件夹-数组
+	
+	io.print("2-scan-file start *** :")
+	
+	for(i=1;#file_array;1){
+		
+		//单个 子 文件夹
+     	io.print(i,file_array[i]+'\n');
+     	
+     	// 搜索 子文件夹 下 特定文件
+     	file_ext = scanfile(file_array[i],"*.txt");
+     	
+     	
+     	fileext =  file_ext;
+     	
+
+     	    
+        //文件数组 ，添加元素
+     	table.push(file_ext_all,fileext);
+     	
+  	    //显示 ext 文件
+	    io.print("scan file $$$:"+fileext);
+     		
+     	
+     	
+     	     	
+ 	}
+ 	
+ 	//返回 文件 全部 数组
+ 	return file_ext_all; 
+	
+}
+
+
+
+
+//  Main---start------!!!!
+
+//console.log(io._exedir);
+//console.log(io._exepath);
+
+//程序 目录   ,相对路径转换为绝对路径
+path = io.fullpath("/data/")
+
+// 打开 io
+io.open()
+
+// 程序/data/ 文件夹
+io.print( "程序/data/ 文件夹: "+path + '\n' )
+
+// 1 .获取 子文件夹 列表 ----start---\\\\
+io.print("1-scan-folder start *** : "+'\n')
+// 扫描 子文件夹-全部 -数组
+var file_array2  = scan_folder(path);
+//显示 文件夹 数组
+io.print(table.tostring(file_array2)+'\n');
+
+// 2.获取 文件-全部，数组 ~~~~
+var file_array3 = folder_read_all(file_array2);
+
+
+//3.移动 全部 文件  ~~~~
+move_all(path,file_array3);
+
+// cmd ,pause
+console.pause();
