@@ -147,7 +147,7 @@ function move_file (root_folder,file_path){
 
 
 // 遍历文件夹 ，搜索 特定文件 ⑤
-function folder_read_all(file_array){
+function folder_read_all(file_array,extnam){
 
 	// 文件夹-数组
 	
@@ -166,8 +166,8 @@ function folder_read_all(file_array){
 		//单个 子 文件夹
      	io.print(i,file_array[i]+'\n');
      	
-     	// 搜索 子文件夹 下 特定文件
-     	file_ext = scanfile(file_array[i],"*.txt");
+     	// 搜索 子文件夹 下 特定文件 , *.txt
+     	file_ext = scanfile(file_array[i],extnam);
      	
      	
      	fileext =  file_ext;
@@ -178,7 +178,7 @@ function folder_read_all(file_array){
      	table.push(file_ext_all,fileext);
      	
   	    //显示 ext 文件
-	    io.print("scan file $$$:"+fileext);
+	    io.print("scan file $$$:"+fileext+'\n');
      		
      	
      	
@@ -204,6 +204,8 @@ path = io.fullpath("/data/")
 // 打开 io
 io.open()
 
+io.print("子文件夹的视频，移动上一层文件夹");
+
 // 程序/data/ 文件夹
 io.print( "程序/data/ 文件夹: "+path + '\n' )
 
@@ -214,8 +216,11 @@ var file_array2  = scan_folder(path);
 //显示 文件夹 数组
 io.print(table.tostring(file_array2)+'\n');
 
-// 2.获取 文件-全部，数组 ~~~~
-var file_array3 = folder_read_all(file_array2);
+//~~~~~end~~~~
+
+
+// 2.获取 文件-全部，数组 ~~~~start
+var file_array3 = folder_read_all(file_array2,"*.mp4");
 
 
 //3.移动 全部 文件  ~~~~
