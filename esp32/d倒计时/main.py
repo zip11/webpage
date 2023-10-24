@@ -53,11 +53,12 @@ def key_scan():
 
 def key_fact():
         key=key_scan()  #按键扫描
-        print(key)
+        print("key:",key)
+        
         if key==KEY1_PRESS:  #K1键按下
             return "on"
         elif key==KEY2_PRESS:  #K2键按下
-            pass
+            return "k2"
         elif key==KEY3_PRESS:  #K3键按下
             pass
         elif key==KEY4_PRESS:  #K4键按下
@@ -69,7 +70,30 @@ def key_fact():
 #定义数码管控制对象
 smg=tm1637.TM1637(clk=Pin(16),dio=Pin(17))
 
+def minsec(sec2):
+    #01:33,
+
+    min1 = "0"
+    sec1 = "0"
+    
+    min1 = min1 + str(sec2//60)
+   
+    sec1 = sec1 + str(sec2%60)
+    
+    min1 = min1[-2:]
+    sec1 = sec1[-2:]
+    
+    print("min:"+min1)
+    print("sec:"+sec1)
+    
+    wb1 = min1 + sec1
+    
+    return wb1
+    
+    
+    
 def flash():
+    
     # smg flash
     smg.show("    ")
     time.sleep(1)
@@ -85,7 +109,9 @@ if __name__=="__main__":
     #smg.show("1314")  #字符串显示，显示整数
     #smg.scroll("1314-520",500)  #字符串滚动显示，速度调节
     #time.sleep(5)
-    n=6
+    
+    n = 5*60+12
+    
     stat = "off"
     stat2 = "off"
     
@@ -94,7 +120,8 @@ if __name__=="__main__":
     while True:
         
         # smg display
-        smg.number(n)
+        #smg.number(n)
+        smg.show(minsec(n))
         
         # scan key
         stat = key_fact()
@@ -102,6 +129,8 @@ if __name__=="__main__":
         if(stat == "on" or end2 == "on"):
             stat2 = "on"
             end2 = "on"
+        elif(stat == "k2"):
+            n = 12
     
             
             
@@ -120,4 +149,4 @@ if __name__=="__main__":
         
         # delay 1s
         time.sleep(1)
-        print("n:",n)
+        print("total_sec:",n)
