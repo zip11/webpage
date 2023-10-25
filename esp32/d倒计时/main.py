@@ -28,41 +28,31 @@ key3=Pin(26,Pin.IN,Pin.PULL_UP)
 key4=Pin(25,Pin.IN,Pin.PULL_UP)
 
 
+#定义LED状态
+led1_state,led2_state,led3_state,led4_state=0,0,0,0
 
-#定义按键键值
-KEY1_PRESS,KEY2_PRESS,KEY3_PRESS,KEY4_PRESS=1,2,3,4
-key_en=1
-#按键扫描函数
-def key_scan():
-    global key_en  #全局变量
-    if key_en==1 and (key1.value()==0 or key2.value()==0 or
-                      key3.value()==0 or key4.value()==0 ):
-        time.sleep_ms(10)  #消斗
-        key_en=0
-        if key1.value()==0:
-            return KEY1_PRESS
-        elif key2.value()==0:
-            return KEY2_PRESS
-        elif key3.value()==0:
-            return KEY3_PRESS
-        elif key4.value()==0:
-            return KEY4_PRESS
-    elif key1.value()==1 and key2.value()==1 and key3.value()==1 and key4.value()==1:
-        key_en=1
-    return 0
+ccs=0
 
-def key_fact():
-        key=key_scan()  #按键扫描
-        print("key:",key)
+#KEY1外部中断函数
+def key1_irq(key1):
+    global led1_state
+    global ccs
+    time.sleep_ms(10)
+    if key1.value()==0:
+        ccs=ccs+1
         
-        if key==KEY1_PRESS:  #K1键按下
-            return "on"
-        elif key==KEY2_PRESS:  #K2键按下
-            return "k2"
-        elif key==KEY3_PRESS:  #K3键按下
-            pass
-        elif key==KEY4_PRESS:  #K4键按下
-            pass 
+        led1_state=not led1_state
+        print(led1_state)
+
+#KEY2外部中断函数
+def key2_irq(key2):
+    global led2_state
+    time.sleep_ms(10)
+    if key2.value()==0:
+        led2_state=not led2_state
+
+
+
 
 ##----------------
 
@@ -110,12 +100,9 @@ if __name__=="__main__":
     #smg.scroll("1314-520",500)  #字符串滚动显示，速度调节
     #time.sleep(5)
     
+    key1.irq(key1_irq,Pin.IRQ_FALLING)  #配置key1外部中断，下降沿触发
+    
     n = 5*60+12
-    
-    stat = "off"
-    stat2 = "off"
-    
-    end2 = "off"
     
     while True:
         
@@ -123,28 +110,16 @@ if __name__=="__main__":
         #smg.number(n)
         smg.show(minsec(n))
         
-        # scan key
-        stat = key_fact()
-        
-        if(stat == "on" or end2 == "on"):
-            stat2 = "on"
-            end2 = "on"
-        elif(stat == "k2"):
-            n = 12
+        # scan key            
     
-            
-            
-        
         # run clock
-        if(n>0 and stat2 == "on"):
+        if(n>0 and led1_state):
             # -1ms 
             n-=1
         elif(n==0):
             # clock end,  flash smg
             flash()
-            end2 = "off"
-            stat == "off"
-            stat2 == "off"
+
             
         
         # delay 1s
