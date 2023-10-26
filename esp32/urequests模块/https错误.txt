@@ -1,0 +1,4 @@
+https://docs.micropython.org/en/latest/esp8266/general.html#ssl-tls-limitations
+
+https 错误
+https://forum.micropython.org/viewtopic.php?t=12233

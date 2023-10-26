@@ -1,0 +1,35 @@
+
+在Python请求中，当“data”参数是字典时，那么
+
+data = { ... }
+requests.post(url, data)
+
+
+
+POST jyf59MjuiWfY46oy/arcgis/rest/services/IOT/FeatureServer/0/updateFeatures HTTP/1.1
+
+{'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '110', 'Content-Type': 'application/x-www-form-urlencoded'}
+
+f=json&features=%5B%7B%27attributes%27%3A+%7B%27objectid%27%3A+%271%27%2C%27READ_VALUE%27%3A+%2713%27%7D%7D%5D
+
+
+
+而在 MicroPython urequests 中，不支持 URL 编码方案。 如果您设置“数据”，则始终假定只是要发送的字节。 如果您像示例中那样设置“json”，它会做正确的事情，但 ArcGIS 端点似乎不理解 JSON.
+
+(支持 URL 编码是 urequests 经常请求的功能...)
+
+这是一个最简单的 MicroPython 示例，用于解决不支持该功能的请求:
+
+
+import urequests
+import ujson
+
+url = 'https://services9.arcgis.com/jyf59MjuiWfY46oy/arcgis/rest/services/IOT/FeatureServer/0/updateFeatures'
+
+features = [{'attributes': {'objectid': '1','READ_VALUE': '13'}}]
+
+def url_escape(s):
+    return ''.join(c if c.isalpha() or c.isdigit() else '%%%02x' % ord(c) for c in s)
+
+x = urequests.post(url,data='f=json&features='+url_escape(ujson.dumps(features)),headers={'Content-Type': 'application/x-www-form-urlencoded'})
+print (x.text)

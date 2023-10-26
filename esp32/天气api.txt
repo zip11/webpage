@@ -1,0 +1,14 @@
+和风天气_电脑天气api
+https://blog.csdn.net/Enjolras_fuu/article/details/106202130
+
+json 解析
+https://www.runoob.com/python3/python3-json.html
+
+心知天气 API 使用-天气实况
+https://seniverse.yuque.com/hyper_data/api_v3/nyiu3t
+
+ESP32运行MicroPython从网络获取天气OLED显示
+https://blog.csdn.net/freemote/article/details/105313171
+
+【雕爷学编程】MicroPython手册之内置模块 urequests：发送 HTTP 请求和处理响应
+https://blog.csdn.net/weixin_41659040/article/details/132779882

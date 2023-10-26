@@ -25,8 +25,8 @@ import ntptime
 
 
 #路由器WIFI账号和密码
-ssid="xzkt"
-password="2018pryy"
+ssid=""
+password=""
 
 #WIFI连接
 def wifi_connect():

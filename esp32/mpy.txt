@@ -1,0 +1,18 @@
+用Python编写一个实时天气的程序
+
+https://zhuanlan.zhihu.com/p/631554486
+
+类 Timer – 控制内部定时器
+http://www.micropython.com.cn/en/latet/library/pyb.Timer.html
+
+
+http://www.micropython.com.cn/en/latet/reference/index.html
+
+ 获取网络气象
+https://mpython.readthedocs.io/zh/master/classic/weather.html
+
+最好的 6 个免费天气 API 接口对比测评
+https://zhuanlan.zhihu.com/p/451158509
+
+# ujson 模块
+https://mpython.readthedocs.io/zh/master/library/pythonStd/ujson.html
