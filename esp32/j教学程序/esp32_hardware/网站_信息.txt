@@ -1,0 +1,12 @@
+esp32芯片系列_硬件对比
+
+https://docs.espressif.com/projects/esp-idf/zh_CN/v4.4/esp32/hw-reference/chip-series-comparison.html
+
+红外遥控接收器 (RMT)
+https://espressif-docs.readthedocs-hosted.com/projects/esp-faq/zh-cn/latest/software-framework/peripherals/rmt.html
+
+ulp 协处理器
+https://blog.csdn.net/weixin_41659040/article/details/132941785
+
+ESP32S 数据手册
+https://docs.ai-thinker.com/esp32/spec/esp32s

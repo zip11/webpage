@@ -20,6 +20,13 @@ from machine import Pin
 import time
 import tm1637
 
+#hardware 
+from machine import Timer
+
+from machine import PWM
+
+
+
 
 #定义按键控制对象
 key1=Pin(14,Pin.IN,Pin.PULL_UP)
@@ -31,29 +38,71 @@ key4=Pin(25,Pin.IN,Pin.PULL_UP)
 #定义LED状态
 led1_state,led2_state,led3_state,led4_state=0,0,0,0
 
-ccs=0
+
+
+#smg flash
+fl = 0
 
 #KEY1外部中断函数
 def key1_irq(key1):
+    
+#     时钟 启动 暂停
     global led1_state
-    global ccs
+
     time.sleep_ms(10)
+    
     if key1.value()==0:
-        ccs=ccs+1
         
         led1_state=not led1_state
-        print(led1_state)
+        clockrun(led1_state)
+
+def clockrun(key_state):
+    
+    global n
+
+    if(key_state):
+    
+        smg.show(minsec(n))
+        time0.init(period=1000,mode=Timer.PERIODIC,callback=time0_irq)
+        
+#         print(led1_state)
+    else:
+        time0.deinit()
+        led1.deinit()   
 
 #KEY2外部中断函数
 def key2_irq(key2):
+    
+    global n
     global led2_state
+    
     time.sleep_ms(10)
+    
     if key2.value()==0:
+        
+        n = 9 * 60
+        
         led2_state=not led2_state
+        clockrun(led2_state)
 
 
-
-
+#定时器0中断函数
+def time0_irq(time0):
+    
+#     每秒 减少
+    global n
+    
+    # run clock
+    if(n>0 and led1_state):
+        
+        # -1ms 
+        n-=1
+        smg.show(minsec(n))
+        
+    elif(n==0):
+        # clock end,  flash smg
+        flash()
+        led1.duty(777)
 ##----------------
 
 
@@ -61,7 +110,8 @@ def key2_irq(key2):
 smg=tm1637.TM1637(clk=Pin(16),dio=Pin(17))
 
 def minsec(sec2):
-    #01:33,
+    
+    #01:33, 数码管显示字符串
 
     min1 = "0"
     sec1 = "0"
@@ -73,21 +123,25 @@ def minsec(sec2):
     min1 = min1[-2:]
     sec1 = sec1[-2:]
     
-    print("min:"+min1)
-    print("sec:"+sec1)
-    
-    wb1 = min1 + sec1
-    
-    return wb1
+    #print("min:"+min1)
+    #print("sec:"+sec1)
+        
+    return f'{min1}{sec1}'
     
     
     
 def flash():
     
     # smg flash
-    smg.show("    ")
-    time.sleep(1)
-    smg.show("oooo")
+    
+    global fl
+    
+    fl = not fl
+    
+    if(fl):
+        smg.show("    ")
+    else:
+        smg.show("oooo")
     
 
 #程序入口
@@ -100,28 +154,20 @@ if __name__=="__main__":
     #smg.scroll("1314-520",500)  #字符串滚动显示，速度调节
     #time.sleep(5)
     
-    key1.irq(key1_irq,Pin.IRQ_FALLING)  #配置key1外部中断，下降沿触发
+    key1.irq(key1_irq,Pin.IRQ_FALLING)
+    #配置key1外部中断，下降沿触发
     
-    n = 5*60+12
+    key2.irq(key2_irq,Pin.IRQ_FALLING) 
+    # 设置 倒计时 9分钟
     
-    while True:
-        
-        # smg display
-        #smg.number(n)
-        smg.show(minsec(n))
-        
-        # scan key            
+    n = 8
+    #倒计时 9秒
     
-        # run clock
-        if(n>0 and led1_state):
-            # -1ms 
-            n-=1
-        elif(n==0):
-            # clock end,  flash smg
-            flash()
-
-            
-        
-        # delay 1s
-        time.sleep(1)
-        print("total_sec:",n)
+    time0=Timer(0)
+    #创建time0定时器对象
+    
+    #定义LED1控制对象
+    led1=PWM(Pin(32),freq=1000,duty=0)
+    
+    smg.show(minsec(n))
+    # 显示 倒计时 数字
