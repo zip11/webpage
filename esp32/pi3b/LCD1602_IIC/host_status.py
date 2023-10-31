@@ -24,11 +24,11 @@ def cputemp():
 
 def hum_convert(value):
 
-    units = ["KB", "MB", "GB", "TB", "PB"]
+    units = ["K", "M", "G", "T", "P"]
     size = 1024.0
     for i in range(len(units)):
         if (value / size) < 1:
-            return "%.0f%s" % (value, units[i])
+            return "%.1f%s" % (value, units[i])
         value = value / size
 
 def getNet():

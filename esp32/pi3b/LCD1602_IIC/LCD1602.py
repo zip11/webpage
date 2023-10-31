@@ -134,7 +134,7 @@ if __name__ == '__main__':
 			dyh = ipaddr + '  '
 
 		elif(yd==2):
-			dyh = host.cpuper()
+			dyh = host.cpuper() + ' '
 		
 		elif(yd==3):
 			dyh = 'CPU TEMP:' + host.cputemp() +'C '
