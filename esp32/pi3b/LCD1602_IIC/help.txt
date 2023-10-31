@@ -1,0 +1,31 @@
+sudo apt install i2c-tools   
+
+sudo apt-get install python-smbus   
+
+raspi-config, 选择3 Interface Options，选择 P5 I2C   
+
+
+命令是扫描我们总线bus上所有i2c设备，并且打印出设备i2c总线地址
+sudo i2cdetect -y 1 
+
+看到地址为 0x27 .这说明 已经成功连接了 LCD1602 。接下来就可以用 Python 控制 LCD1602 显示信息了。
+
+由于对 LCD1602 的指令不了解，这里从网上找了一个很好例子，并优化了以下，保存在 /home/lcd/lcd1602.py
+
+
+升级pip版本
+python3 -m pip install --upgrade pip
+#win
+python.exe -m pip install --upgrade pip
+
+安装 smbus 模块
+pip3 install smbus
+
+安装 psutil
+pip3 install psutil
+
+
+作者：dengzii
+链接：https://www.jianshu.com/p/c63fd4049ca5
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
