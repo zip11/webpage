@@ -1,0 +1,28 @@
+[Unit]
+Description=lcd1602_netspeed_py
+After=multi-user.target
+[Service]
+WorkingDirectory=/home/pi/py/LCD1602_IIC
+User=pi
+Type=idle
+ExecStart=/usr/bin/python3 "/home/pi/py/LCD1602_IIC/LCD1602.py"
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
+
+
+# copy
+sudo cp lcd1602.service /usr/lib/systemd/system/
+
+# edit
+sudo nano /usr/lib/systemd/system/lcd1602.service
+
+# reload
+sudo systemctl daemon-reload
+
+#run
+
+sudo systemctl start lcd1602.service
+
+#stop
+sudo systemctl stop lcd1602.service

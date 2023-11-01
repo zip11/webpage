@@ -1,0 +1,71 @@
+二、安装 Adafruit-SSD1306 库
+Adafruit-SSD1306 是基于 Python 的 OLED 库，可以用于 128×64、128×32 像素 SSD1306 芯片控制的屏幕。
+使用下面的命令安装。
+
+#更新 pip
+sudo python -m pip install --upgrade pip setuptools wheel
+
+如果错误，重新安装pip
+sudo apt-get remove python-pip python3-pip
+sudo apt-get install python-pip python3-pip
+
+
+
+#更新 源
+sudo apt-get update	
+
+安装 PIL 库，有一些图片处理的程序会用到这个。
+
+
+sudo apt-get -y install python3-rpi.gpio  
+sudo apt-get install  python3-pil
+
+使用 pip 安装 Adafruit-SSD1306 库。
+
+
+sudo pip3 install Adafruit_GPIO
+sudo pip3 install Adafruit_SSD1306
+sudo pip3 install Adafruit_BBIO
+
+
+再下载一份包含代码示例的库后面要用。
+
+
+cd ~
+git clone https://github.com/adafruit/Adafruit_Python_SSD1306.git
+
+
+这里顺便提一下，如果上面的 pip 安装 Adafruit-SSD1306 库遇到网络问题，那么也可以在下载完这份代码之后运行下面的命令安装（可选）：
+
+
+cd Adafruit_Python_SSD1306
+sudo python setup.py install
+
+
+sudo i2cdetect -y 1
+
+
+四、编程和运行
+
+为了快速上手，我们可以直接使用示例代码。其中有一个文件名为 stats.py 的程序，用来显示树莓派的 IP、CPU Load、内存和磁盘使用情况。先拿这个来试试看。
+将之前下载的源码复制到用户目录，用编辑器打开。
+
+cd ~
+sudo cp ~/Adafruit_Python_SSD1306/examples/stats.py ~/
+sudo nano stats.py
+
+# 128x32 display with hardware I2C:
+disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
+ 
+# 128x64 display with hardware I2C:
+# disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST)
+ 
+# Note you can change the I2C address by passing an i2c_address parameter like:
+# disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST, i2c_address=0x3C)
+
+你可以根据实际所用的屏幕来修改这些参数，例如 SSD1306_128_32 代表 128×32 分辨率屏幕的初始化方法，适用于本篇介绍的 Pi OLED 128×32 OLED 屏幕扩展，SSD1306_128_64 适用于“复古小电视” OLED 屏。i2c_address 用于配置屏幕的地址，默认为 0x3C。
+
+运行示例代码，可看到运行效果。
+
+
+sudo python3 stats.py
