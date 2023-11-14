@@ -7,3 +7,6 @@ https://zhuanlan.zhihu.com/p/657979970
  3.// 白光led，循环， 增加亮灯，降低亮度
  4.// 颜色循环变化
  5.// LED 随机亮灯，
+ 
+ 探索互联世界的灯光艺术：FastLED库详细介绍及
+ https://blog.csdn.net/qq_27741499/article/details/132598375
