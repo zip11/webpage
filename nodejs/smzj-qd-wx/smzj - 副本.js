@@ -54,7 +54,7 @@ async function qdhash() {
     runsleep();
     // wait 2s
 
-    // qdajax(cookie3,mhhcode);
+    qdajax(cookie3,mhhcode);
     //  ajax 签到
   }
 
