@@ -1,0 +1,23 @@
+{
+  "name": "mp4_to_m4a_folder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "mp4_to_m4a_folder": "./index.js"
+  },
+  "scripts": {
+    "start": "chcp 65001 && node ./",
+    "build": "chcp 65001 && node ./",
+    "test": "chcp 65001 && node ./",
+    "pack": "pkg -t node18-win-x64 -C ./ --out-path=dist/ "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
+    "path": "^0.12.7",
+    "readline-sync": "^1.4.10",
+    "single-line-log": "^1.1.2"
+  }
+}

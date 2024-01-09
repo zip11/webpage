@@ -1,5 +1,5 @@
 {
-  "name": "mp4_move_folder",
+  "name": "mp4_to_m4a_ffmpeg",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
+    "path": "^0.12.7",
     "readline-sync": "^1.4.10"
   }
 }

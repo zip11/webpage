@@ -1,0 +1,15 @@
+{
+  "name": "mp4_move_folder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "chcp 65001 && node ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
+    "readline-sync": "^1.4.10"
+  }
+}
