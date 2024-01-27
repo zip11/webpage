@@ -1,0 +1,11 @@
+{
+  "name": "github_del_model",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "chcp 65001  & node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
