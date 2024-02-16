@@ -2,7 +2,7 @@
 // @name         下载趣味盒的图片
 // @namespace    download-funbox-pic
 // @version      0.1.2
-// @description  下载pt网站的趣味盒的图片,兼容 NexusPHP 的网站,点击网页中的 下载趣味盒图片 按钮，游览器开始下载所有图片，默认下载原始文件名图片，修改选项，可用下载txt链接文件，用以使用第三方下载软件，适合大文件下载，不容易下载失败且速度快，24-02-15
+// @description  下载pt网站的趣味盒的图片,兼容 NexusPHP 的网站,点击网页中的 下载趣味盒图片 按钮，游览器开始下载所有图片，默认下载原始文件名图片，22-11-27
 // @author       zip11
 // @match        https://*/fun.php?action=view
 // @grant       GM_download
@@ -12,7 +12,6 @@
 // @grant       GM_registerMenuCommand
 // @grant       GM_unregisterMenuCommand
 // @grant       GM_setClipboard
-
 
 
 // @license      MIT
@@ -73,8 +72,7 @@ group1:
         } else {
             
             // 复制图片链接，到剪贴板
-            let file_down = copy_pic_link();
-            downloadStringAsFile(file_down, "links.txt");
+            copy_pic_link();     
 
         }
 
@@ -96,30 +94,6 @@ group1:
     x.parentNode.insertBefore(button5, x);
 
     //~~~~~~~~~end~~~~~~~
-
-
-        // 定义一个下载字符串的函数
-    function downloadStringAsFile(str, fileName) {
-        // 创建一个Blob对象，包含要下载的字符串
-        var blob = new Blob([str], { type: 'text/plain;charset=utf-8' });
-
-        // 创建一个临时的a元素
-        var tempLink = document.createElement('a');
-
-        // 设置a元素的href属性为Blob对象的URL
-        tempLink.href = URL.createObjectURL(blob);
-
-        // 设置a元素的download属性为文件名
-        tempLink.download = fileName;
-
-        // 触发a元素的点击事件，开始下载
-        tempLink.click();
-
-        // 释放Blob对象的URL
-        URL.revokeObjectURL(tempLink.href);
-    }
-
-
 
 
     // css选择图片网址，下载图片
@@ -209,7 +183,7 @@ group1:
 
         GM_setClipboard(pic_link);
         
-        const endt = " 复制图片链接 ，到剪贴板，下载txt，完成";
+        const endt = " 复制图片链接 ，到剪贴板，完成";
         console.log(endt);
         msgk(endt);
 
@@ -249,12 +223,12 @@ group1:
 
     }
 
-    // msgbox 4s
+    // msgbox 2s
     function msgk(wb1) {
 
         GM_notification({
             text:wb1,
-            timeout: 4000
+            timeout: 2000
         });       
     }
 
