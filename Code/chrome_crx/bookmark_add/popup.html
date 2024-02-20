@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Add to Bookmarks</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #folderNameInput {
+      width: 200px;
+      padding: 5px;
+      margin: 10px;
+    }
+    #exportButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #exportResults {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+  </style>
+
+  <script src="popup.js"></script>
+</head>
+
+<body>
+  
+  <button id="createFolderButton">Create date Folder</button>
+
+  <input type="text" id="folderNameInput" placeholder="Enter folder name">
+  
+  <button id="exportButton">Export Bookmarks</button>
+
+  <div id="exportResults"></div>
+
+</body>
+
+</html>

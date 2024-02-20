@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Down File Save Bookmark",
+  "version": "1.0",
+  "description": "[导出书签的网址]    1.创建日期文件夹  2.导出书签 日期文件夹 内的 标题和网址 的内容到json文件",
+
+  "permissions": ["bookmarks", "downloads"],
+
+  "action": {
+    "default_popup": "popup.html",
+
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
+
+}
