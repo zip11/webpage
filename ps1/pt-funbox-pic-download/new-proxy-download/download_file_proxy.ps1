@@ -1,9 +1,10 @@
 Write-Host "批量下载文件，通过links.txt文件内的网址"
 
-# 油猴下载文件，文件太大，下载只能部分，下载速度也慢
-
-# power shell 下载文件，读取txt文件内容是每一行都是一个下载链接，
-# 下载文件名为 数字序号，把下载文件存放入 今天 年月日 组成的数字 文件夹
+# 从 JSON 文件中读取代理信息
+$jsonFile = "proxy.json"
+$proxyInfo = Get-Content -Raw -Path $jsonFile | ConvertFrom-Json
+$proxy = "http://$($proxyInfo.proxy):$($proxyInfo.port)"
+# $proxyCredential = Get-Credential
 
 # st ~~~~~~~
 # 获取脚本文件的完整路径
@@ -23,11 +24,10 @@ $folderPath = Join-Path -Path $scriptFolder -ChildPath $date
 # 判断 下载 文件夹 是否存在
 if (!(Test-Path $folderPath)) {
     New-Item -ItemType Directory -Path $folderPath | Out-Null
-    write-host "文件夹 $folderPath 创建成功"
+    Write-Host "文件夹 $folderPath 创建成功"
 }
 
 # end ~~~~~~~~~~
-
 
 # 下载 链接 数量 st ~~~~~~~~~~~~~~~
 $counter = 1
@@ -42,18 +42,25 @@ foreach ($link in $links) {
 
     # $links的数量
     $total = $links.Count
-    # 显示 下载进度
-    write-host "Downloading $fileName..., current/total_number:$counter/$total"
+    # 创建进度记录
+    $progressParams = @{
+        Activity = "Downloading $fileName"
+        Status = "Downloading file $counter of $total"
+        PercentComplete = ($counter / $total) * 100
+    }
+    Write-Progress @progressParams
 
-    # 下载文件，无进度条
-    # Invoke-WebRequest -Uri $link -OutFile $filePath
+    # 代理下载
+    Invoke-WebRequest -Uri $link -OutFile $filePath -Proxy $proxy 
+    # 代理服务器  用户名，密码
+    # -ProxyCredential $proxyCredential
 
-    # 后台下载，进度条
-    Start-BitsTransfer -Source $link -Destination $filePath
     $counter = $counter + 1
 }
 
-write-host "Download complete."
+Write-Progress -Activity "Download Complete" -Completed
+
+Write-Host "Download complete."
 
 # end ~~~~~~~
 
@@ -65,6 +72,6 @@ Copy-Item -Path $txtPath -Destination $newTxtPath
 # 删除 $txtPath
 Remove-Item -Path $txtPath
 
-write-host "New txt file created: $newTxtPath end !!!"
+Write-Host "New txt file created: $newTxtPath end !!!"
 
 Pause
