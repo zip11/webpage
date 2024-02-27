@@ -2,8 +2,8 @@
 // @name         数码之家签到
 // @namespace    mydigit_sign
 // @version      1.0
-// @description  数码之家论坛签到，论坛账户提前提取登录，打开游览器后，使用脚本猫每天定时启动签到
-// @author       你的名字
+// @description  数码之家论坛签到，论坛账户提前登录(登录设置保存登录状态)，打开游览器后，使用脚本猫每天定时启动签到
+// @author       zip11
 // @grant        GM_xmlhttpRequest
 // @grant        GM_notification
 // @crontab      1-59 * once * *
@@ -14,7 +14,7 @@
 'use strict';
 
 
-
+// 读取 按钮 签到链接
 function read_button_link() {
 
     // 使用GM_xmlhttpRequest获取页面内容，并提取id为JD_sign的<a>标签的href属性
@@ -31,7 +31,10 @@ function read_button_link() {
             // 解析响应内容
             var doc = new DOMParser().parseFromString(response.responseText, 'text/html');
             
+            // 按钮 id
             var link = doc.querySelector('#JD_sign');
+            
+            // 网址 非空
             if (link && link.href) {
             
                 // 如果找到了链接，将其保存到GM_setValue中，以便在页面上显示或使用
@@ -41,11 +44,16 @@ function read_button_link() {
                 console.log('找到链接：', link.href);
 
                 // 访问 签到网址
-                 sign_page(link.href);
+                sign_page(link.href);
+
+                resolve("read_link_ok")
 
             } else {
+
+                // 获取 签到链接 失败
                 console.log('未找到ID为JD_sign的链接');
                 msgk('未找到ID为JD_sign的链接')
+                reject("read_link_error")
             }
         },
         onerror: function(error) {
@@ -54,7 +62,7 @@ function read_button_link() {
     });   
 }
 
-    // 访问 签到网址
+// 访问 签到网址
 function sign_page(link2) {
 
     // 如果找到了链接，使用GM_xmlhttpRequest再次发送GET请求
@@ -95,7 +103,7 @@ function sign_page(link2) {
 
 
 
-    // 消息框，自动关闭 函数
+// 消息框，自动关闭 函数
 function msgk(text,sec) {
 
     // sec 如果没有输入参数，sec = 3
@@ -112,27 +120,24 @@ function msgk(text,sec) {
 
 
 
-// main
+// main 主函数
 return new Promise((resolve, reject) => {
     
-
-
     try {
 
-        // let jg8 = await run1();
+        // 读取按钮链接
+        let button_msg = read_button_link();
 
-        // if (jg8 == "油猴中文网bbs定时签到成功") {
-        
-        //     resolve("ok"+jg8);// 执行成功
-        
-        // } else {
-        
-        //     reject("error-exit"+jg8);// 执行失败,并返回错误原因
-        
-        // }        
+        // 判断 签到链接 获取成功
+        if(button_msg == "read_link_ok") {
+            
+            resolve("read-sign-link-ok");
+            // 执行成功
+        } else {
+            reject("read-sign-link-error");
+        }
 
-        read_button_link();
-        resolve("ok");// 执行成功
+        
 
     } catch (error) {
 
