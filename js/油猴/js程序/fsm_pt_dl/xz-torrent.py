@@ -2,6 +2,9 @@ import datetime
 import json
 import requests
 
+# pt-fsm,rss下载链接，读取json 内的 网址
+# json 下载 网址，由 油猴生成
+
 # 下载文件函数
 def download_file(url, save_path):
 
@@ -37,7 +40,9 @@ def download_file(url, save_path):
 # 假设json数据存储在一个字符串变量中
 # json_data = '[{"title": "网站A", "url": "http://www.example1.com"}, {"title": "网站B", "url": "http://www.example2.com"}]'
 
-# start ~~~~~~
+
+
+# ~~~~~~~~~~~ start ~~~~~~
 
 print("pt-fsm,rss下载链接，开始下载...")
 
@@ -53,8 +58,10 @@ filename = now.strftime("%Y%m%d") + "_filedown.json"
 # json全路径
 data_file = os.path.join(path, filename)
 
+# 生成 日期字符串，年_月_日
+date_str = now.strftime("%Y_%m_%d")
 # 下载文件夹 全路径
-down_folder = os.path.join(path, 'dwon_file')
+down_folder = os.path.join(path, 'dwon_file', date_str)
 
 # dwon_file 文件夹是否存在，不存在创建文件夹
 if not os.path.exists(down_folder):
@@ -95,3 +102,6 @@ for item in data:
     #     download_file(url, title + ".torrent")
         
     #     break
+
+
+print("下载完成")
