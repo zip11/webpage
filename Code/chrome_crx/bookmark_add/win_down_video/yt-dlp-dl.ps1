@@ -17,7 +17,17 @@ $proxy_port = $proxy.proxy_port
 
 # 读取 JSON 文件中的网址
 $json_folder = "$PSScriptRoot"
-$json_file = "bookmarks.json"
+
+# 获取当前日期并格式化为 YYYY_MM_DD 格式
+$today = Get-Date -Format "yyyy_MM_dd"
+
+# 构建 JSON 文件名，例如 bookmarks_YYYY_MM_DD.json
+$jsonFileName = "bookmarks_$today.json"
+
+# 输出 JSON 文件名
+Write-Host "JSON 文件名: $jsonFileName"
+
+$json_file = $jsonFileName
 
 $jsonFile_all = Join-Path -Path $json_folder -ChildPath $json_file
 
