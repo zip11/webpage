@@ -1,0 +1,24 @@
+{
+    "success": true,
+    "msg": "success",
+    "data": {
+        "actors": [
+            "凪"
+        ],
+        "cover": "https://pl.jpg",
+        "date": "2020-12-19",
+        "number": "PD-892",
+        "screenshots": [
+            "https://1.jpg",
+            "https://12.jpg",
+
+        ],
+        "step": 1,
+        "tags": [
+            "女子"
+
+        ],
+        "title": "放課後"
+    }
+}
+

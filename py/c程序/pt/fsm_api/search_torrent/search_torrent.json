@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "msg": "获取种子列表",
+  "data": {
+    "maxPage": 1,
+    "list": [
+      {
+        "tid": 55292,
+        "title": "SJ-261 温泉旅行",
+        "content": "<img src=\"https://img.fsm.name/26/74/26bb.jpg\" alt=\"h_13261pl.jpg\" />",
+        "type": {
+          "id": 1,
+          "name": "日本A"
+        },
+        "cover": "https://img.fsm.name/26/74/268bb.jpg",
+        "fileRawSize": 6256457981,
+        "fileSize": "5.83 GB",
+        "fileHash": "4edd580cea",
+        "createdTs": 1698967,
+        "finish": 28,
+        "isTop": "N",
+        "tags": [
+          "温泉",
+          "女子大生",
+          "素人"
+        ],
+        "actress": [
+          {
+            "id": 726,
+            "name": "葉風",
+            "avatar": "https://img.fsm.name/c9/df/c9d52.jpg"
+          }
+        ],
+        "status": {
+          "tid": 51112,
+          "startAt": "2024-04-13 00:24:58",
+          "endAt": "2024-04-14 00:24:58",
+          "name": "Free",
+          "class": "free",
+          "upCoefficient": 1,
+          "downCoefficient": 0
+        },
+        "peers": {
+          "upload": "3",
+          "download": 0
+        },
+        "favoriteStatus": "POINTLESS"
+      }
+    ]
+  }
+}

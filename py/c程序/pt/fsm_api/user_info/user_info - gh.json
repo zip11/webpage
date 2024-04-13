@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "msg": "获取用户基础数据",
+  "data": {
+    "uid": 10,
+    "username": "z1",
+    "userRank": {
+      "id": 3,
+      "raw": "USER",
+      "name": "注册会员",
+      "voteRank": 1,
+      "class": "normalUser",
+      "isAdmin": "N"
+    },
+    "point": 1152,
+    "profile": "<a target=\"_blank\" href=\"/Users/profile?uid=10\" class=\"fontBold normalUser\">z1</a>",
+    "upload": "66.69 TB",
+    "download": "33.05 GB",
+    "avatar": "https://img.fsm.name/08/9d/087.png",
+    "seedGH": 31.497,
+    "buffer": 155,
+    "passkey": "87e9",
+    "peers": {
+      "upload": 27,
+      "download": 3
+    },
+    "free": {
+      "hasFree": false
+    }
+  }
+}
