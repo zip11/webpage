@@ -66,20 +66,41 @@ def convert_media_to_opus(file_list):
         else:
             print("Failed to convert:", media_file)
 
+def get_parent_directory(folder_path):
+    """
+    获取指定文件夹的上一级文件夹路径。
+    
+    :param folder_path: 子文件夹的路径。
+    :return: 上一级文件夹的路径。
+    """
+    # 确保路径格式正确，去除尾部的斜杠（如果存在）
+    normalized_path = os.path.normpath(folder_path)
+    
+    # 获取上一级文件夹路径
+    parent_directory = os.path.dirname(normalized_path)
+    
+    return parent_directory
+
 
 
 def main():
     """
     主函数，执行FLV到Opus的转换流程。
     """
-    # 获取py文件的上一级文件夹路径
-    # script_path = os.path.abspath(__file__)
-    # parent_folder = os.path.dirname(script_path)
+    # Ⅰ 获取py文件的上一级文件夹路径
+    script_path = os.path.abspath(__file__)
+    
+    # 获取py ,文件夹路径
+    parent_folder = os.path.dirname(script_path)
+    
+    # 获取上一级, 文件夹路径
+    parent_folder = get_parent_directory(parent_folder)
 
-    # 获取 exe 所在文件夹
+    # Ⅱ 获取 exe 所在文件夹
     # parent_folder = get_exe_directory
 
-    parent_folder = input("请输入文件夹路径:")
+    # Ⅲ 输入 flv 路径
+    # parent_folder = input("请输入文件夹路径:")
 
     print("Parent folder:", parent_folder)
     # os.system('pause')
