@@ -2,8 +2,10 @@ import requests
 import json
 import time
 import re
+# 取消 收藏 种子
+import collection
 
-# mt Api 批量下载 收藏的 种子
+# mt Api 批量下载 收藏的 种子，下载完成后 取消收藏
 
 # 测试网站 
 # base_url = "https://test2.m-team.cc"
@@ -60,12 +62,9 @@ def download_files(download_urls, file_names,api_key):
     for url, name in zip(download_urls, file_names):
 
         # http请求头：x-api-key
-        headers = {
-            "x-api-key": api_key
-        }
 
-        # 发送GET请求并下载文件
-        response = requests.get(url, headers=headers)
+        # 发送GET请求并下载文件 
+        response = requests.get(url)
 
         if response.status_code == 200:
             # 保存文件
@@ -79,7 +78,7 @@ def download_files(download_urls, file_names,api_key):
 
 
     
-def search_torrents(api_key, url):
+def search_torrents(api_key, url,fenlei2,pagesize):
 
     # 获取 收藏 种子
 
@@ -95,12 +94,12 @@ def search_torrents(api_key, url):
 
     # 构造请求参数
     payload = {
-        "mode": fenlei[1],
+        "mode": fenlei[fenlei2],
         "categories": [],
         "onlyFav": 1,
         "visible": 1,
         "pageNumber": 1,
-        "pageSize": 100
+        "pageSize": pagesize
     }
 
     try:
@@ -136,7 +135,7 @@ def download_files_all(id_list, name_list,api_key):
         download_urls.append(download_link)
         print(f"正在获取 {item_id} 的下载链接...")
         # 延时3秒
-        time.sleep(3)
+        time.sleep(2)
         
     # 下载文件
     download_files(download_urls, name_list,api_key)
@@ -165,13 +164,15 @@ def main():
     # API网址
     api_url = base_url + "/api/torrent/search"
 
-    # 获取 API 密钥
+    # 获取 API 密钥   1，test 2，true
     api_key = get_api_key(2)
 
+    # API 密钥 验证
     if api_key:
 
-        # 搜索种子
-        data = search_torrents(api_key, api_url)
+        # 搜索种子  ,0 ad 1 movie ,11 单页种子 数量
+        data = search_torrents(api_key, api_url,0,2)
+
 
         # 提取id信息,     id  |  data->data
         id_list = [item['id'] for item in data['data']['data']]
@@ -187,6 +188,9 @@ def main():
 
         # 下载所有文件
         download_files_all(id_list, name_list,api_key)
+
+        # 批量 删除 收藏 种子
+        collection.remove_from_collection(api_key,id_list)
         
 
 
