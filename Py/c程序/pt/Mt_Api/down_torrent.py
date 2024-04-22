@@ -61,17 +61,16 @@ def download_files(download_urls, file_names,api_key):
     # 遍历下载链接和文件名
     for url, name in zip(download_urls, file_names):
 
-        # http请求头：x-api-key
-
         # 发送GET请求并下载文件 
         response = requests.get(url)
 
         if response.status_code == 200:
+
             # 保存文件
             with open(name, 'wb') as file:
                 file.write(response.content)
             print(f"文件 {name} 下载成功")
-            time.sleep(3)  # 延时1秒
+            time.sleep(2)  # 延时1秒
         else:
             print(f"下载 {url} 失败")
 

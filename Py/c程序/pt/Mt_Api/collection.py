@@ -35,6 +35,19 @@ def modify_collection(torrent_id, api_key, add_to_collection=True):
     else:
         return False
 
+# 函数，批量取消收藏
+def remove_from_collection(api_key, torrent_ids):
+
+    for torrent_id in torrent_ids:
+        # 移除收藏夹中的种子 单个
+        response_remove = modify_collection(torrent_id, api_key, add_to_collection=False)
+        
+        if response_remove :
+            print(f"{torrent_id}成功从收藏夹中移除!")
+        else:
+            print(f"{torrent_id} 从收藏夹中移除失败!.")
+        time.sleep(2)  
+        # 避免过快请求
     
 def search_torrents(api_key, url,fenlei2,pagesize):
 
@@ -110,33 +123,22 @@ api_key = get_api_key()
 
 
 
-# 函数，批量取消收藏
-def remove_from_collection(api_key, torrent_ids):
+# main 函数
+if __name__ == "__main__":
 
-    for torrent_id in torrent_ids:
+    # API网址
+    api_url = base_url + "/api/torrent/search"
 
-        response_remove = modify_collection(torrent_id, api_key, add_to_collection=False)
-        
-        if response_remove :
-            print(f"{torrent_id}成功从收藏夹中移除!")
-        else:
-            print(f"{torrent_id} 从收藏夹中移除失败!.")
-        time.sleep(2)  
-        # 避免过快请求
+    if api_key:
 
-# API网址
-api_url = base_url + "/api/torrent/search"
-
-if api_key:
-
-    # 搜索种子  ,0 ad 1 movie ,11 单页种子 数量
-    data = search_torrents(api_key, api_url,0,11)
+        # 搜索种子  ,0 ad 1 movie ,11 单页种子 数量
+        data = search_torrents(api_key, api_url,0,11)
 
 
-    # 提取id信息,     id  |  data->data
-    id_list = [item['id'] for item in data['data']['data']]
-    print("提取到的id信息:", id_list)
+        # 提取id信息,     id  |  data->data
+        id_list = [item['id'] for item in data['data']['data']]
+        print("提取到的id信息:", id_list)
 
-    # 批量取消收藏
-    remove_from_collection(api_key, id_list)
+        # 批量取消收藏
+        remove_from_collection(api_key, id_list)
 
