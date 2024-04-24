@@ -1,5 +1,12 @@
 import requests
 import json
+import time
+
+# 定义一个空列表来  存储没有找到匹配的种子
+null_keyword = []
+
+# 定义一个列表来  存储下载种子
+down_keyword = []
 
 # 搜索种子
 def search_torrents(APITOKEN,keyword):
@@ -78,9 +85,9 @@ def torrent_id(torrents):
 
                 return tid,title
 
-
     else:
         print(" 含有 多个 搜索 结果")
+        return None,None
 
 
 
@@ -108,7 +115,25 @@ def down_torrent_link(passkey,tid,local_filename):
     print(f"{local_filename} 文件下载完成")
 
 
+def read_json(filename):
 
+    # 读取JSON文件并加载内容
+    with open(filename, 'r') as file:
+        data = json.load(file)
+
+    # 获取contentArray列表并返回
+    content_array = data.get('contentArray', [])
+    return content_array
+
+# 保存 down_keyword 列表到 JSON 文件
+def save_to_json(filename, data):
+
+    # 将 data 转换为 JSON 字符串
+    json_data = json.dumps(data, indent=4)
+
+    # 将 JSON 字符串写入文件
+    with open(filename, 'w') as file:
+        file.write(json_data)
 
 # 从 key.json 文件读取 API 密钥
 def get_api_key():
@@ -139,8 +164,9 @@ def get_passkey_key():
         return None
 
 
-def main():
+def main(keyword):
 
+    
     # 读取 API 密钥
     APITOKEN =  get_api_key()
 
@@ -148,17 +174,54 @@ def main():
     PASSKEY = get_passkey_key()
 
     # 输入搜索关键字
-    keyword = input("请输入搜索关键字: ")
+    # keyword = input("请输入搜索关键字: ")
 
     # 调用函数搜索种子
     torrents = search_torrents(APITOKEN,keyword)
+    time.sleep(1)
+
 
     #  获取 种子 tid
-    tid,title = torrent_id(torrents)
+    tid, title = torrent_id(torrents)
+    time.sleep(1)
 
-    # 下载种子
-    down_torrent_link(PASSKEY,tid,title)
+    
+    # 判断 tid 是否为 None
+    if tid is not None:
+
+        # 下载种子
+        down_torrent_link(PASSKEY,tid,title)
+        down_keyword.append(keyword)
+        time.sleep(1)
+        
+    else:
+        print(f"{keyword} torrents 变量为 None，请检查。")
+        null_keyword.append(keyword)
+    
+    print(f"{down_keyword} 下载种子成功")
+    # 保存 down_keyword 列表到 JSON 文件
+    save_to_json("down_keyword.json", down_keyword)
+
+    print(f"null keyword:",null_keyword)
+    # 保存 null_keyword 列表到 JSON 文件
+    save_to_json("null_keyword.json", null_keyword)
+
+    print("end !!!")
+
+
 
 if __name__ == "__main__":
 
-    main()
+    # JSON文件
+    filename = 'content.json'
+    
+    # 读取JSON文件
+    content_list = read_json(filename)
+
+    print(content_list)
+
+    # 遍历 content_list 列表
+    for content in content_list:
+
+        # 调用 main 函数
+        main(content)
