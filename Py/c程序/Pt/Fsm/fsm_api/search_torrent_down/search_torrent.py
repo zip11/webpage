@@ -4,7 +4,7 @@ import json
 # 搜索种子
 def search_torrents(APITOKEN,keyword):
 
-    print(APITOKEN)
+    # print(APITOKEN)
 
     try:
 
@@ -45,6 +45,71 @@ def search_torrents(APITOKEN,keyword):
     
 
 
+
+    
+#  获取 下载帖子 tid
+def torrent_id(torrents):
+
+    # 输出搜索结果
+    if torrents:
+
+        print("搜索结果:")
+
+        # 判断 torrents 元素数量 是否只有1个
+        if len(torrents) == 1:
+
+            torrent = torrents[0]
+
+            # tid 存在
+            if 'tid' in torrent and torrent['tid']:
+
+                # json 可读化
+                formatted_json = json.dumps(torrent, indent=4, ensure_ascii=False)
+
+                # 显示 搜索 结果
+                print(formatted_json )
+
+                # 换行
+                print("\n~~~~~~~~~~~~~~~~~~\n")
+
+                # 获取 json内的 tid ，title
+                tid = torrent['tid']
+                title = torrent['title']
+
+                return tid,title
+
+
+    else:
+        print(" 含有 多个 搜索 结果")
+
+
+
+# 下载种子
+def down_torrent_link(passkey,tid,local_filename):
+
+    url = f"https://fsm.name/api/Torrents/download?tid={tid}&passkey={passkey}&source=direct"
+
+    print("下载链接:",url)
+    # 下载文件 dl_link
+
+    # 发送HTTP请求
+    response = requests.get(url, stream=True)
+    response.raise_for_status()
+
+    # 保存文件 名字
+    local_filename = local_filename + ".torrent"
+
+    # 将文件保存到本地
+    with open(local_filename, 'wb') as f:
+        for chunk in response.iter_content(chunk_size=8192):
+            if chunk:  # 过滤掉keep-alive新块
+                f.write(chunk)
+                
+    print(f"{local_filename} 文件下载完成")
+
+
+
+
 # 从 key.json 文件读取 API 密钥
 def get_api_key():
 
@@ -59,30 +124,19 @@ def get_api_key():
         print("读取 API 密钥出错:", e)
         return None
     
+# passkey 密钥
+def get_passkey_key():
 
-def down_link(torrents):
-
-    # 输出搜索结果
-    if torrents:
-
-        print("搜索结果:")
-
-        for torrent in torrents:
-
-            # tid 存在
-            if 'tid' in torrent and torrent['tid']:
-
-                # json 可读化
-                formatted_json = json.dumps(torrent, indent=4, ensure_ascii=False)
-
-                # 显示 搜索 结果
-                print(formatted_json )
-
-                # 换行
-                print("\n~~~~~~~~~~~~~~~~~~\n")
-
-    else:
-        print("未找到任何种子")
+    try:
+        with open("key.json", "r") as f:
+            
+            # 读取 JSON 数据
+            data = json.load(f)
+            api_key = data.get("passkey")
+            return api_key
+    except Exception as e:
+        print("读取 passkey 密钥出错:", e)
+        return None
 
 
 def main():
@@ -90,14 +144,20 @@ def main():
     # 读取 API 密钥
     APITOKEN =  get_api_key()
 
+    # 读取 torrent 密钥
+    PASSKEY = get_passkey_key()
+
     # 输入搜索关键字
     keyword = input("请输入搜索关键字: ")
 
     # 调用函数搜索种子
     torrents = search_torrents(APITOKEN,keyword)
 
-    # 
-    down_link(torrents)
+    #  获取 种子 tid
+    tid,title = torrent_id(torrents)
+
+    # 下载种子
+    down_torrent_link(PASSKEY,tid,title)
 
 if __name__ == "__main__":
 
