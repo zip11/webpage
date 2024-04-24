@@ -1,11 +1,10 @@
 import requests
 import json
 
-# 你的APITOKEN
-APITOKEN = ""
+# 搜索种子
+def search_torrents(APITOKEN,keyword):
 
-
-def search_torrents(keyword):
+    print(APITOKEN)
 
     try:
 
@@ -15,6 +14,7 @@ def search_torrents(keyword):
         # 发送 GET 请求获取网页内容
         headers = {'APITOKEN': APITOKEN}
         response = requests.get(url,headers=headers)
+
 
         # 如果请求成功，解析 JSON 数据
         if response.status_code == 200:
@@ -42,14 +42,35 @@ def search_torrents(keyword):
     except Exception as e:
         print(f"发生异常: {e}")
         return []
+    
+
+
+# 从 key.json 文件读取 API 密钥
+def get_api_key():
+
+    try:
+        with open("key.json", "r") as f:
+            
+            # 读取 JSON 数据
+            data = json.load(f)
+            api_key = data.get("api_key")
+            return api_key
+    except Exception as e:
+        print("读取 API 密钥出错:", e)
+        return None
+    
+
 
 def main():
+
+    # 读取 API 密钥
+    APITOKEN =  get_api_key()
 
     # 输入搜索关键字
     keyword = input("请输入搜索关键字: ")
 
     # 调用函数搜索种子
-    torrents = search_torrents(keyword)
+    torrents = search_torrents(APITOKEN,keyword)
 
     # 输出搜索结果
     if torrents:
