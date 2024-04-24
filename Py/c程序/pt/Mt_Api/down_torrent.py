@@ -2,6 +2,7 @@ import requests
 import json
 import time
 import re
+import os
 # 取消 收藏 种子
 import collection
 
@@ -11,6 +12,9 @@ import collection
 # base_url = "https://test2.m-team.cc"
 # 实际 网站
 base_url = "https://kp.m-team.cc"
+
+# 种子路径 ".\\Mt_Ad"
+
 
 def get_download_link(item_id, api_key):
 
@@ -53,6 +57,18 @@ def download_files(download_urls, file_names,api_key):
 
     # 下载 单个 种子
 
+    # 获取当前文件夹路径
+    current_dir = os.getcwd()
+
+    folder_path = os.path.join(current_dir,"Mt_Ad")
+    # 判断 文件夹 存在
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+        print("文件夹已创建")
+    else:
+        print("文件夹已存在")
+
+
     # 确保下载链接和文件名列表长度相同
     if len(download_urls) != len(file_names):
         print("下载链接和文件名数量不匹配")
@@ -65,6 +81,9 @@ def download_files(download_urls, file_names,api_key):
         response = requests.get(url)
 
         if response.status_code == 200:
+
+            # torrent全路径
+            name = os.path.join(folder_path,name)
 
             # 保存文件
             with open(name, 'wb') as file:
@@ -158,7 +177,38 @@ def generate_torrent_names(name_list, extension='.torrent'):
         torrent_names.append(torrent_name)
     return torrent_names
 
+
+
+# 从 key.json 文件读取 API 密钥
+def get_api_key(number):
+
+    key_path = "key.json"
+    key_path2 = "key_true.json"
+
+    # 切换 api key 文件
+    if number == 1:
+        key_file = key_path
+        print("test website","key.json")
+    elif number == 2:
+        key_file = key_path2
+        print("true website","key_true.json")
+
+
+
+    try:
+        with open(key_file, "r") as f:
+            data = json.load(f)
+            api_key = data.get("api_key")
+            return api_key
+    except Exception as e:
+        print("读取 API 密钥出错:", e)
+        return None
+    
+
+
 def main():
+
+    print("mt Api 批量下载 收藏的 种子，下载完成后 取消收藏")
 
     # API网址
     api_url = base_url + "/api/torrent/search"
@@ -169,8 +219,15 @@ def main():
     # API 密钥 验证
     if api_key:
 
+        
+        tor_number = 11
+        tor_fenlei = 0
+
+        print("下载文件分类,0 ad ,1 movie ")
+        print(f"下载文件分类{tor_fenlei},单页种子 数量{tor_number}")
+
         # 搜索种子  ,0 ad 1 movie ,11 单页种子 数量
-        data = search_torrents(api_key, api_url,0,2)
+        data = search_torrents(api_key, api_url,tor_fenlei,tor_number)
 
 
         # 提取id信息,     id  |  data->data
@@ -201,30 +258,7 @@ def main():
 
 
 
-# 从 key.json 文件读取 API 密钥
-def get_api_key(number):
 
-    key_path = "key.json"
-    key_path2 = "key_true.json"
-
-    # 切换 api key 文件
-    if number == 1:
-        key_file = key_path
-        print("test website","key.json")
-    elif number == 2:
-        key_file = key_path2
-        print("true website","key_true.json")
-
-
-
-    try:
-        with open(key_file, "r") as f:
-            data = json.load(f)
-            api_key = data.get("api_key")
-            return api_key
-    except Exception as e:
-        print("读取 API 密钥出错:", e)
-        return None
 
 if __name__ == "__main__":
     main()
