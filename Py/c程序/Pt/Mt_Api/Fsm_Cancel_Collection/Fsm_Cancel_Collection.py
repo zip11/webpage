@@ -54,10 +54,8 @@ def get_api_key():
         return None
 
 # 取消收藏
-def cancel_collection(api_key,name_list,id_list):
+def cancel_collection(api_key,name_list,id_list,remove_torrent ):
         
-    # 取消收藏~~~~~~~~~
-    remove_torrent = "SSIS-816"
     # 转大写字母
     remove_torrent = remove_torrent.upper()
 
@@ -84,6 +82,13 @@ def cancel_collection(api_key,name_list,id_list):
         else:
             print(f"未找到: {remove_torrent}")
 
+# 函数，读取json文件内 文件名字符串 
+def read_json_file(file_path):
+
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+        return data
+
 
 # mian
 if __name__ == "__main__":
@@ -104,9 +109,18 @@ if __name__ == "__main__":
 
         name_list = [item['name'] for item in data['data']['data']]
         print("提取到的name信息:", name_list)
+
+        # 读取json，文件内 文件名字符串
+        cancel_tor = read_json_file("file_parts.json")
         
-        # 取消收藏
-        cancel_collection(api_key,name_list,id_list)
+        # 遍历cancel_tor 内的 文件名字符串
+        for tor in cancel_tor:
+
+            # 取消收藏
+            cancel_collection(api_key,name_list,id_list,tor)
+
+        
+
 
     else:
         print("API 密钥未提供，请检查 key.json 文件。")
