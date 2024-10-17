@@ -1,4 +1,4 @@
-Write-Host "批量下载文件，通过links.txt文件内的网址"
+Write-Host "批量下载文件，proxy http,通过links.txt文件内的网址"
 
 # 从 JSON 文件中读取代理信息
 $jsonFile = Join-Path $PSScriptRoot -ChildPath "proxy.json"
@@ -47,6 +47,19 @@ $folderPath = Join-Path -Path $scriptFolder -ChildPath $date
 if (!(Test-Path $folderPath)) {
     New-Item -ItemType Directory -Path $folderPath | Out-Null
     Write-Host "文件夹 $folderPath 创建成功"
+} else {
+    
+    # 如果文件夹已存在，则获取当前秒的数字，并拼接文件夹名称
+    Write-Host "文件夹 $folderPath 已存在"
+
+    # 获取 当前秒的数字
+    $second = Get-Date -Format ss
+
+    # 文件夹名称 拼接 当前秒的数字
+    $folderPath = Join-Path -Path $folderPath -ChildPath $second
+
+    New-Item -ItemType Directory -Path $folderPath | Out-Null
+    Write-Host "文件夹 $folderPath 创建成功"    
 }
 
 # end ~~~~~~~~~~
